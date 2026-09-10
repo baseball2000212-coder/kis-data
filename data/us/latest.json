@@ -1,11 +1,744 @@
 {
- "asof_kst": "2026-09-10T11:05:59+09:00",
+ "asof_kst": "2026-09-10T11:10:15+09:00",
  "session": "us",
  "nmin": "1",
+ "idx_interval_sec": "300",
  "session_window": "093000-160000 ET",
  "indices": {
+  "NDX": {
+   "symbol": "NDX",
+   "interval_sec": "300",
+   "summary": {
+    "ovrs_nmix_prdy_vrss": "-86.15",
+    "prdy_vrss_sign": "5",
+    "prdy_ctrt": "-0.29",
+    "ovrs_nmix_prdy_clpr": "29507.70",
+    "acml_vol": "0",
+    "hts_kor_isnm": "나스닥 100",
+    "ovrs_nmix_prpr": "29421.55",
+    "stck_shrn_iscd": "NDX",
+    "ovrs_prod_oprc": "29431.94",
+    "ovrs_prod_hgpr": "29563.60",
+    "ovrs_prod_lwpr": "29334.41"
+   },
+   "bars": [
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "093000",
+     "optn_prpr": "29446.11",
+     "optn_oprc": "29431.94",
+     "optn_hgpr": "29471.93",
+     "optn_lwpr": "29393.26",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "093500",
+     "optn_prpr": "29458.59",
+     "optn_oprc": "29449.85",
+     "optn_hgpr": "29476.36",
+     "optn_lwpr": "29443.87",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "094000",
+     "optn_prpr": "29455.12",
+     "optn_oprc": "29460.68",
+     "optn_hgpr": "29479.42",
+     "optn_lwpr": "29437.47",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "094500",
+     "optn_prpr": "29477.38",
+     "optn_oprc": "29453.44",
+     "optn_hgpr": "29487.56",
+     "optn_lwpr": "29435.95",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "095000",
+     "optn_prpr": "29492.72",
+     "optn_oprc": "29476.68",
+     "optn_hgpr": "29496.82",
+     "optn_lwpr": "29464.59",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "095500",
+     "optn_prpr": "29539.55",
+     "optn_oprc": "29493.16",
+     "optn_hgpr": "29540.87",
+     "optn_lwpr": "29491.36",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "100000",
+     "optn_prpr": "29551.61",
+     "optn_oprc": "29533.58",
+     "optn_hgpr": "29558.26",
+     "optn_lwpr": "29508.27",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "100500",
+     "optn_prpr": "29545.19",
+     "optn_oprc": "29552.18",
+     "optn_hgpr": "29563.60",
+     "optn_lwpr": "29537.35",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "101000",
+     "optn_prpr": "29535.45",
+     "optn_oprc": "29545.68",
+     "optn_hgpr": "29552.23",
+     "optn_lwpr": "29520.63",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "101500",
+     "optn_prpr": "29472.93",
+     "optn_oprc": "29534.53",
+     "optn_hgpr": "29534.53",
+     "optn_lwpr": "29468.07",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "102000",
+     "optn_prpr": "29447.52",
+     "optn_oprc": "29472.86",
+     "optn_hgpr": "29479.65",
+     "optn_lwpr": "29442.53",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "102500",
+     "optn_prpr": "29507.66",
+     "optn_oprc": "29439.31",
+     "optn_hgpr": "29510.36",
+     "optn_lwpr": "29439.31",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "103000",
+     "optn_prpr": "29489.83",
+     "optn_oprc": "29507.92",
+     "optn_hgpr": "29507.92",
+     "optn_lwpr": "29477.74",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "103500",
+     "optn_prpr": "29495.01",
+     "optn_oprc": "29492.14",
+     "optn_hgpr": "29501.05",
+     "optn_lwpr": "29473.32",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "104000",
+     "optn_prpr": "29509.72",
+     "optn_oprc": "29495.88",
+     "optn_hgpr": "29514.45",
+     "optn_lwpr": "29490.39",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "104500",
+     "optn_prpr": "29513.56",
+     "optn_oprc": "29511.64",
+     "optn_hgpr": "29514.00",
+     "optn_lwpr": "29497.69",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "105000",
+     "optn_prpr": "29482.33",
+     "optn_oprc": "29513.27",
+     "optn_hgpr": "29516.54",
+     "optn_lwpr": "29481.70",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "105500",
+     "optn_prpr": "29512.62",
+     "optn_oprc": "29482.90",
+     "optn_hgpr": "29512.62",
+     "optn_lwpr": "29482.03",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "110000",
+     "optn_prpr": "29469.60",
+     "optn_oprc": "29507.60",
+     "optn_hgpr": "29530.52",
+     "optn_lwpr": "29461.96",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "110500",
+     "optn_prpr": "29414.79",
+     "optn_oprc": "29468.95",
+     "optn_hgpr": "29479.52",
+     "optn_lwpr": "29411.60",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "111000",
+     "optn_prpr": "29373.55",
+     "optn_oprc": "29416.21",
+     "optn_hgpr": "29421.60",
+     "optn_lwpr": "29365.94",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "111500",
+     "optn_prpr": "29420.85",
+     "optn_oprc": "29373.19",
+     "optn_hgpr": "29423.00",
+     "optn_lwpr": "29368.40",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "112000",
+     "optn_prpr": "29339.67",
+     "optn_oprc": "29419.85",
+     "optn_hgpr": "29426.68",
+     "optn_lwpr": "29334.41",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "112500",
+     "optn_prpr": "29361.13",
+     "optn_oprc": "29340.61",
+     "optn_hgpr": "29365.17",
+     "optn_lwpr": "29340.18",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "113000",
+     "optn_prpr": "29402.12",
+     "optn_oprc": "29362.08",
+     "optn_hgpr": "29403.32",
+     "optn_lwpr": "29362.08",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "113500",
+     "optn_prpr": "29439.14",
+     "optn_oprc": "29405.15",
+     "optn_hgpr": "29439.14",
+     "optn_lwpr": "29382.04",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "114000",
+     "optn_prpr": "29413.82",
+     "optn_oprc": "29440.00",
+     "optn_hgpr": "29449.89",
+     "optn_lwpr": "29400.35",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "114500",
+     "optn_prpr": "29412.80",
+     "optn_oprc": "29413.40",
+     "optn_hgpr": "29417.07",
+     "optn_lwpr": "29402.01",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "115000",
+     "optn_prpr": "29437.63",
+     "optn_oprc": "29411.40",
+     "optn_hgpr": "29438.04",
+     "optn_lwpr": "29411.40",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "115500",
+     "optn_prpr": "29423.59",
+     "optn_oprc": "29437.52",
+     "optn_hgpr": "29439.16",
+     "optn_lwpr": "29405.29",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "120000",
+     "optn_prpr": "29430.54",
+     "optn_oprc": "29423.57",
+     "optn_hgpr": "29433.73",
+     "optn_lwpr": "29419.60",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "120500",
+     "optn_prpr": "29395.15",
+     "optn_oprc": "29431.12",
+     "optn_hgpr": "29435.40",
+     "optn_lwpr": "29395.15",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "121000",
+     "optn_prpr": "29389.22",
+     "optn_oprc": "29392.94",
+     "optn_hgpr": "29409.70",
+     "optn_lwpr": "29388.84",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "121500",
+     "optn_prpr": "29378.93",
+     "optn_oprc": "29389.75",
+     "optn_hgpr": "29390.54",
+     "optn_lwpr": "29376.57",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "122000",
+     "optn_prpr": "29383.82",
+     "optn_oprc": "29379.03",
+     "optn_hgpr": "29384.08",
+     "optn_lwpr": "29371.10",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "122500",
+     "optn_prpr": "29370.60",
+     "optn_oprc": "29384.46",
+     "optn_hgpr": "29387.78",
+     "optn_lwpr": "29362.85",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "123000",
+     "optn_prpr": "29405.74",
+     "optn_oprc": "29370.83",
+     "optn_hgpr": "29408.38",
+     "optn_lwpr": "29370.83",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "123500",
+     "optn_prpr": "29416.00",
+     "optn_oprc": "29405.68",
+     "optn_hgpr": "29416.00",
+     "optn_lwpr": "29399.53",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "124000",
+     "optn_prpr": "29427.90",
+     "optn_oprc": "29416.13",
+     "optn_hgpr": "29427.90",
+     "optn_lwpr": "29412.92",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "124500",
+     "optn_prpr": "29430.81",
+     "optn_oprc": "29428.40",
+     "optn_hgpr": "29435.84",
+     "optn_lwpr": "29416.27",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "125000",
+     "optn_prpr": "29438.39",
+     "optn_oprc": "29430.88",
+     "optn_hgpr": "29448.05",
+     "optn_lwpr": "29430.77",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "125500",
+     "optn_prpr": "29434.71",
+     "optn_oprc": "29438.31",
+     "optn_hgpr": "29442.77",
+     "optn_lwpr": "29432.80",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "130000",
+     "optn_prpr": "29423.75",
+     "optn_oprc": "29435.20",
+     "optn_hgpr": "29450.25",
+     "optn_lwpr": "29423.75",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "130500",
+     "optn_prpr": "29434.88",
+     "optn_oprc": "29424.50",
+     "optn_hgpr": "29441.05",
+     "optn_lwpr": "29424.50",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "131000",
+     "optn_prpr": "29451.77",
+     "optn_oprc": "29433.46",
+     "optn_hgpr": "29452.58",
+     "optn_lwpr": "29428.96",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "131500",
+     "optn_prpr": "29437.56",
+     "optn_oprc": "29451.75",
+     "optn_hgpr": "29456.77",
+     "optn_lwpr": "29437.39",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "132000",
+     "optn_prpr": "29444.73",
+     "optn_oprc": "29437.51",
+     "optn_hgpr": "29444.73",
+     "optn_lwpr": "29430.77",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "132500",
+     "optn_prpr": "29427.11",
+     "optn_oprc": "29444.90",
+     "optn_hgpr": "29444.90",
+     "optn_lwpr": "29423.66",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "133000",
+     "optn_prpr": "29426.09",
+     "optn_oprc": "29426.84",
+     "optn_hgpr": "29438.63",
+     "optn_lwpr": "29415.41",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "133500",
+     "optn_prpr": "29406.90",
+     "optn_oprc": "29426.70",
+     "optn_hgpr": "29431.37",
+     "optn_lwpr": "29404.85",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "134000",
+     "optn_prpr": "29431.75",
+     "optn_oprc": "29406.81",
+     "optn_hgpr": "29432.28",
+     "optn_lwpr": "29406.81",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "134500",
+     "optn_prpr": "29443.18",
+     "optn_oprc": "29431.40",
+     "optn_hgpr": "29446.66",
+     "optn_lwpr": "29431.40",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "135000",
+     "optn_prpr": "29454.99",
+     "optn_oprc": "29443.34",
+     "optn_hgpr": "29458.27",
+     "optn_lwpr": "29438.47",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "135500",
+     "optn_prpr": "29443.07",
+     "optn_oprc": "29455.73",
+     "optn_hgpr": "29458.88",
+     "optn_lwpr": "29443.07",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "140000",
+     "optn_prpr": "29443.14",
+     "optn_oprc": "29444.10",
+     "optn_hgpr": "29447.69",
+     "optn_lwpr": "29439.37",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "140500",
+     "optn_prpr": "29428.90",
+     "optn_oprc": "29443.88",
+     "optn_hgpr": "29443.88",
+     "optn_lwpr": "29425.36",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "141000",
+     "optn_prpr": "29418.00",
+     "optn_oprc": "29428.89",
+     "optn_hgpr": "29432.01",
+     "optn_lwpr": "29417.45",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "141500",
+     "optn_prpr": "29420.08",
+     "optn_oprc": "29414.63",
+     "optn_hgpr": "29426.71",
+     "optn_lwpr": "29412.30",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "142000",
+     "optn_prpr": "29433.14",
+     "optn_oprc": "29420.92",
+     "optn_hgpr": "29435.60",
+     "optn_lwpr": "29420.92",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "142500",
+     "optn_prpr": "29428.15",
+     "optn_oprc": "29433.41",
+     "optn_hgpr": "29436.62",
+     "optn_lwpr": "29423.65",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "143000",
+     "optn_prpr": "29428.03",
+     "optn_oprc": "29428.24",
+     "optn_hgpr": "29435.18",
+     "optn_lwpr": "29422.27",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "143500",
+     "optn_prpr": "29432.93",
+     "optn_oprc": "29427.94",
+     "optn_hgpr": "29435.19",
+     "optn_lwpr": "29427.23",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "144000",
+     "optn_prpr": "29441.92",
+     "optn_oprc": "29432.76",
+     "optn_hgpr": "29444.48",
+     "optn_lwpr": "29432.75",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "144500",
+     "optn_prpr": "29435.49",
+     "optn_oprc": "29442.10",
+     "optn_hgpr": "29445.45",
+     "optn_lwpr": "29433.55",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "145000",
+     "optn_prpr": "29445.70",
+     "optn_oprc": "29436.86",
+     "optn_hgpr": "29447.67",
+     "optn_lwpr": "29435.20",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "145500",
+     "optn_prpr": "29421.72",
+     "optn_oprc": "29445.30",
+     "optn_hgpr": "29448.18",
+     "optn_lwpr": "29421.72",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "150000",
+     "optn_prpr": "29408.12",
+     "optn_oprc": "29421.79",
+     "optn_hgpr": "29428.32",
+     "optn_lwpr": "29405.14",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "150500",
+     "optn_prpr": "29425.79",
+     "optn_oprc": "29408.19",
+     "optn_hgpr": "29427.52",
+     "optn_lwpr": "29406.59",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "151000",
+     "optn_prpr": "29421.79",
+     "optn_oprc": "29425.66",
+     "optn_hgpr": "29429.49",
+     "optn_lwpr": "29421.28",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "151500",
+     "optn_prpr": "29441.78",
+     "optn_oprc": "29421.83",
+     "optn_hgpr": "29443.53",
+     "optn_lwpr": "29421.81",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "152000",
+     "optn_prpr": "29438.31",
+     "optn_oprc": "29441.52",
+     "optn_hgpr": "29444.20",
+     "optn_lwpr": "29432.08",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "152500",
+     "optn_prpr": "29426.42",
+     "optn_oprc": "29438.63",
+     "optn_hgpr": "29442.25",
+     "optn_lwpr": "29426.12",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "153000",
+     "optn_prpr": "29423.99",
+     "optn_oprc": "29425.94",
+     "optn_hgpr": "29429.09",
+     "optn_lwpr": "29421.10",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "153500",
+     "optn_prpr": "29416.41",
+     "optn_oprc": "29424.45",
+     "optn_hgpr": "29424.64",
+     "optn_lwpr": "29413.11",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "154000",
+     "optn_prpr": "29418.32",
+     "optn_oprc": "29416.00",
+     "optn_hgpr": "29419.78",
+     "optn_lwpr": "29409.77",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "154500",
+     "optn_prpr": "29420.21",
+     "optn_oprc": "29417.81",
+     "optn_hgpr": "29422.55",
+     "optn_lwpr": "29410.11",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "155000",
+     "optn_prpr": "29414.77",
+     "optn_oprc": "29422.01",
+     "optn_hgpr": "29422.16",
+     "optn_lwpr": "29404.79",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "155500",
+     "optn_prpr": "29426.61",
+     "optn_oprc": "29402.86",
+     "optn_hgpr": "29426.61",
+     "optn_lwpr": "29394.64",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "160000",
+     "optn_prpr": "29421.55",
+     "optn_oprc": "29423.84",
+     "optn_hgpr": "29423.84",
+     "optn_lwpr": "29421.55",
+     "cntg_vol": "0"
+    }
+   ],
+   "raw_count": 102
+  },
   "SPX": {
    "symbol": "SPX",
+   "interval_sec": "300",
    "summary": {
     "ovrs_nmix_prdy_vrss": "-37.16",
     "prdy_vrss_sign": "5",
@@ -22,926 +755,721 @@
    "bars": [
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "164300",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "093000",
+     "optn_prpr": "7653.65",
+     "optn_oprc": "7660.68",
+     "optn_hgpr": "7660.68",
+     "optn_lwpr": "7646.91",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "162000",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "093500",
+     "optn_prpr": "7652.62",
+     "optn_oprc": "7654.62",
+     "optn_hgpr": "7656.27",
+     "optn_lwpr": "7650.53",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161900",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "094000",
+     "optn_prpr": "7651.12",
+     "optn_oprc": "7652.80",
+     "optn_hgpr": "7654.94",
+     "optn_lwpr": "7648.91",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161800",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "094500",
+     "optn_prpr": "7653.13",
+     "optn_oprc": "7650.68",
+     "optn_hgpr": "7655.92",
+     "optn_lwpr": "7649.57",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161700",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "095000",
+     "optn_prpr": "7652.21",
+     "optn_oprc": "7653.02",
+     "optn_hgpr": "7654.36",
+     "optn_lwpr": "7648.56",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161600",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "095500",
+     "optn_prpr": "7656.22",
+     "optn_oprc": "7652.24",
+     "optn_hgpr": "7656.22",
+     "optn_lwpr": "7651.60",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161500",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "100000",
+     "optn_prpr": "7653.08",
+     "optn_oprc": "7654.61",
+     "optn_hgpr": "7656.47",
+     "optn_lwpr": "7649.13",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161400",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "100500",
+     "optn_prpr": "7655.29",
+     "optn_oprc": "7653.21",
+     "optn_hgpr": "7655.99",
+     "optn_lwpr": "7652.70",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161300",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "101000",
+     "optn_prpr": "7653.43",
+     "optn_oprc": "7655.21",
+     "optn_hgpr": "7655.68",
+     "optn_lwpr": "7650.52",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161200",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "101500",
+     "optn_prpr": "7644.29",
+     "optn_oprc": "7653.37",
+     "optn_hgpr": "7653.37",
+     "optn_lwpr": "7642.87",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161100",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "102000",
+     "optn_prpr": "7641.62",
+     "optn_oprc": "7644.54",
+     "optn_hgpr": "7645.48",
+     "optn_lwpr": "7640.70",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161000",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "102500",
+     "optn_prpr": "7654.35",
+     "optn_oprc": "7641.45",
+     "optn_hgpr": "7655.19",
+     "optn_lwpr": "7640.01",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160900",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "103000",
+     "optn_prpr": "7648.97",
+     "optn_oprc": "7654.42",
+     "optn_hgpr": "7654.66",
+     "optn_lwpr": "7648.84",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160800",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "103500",
+     "optn_prpr": "7650.25",
+     "optn_oprc": "7649.22",
+     "optn_hgpr": "7652.26",
+     "optn_lwpr": "7646.98",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160700",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "104000",
+     "optn_prpr": "7651.95",
+     "optn_oprc": "7650.27",
+     "optn_hgpr": "7652.60",
+     "optn_lwpr": "7649.25",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160600",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "104500",
+     "optn_prpr": "7651.98",
+     "optn_oprc": "7652.15",
+     "optn_hgpr": "7652.15",
+     "optn_lwpr": "7648.85",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160500",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.36",
-     "optn_hgpr": "7636.36",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "105000",
+     "optn_prpr": "7650.93",
+     "optn_oprc": "7651.90",
+     "optn_hgpr": "7653.57",
+     "optn_lwpr": "7650.39",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160400",
-     "optn_prpr": "7636.36",
-     "optn_oprc": "7636.45",
-     "optn_hgpr": "7636.45",
-     "optn_lwpr": "7636.36",
+     "stck_cntg_hour": "105500",
+     "optn_prpr": "7653.32",
+     "optn_oprc": "7651.06",
+     "optn_hgpr": "7653.32",
+     "optn_lwpr": "7649.11",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160300",
-     "optn_prpr": "7636.46",
-     "optn_oprc": "7636.49",
-     "optn_hgpr": "7636.49",
-     "optn_lwpr": "7636.46",
+     "stck_cntg_hour": "110000",
+     "optn_prpr": "7642.98",
+     "optn_oprc": "7653.12",
+     "optn_hgpr": "7658.21",
+     "optn_lwpr": "7641.79",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160200",
-     "optn_prpr": "7636.49",
-     "optn_oprc": "7636.49",
-     "optn_hgpr": "7636.49",
-     "optn_lwpr": "7636.49",
+     "stck_cntg_hour": "110500",
+     "optn_prpr": "7636.29",
+     "optn_oprc": "7642.92",
+     "optn_hgpr": "7644.29",
+     "optn_lwpr": "7635.96",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160100",
-     "optn_prpr": "7636.49",
-     "optn_oprc": "7636.49",
-     "optn_hgpr": "7636.49",
-     "optn_lwpr": "7636.49",
+     "stck_cntg_hour": "111000",
+     "optn_prpr": "7630.75",
+     "optn_oprc": "7636.42",
+     "optn_hgpr": "7636.73",
+     "optn_lwpr": "7628.52",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160000",
-     "optn_prpr": "7636.49",
-     "optn_oprc": "7637.16",
-     "optn_hgpr": "7637.16",
-     "optn_lwpr": "7636.49",
+     "stck_cntg_hour": "111500",
+     "optn_prpr": "7635.05",
+     "optn_oprc": "7630.70",
+     "optn_hgpr": "7635.79",
+     "optn_lwpr": "7629.59",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155900",
-     "optn_prpr": "7637.70",
-     "optn_oprc": "7637.96",
-     "optn_hgpr": "7637.96",
-     "optn_lwpr": "7635.18",
+     "stck_cntg_hour": "112000",
+     "optn_prpr": "7624.85",
+     "optn_oprc": "7634.96",
+     "optn_hgpr": "7635.72",
+     "optn_lwpr": "7624.16",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155800",
-     "optn_prpr": "7637.72",
-     "optn_oprc": "7637.02",
-     "optn_hgpr": "7637.99",
-     "optn_lwpr": "7636.34",
+     "stck_cntg_hour": "112500",
+     "optn_prpr": "7629.60",
+     "optn_oprc": "7624.93",
+     "optn_hgpr": "7629.60",
+     "optn_lwpr": "7624.21",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155700",
-     "optn_prpr": "7637.15",
-     "optn_oprc": "7637.70",
-     "optn_hgpr": "7638.07",
-     "optn_lwpr": "7637.15",
+     "stck_cntg_hour": "113000",
+     "optn_prpr": "7635.03",
+     "optn_oprc": "7629.66",
+     "optn_hgpr": "7635.11",
+     "optn_lwpr": "7629.58",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155600",
-     "optn_prpr": "7637.76",
-     "optn_oprc": "7637.94",
-     "optn_hgpr": "7638.88",
-     "optn_lwpr": "7637.32",
+     "stck_cntg_hour": "113500",
+     "optn_prpr": "7639.45",
+     "optn_oprc": "7635.42",
+     "optn_hgpr": "7639.45",
+     "optn_lwpr": "7632.52",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155500",
-     "optn_prpr": "7637.93",
-     "optn_oprc": "7638.73",
-     "optn_hgpr": "7638.73",
-     "optn_lwpr": "7634.98",
+     "stck_cntg_hour": "114000",
+     "optn_prpr": "7637.12",
+     "optn_oprc": "7639.57",
+     "optn_hgpr": "7644.74",
+     "optn_lwpr": "7635.76",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155400",
-     "optn_prpr": "7638.47",
-     "optn_oprc": "7637.60",
-     "optn_hgpr": "7639.96",
-     "optn_lwpr": "7637.33",
+     "stck_cntg_hour": "114500",
+     "optn_prpr": "7637.00",
+     "optn_oprc": "7637.09",
+     "optn_hgpr": "7637.34",
+     "optn_lwpr": "7634.88",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155300",
-     "optn_prpr": "7637.72",
-     "optn_oprc": "7637.19",
-     "optn_hgpr": "7638.22",
-     "optn_lwpr": "7637.14",
+     "stck_cntg_hour": "115000",
+     "optn_prpr": "7639.60",
+     "optn_oprc": "7636.89",
+     "optn_hgpr": "7640.72",
+     "optn_lwpr": "7636.89",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155200",
-     "optn_prpr": "7637.22",
-     "optn_oprc": "7636.84",
-     "optn_hgpr": "7638.15",
-     "optn_lwpr": "7636.62",
+     "stck_cntg_hour": "115500",
+     "optn_prpr": "7636.62",
+     "optn_oprc": "7639.55",
+     "optn_hgpr": "7639.56",
+     "optn_lwpr": "7633.38",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155100",
-     "optn_prpr": "7636.78",
-     "optn_oprc": "7638.13",
-     "optn_hgpr": "7638.13",
-     "optn_lwpr": "7636.19",
+     "stck_cntg_hour": "120000",
+     "optn_prpr": "7638.16",
+     "optn_oprc": "7636.38",
+     "optn_hgpr": "7638.30",
+     "optn_lwpr": "7635.38",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155000",
-     "optn_prpr": "7638.20",
-     "optn_oprc": "7642.50",
-     "optn_hgpr": "7642.50",
-     "optn_lwpr": "7638.20",
+     "stck_cntg_hour": "120500",
+     "optn_prpr": "7630.43",
+     "optn_oprc": "7638.23",
+     "optn_hgpr": "7638.48",
+     "optn_lwpr": "7630.43",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154900",
-     "optn_prpr": "7642.42",
-     "optn_oprc": "7642.32",
-     "optn_hgpr": "7643.42",
-     "optn_lwpr": "7642.32",
+     "stck_cntg_hour": "121000",
+     "optn_prpr": "7631.16",
+     "optn_oprc": "7629.91",
+     "optn_hgpr": "7633.48",
+     "optn_lwpr": "7629.05",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154800",
-     "optn_prpr": "7642.39",
-     "optn_oprc": "7641.52",
-     "optn_hgpr": "7642.53",
-     "optn_lwpr": "7641.41",
+     "stck_cntg_hour": "121500",
+     "optn_prpr": "7628.93",
+     "optn_oprc": "7631.13",
+     "optn_hgpr": "7631.26",
+     "optn_lwpr": "7628.42",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154700",
-     "optn_prpr": "7641.48",
-     "optn_oprc": "7641.10",
-     "optn_hgpr": "7641.96",
+     "stck_cntg_hour": "122000",
+     "optn_prpr": "7630.88",
+     "optn_oprc": "7628.87",
+     "optn_hgpr": "7631.08",
+     "optn_lwpr": "7627.92",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "122500",
+     "optn_prpr": "7630.64",
+     "optn_oprc": "7631.04",
+     "optn_hgpr": "7632.18",
+     "optn_lwpr": "7629.18",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "123000",
+     "optn_prpr": "7635.50",
+     "optn_oprc": "7630.68",
+     "optn_hgpr": "7636.48",
+     "optn_lwpr": "7630.55",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "123500",
+     "optn_prpr": "7636.96",
+     "optn_oprc": "7635.42",
+     "optn_hgpr": "7637.03",
+     "optn_lwpr": "7634.10",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "124000",
+     "optn_prpr": "7638.96",
+     "optn_oprc": "7636.97",
+     "optn_hgpr": "7638.96",
+     "optn_lwpr": "7635.85",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "124500",
+     "optn_prpr": "7638.91",
+     "optn_oprc": "7638.86",
+     "optn_hgpr": "7639.33",
+     "optn_lwpr": "7636.67",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "125000",
+     "optn_prpr": "7641.19",
+     "optn_oprc": "7638.88",
+     "optn_hgpr": "7643.11",
+     "optn_lwpr": "7638.88",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "125500",
+     "optn_prpr": "7640.53",
+     "optn_oprc": "7641.11",
+     "optn_hgpr": "7641.94",
+     "optn_lwpr": "7640.16",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "130000",
+     "optn_prpr": "7638.31",
+     "optn_oprc": "7640.54",
+     "optn_hgpr": "7643.95",
+     "optn_lwpr": "7638.26",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "130500",
+     "optn_prpr": "7640.85",
+     "optn_oprc": "7638.37",
+     "optn_hgpr": "7641.86",
+     "optn_lwpr": "7638.37",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "131000",
+     "optn_prpr": "7645.78",
+     "optn_oprc": "7640.69",
+     "optn_hgpr": "7646.12",
+     "optn_lwpr": "7639.78",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "131500",
+     "optn_prpr": "7643.07",
+     "optn_oprc": "7645.78",
+     "optn_hgpr": "7647.00",
+     "optn_lwpr": "7642.96",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "132000",
+     "optn_prpr": "7646.50",
+     "optn_oprc": "7643.04",
+     "optn_hgpr": "7646.50",
+     "optn_lwpr": "7642.33",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "132500",
+     "optn_prpr": "7643.76",
+     "optn_oprc": "7646.54",
+     "optn_hgpr": "7646.64",
+     "optn_lwpr": "7642.51",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "133000",
+     "optn_prpr": "7642.58",
+     "optn_oprc": "7643.87",
+     "optn_hgpr": "7645.63",
      "optn_lwpr": "7641.08",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154600",
-     "optn_prpr": "7641.12",
-     "optn_oprc": "7641.00",
-     "optn_hgpr": "7641.95",
-     "optn_lwpr": "7640.82",
+     "stck_cntg_hour": "133500",
+     "optn_prpr": "7639.28",
+     "optn_oprc": "7642.66",
+     "optn_hgpr": "7643.48",
+     "optn_lwpr": "7639.05",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154500",
-     "optn_prpr": "7641.06",
-     "optn_oprc": "7642.18",
-     "optn_hgpr": "7642.97",
-     "optn_lwpr": "7641.06",
+     "stck_cntg_hour": "134000",
+     "optn_prpr": "7643.86",
+     "optn_oprc": "7639.27",
+     "optn_hgpr": "7644.11",
+     "optn_lwpr": "7639.20",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154400",
-     "optn_prpr": "7642.23",
-     "optn_oprc": "7641.71",
-     "optn_hgpr": "7642.43",
-     "optn_lwpr": "7641.32",
+     "stck_cntg_hour": "134500",
+     "optn_prpr": "7645.16",
+     "optn_oprc": "7643.81",
+     "optn_hgpr": "7645.82",
+     "optn_lwpr": "7643.43",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154300",
-     "optn_prpr": "7641.64",
-     "optn_oprc": "7640.93",
-     "optn_hgpr": "7641.76",
-     "optn_lwpr": "7640.44",
+     "stck_cntg_hour": "135000",
+     "optn_prpr": "7646.77",
+     "optn_oprc": "7645.05",
+     "optn_hgpr": "7648.17",
+     "optn_lwpr": "7644.22",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154200",
-     "optn_prpr": "7640.87",
-     "optn_oprc": "7641.54",
-     "optn_hgpr": "7642.22",
-     "optn_lwpr": "7640.67",
+     "stck_cntg_hour": "135500",
+     "optn_prpr": "7644.53",
+     "optn_oprc": "7646.91",
+     "optn_hgpr": "7648.21",
+     "optn_lwpr": "7644.53",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154100",
-     "optn_prpr": "7641.56",
-     "optn_oprc": "7642.39",
-     "optn_hgpr": "7642.63",
-     "optn_lwpr": "7641.53",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154000",
-     "optn_prpr": "7642.34",
-     "optn_oprc": "7642.44",
-     "optn_hgpr": "7642.49",
-     "optn_lwpr": "7641.82",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153900",
-     "optn_prpr": "7642.52",
-     "optn_oprc": "7643.02",
-     "optn_hgpr": "7643.52",
-     "optn_lwpr": "7642.47",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153800",
-     "optn_prpr": "7643.11",
-     "optn_oprc": "7643.00",
-     "optn_hgpr": "7643.57",
-     "optn_lwpr": "7642.84",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153700",
-     "optn_prpr": "7643.06",
-     "optn_oprc": "7643.65",
-     "optn_hgpr": "7643.91",
-     "optn_lwpr": "7643.06",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153600",
-     "optn_prpr": "7643.61",
-     "optn_oprc": "7644.34",
-     "optn_hgpr": "7644.87",
-     "optn_lwpr": "7643.52",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153500",
-     "optn_prpr": "7644.13",
-     "optn_oprc": "7644.23",
-     "optn_hgpr": "7644.26",
-     "optn_lwpr": "7643.78",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153400",
-     "optn_prpr": "7644.14",
-     "optn_oprc": "7644.38",
-     "optn_hgpr": "7644.38",
-     "optn_lwpr": "7643.30",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153300",
-     "optn_prpr": "7644.36",
-     "optn_oprc": "7644.56",
-     "optn_hgpr": "7645.12",
-     "optn_lwpr": "7644.03",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153200",
-     "optn_prpr": "7644.37",
-     "optn_oprc": "7644.96",
-     "optn_hgpr": "7645.13",
-     "optn_lwpr": "7644.29",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153100",
-     "optn_prpr": "7645.03",
-     "optn_oprc": "7645.60",
-     "optn_hgpr": "7646.10",
-     "optn_lwpr": "7645.00",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153000",
-     "optn_prpr": "7645.55",
-     "optn_oprc": "7645.54",
-     "optn_hgpr": "7646.27",
-     "optn_lwpr": "7645.42",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152900",
-     "optn_prpr": "7645.72",
-     "optn_oprc": "7646.19",
-     "optn_hgpr": "7646.43",
-     "optn_lwpr": "7645.53",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152800",
-     "optn_prpr": "7646.14",
-     "optn_oprc": "7646.46",
-     "optn_hgpr": "7646.74",
-     "optn_lwpr": "7645.61",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152700",
-     "optn_prpr": "7646.50",
-     "optn_oprc": "7647.41",
-     "optn_hgpr": "7647.52",
-     "optn_lwpr": "7646.38",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152600",
-     "optn_prpr": "7647.50",
-     "optn_oprc": "7648.52",
-     "optn_hgpr": "7648.52",
-     "optn_lwpr": "7647.42",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152500",
-     "optn_prpr": "7648.39",
-     "optn_oprc": "7646.73",
-     "optn_hgpr": "7648.39",
-     "optn_lwpr": "7646.44",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152400",
-     "optn_prpr": "7646.76",
-     "optn_oprc": "7647.52",
-     "optn_hgpr": "7647.71",
-     "optn_lwpr": "7646.70",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152300",
-     "optn_prpr": "7647.59",
-     "optn_oprc": "7645.83",
-     "optn_hgpr": "7647.59",
-     "optn_lwpr": "7645.77",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152200",
-     "optn_prpr": "7645.87",
-     "optn_oprc": "7646.71",
-     "optn_hgpr": "7646.76",
-     "optn_lwpr": "7645.56",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152100",
-     "optn_prpr": "7646.79",
-     "optn_oprc": "7646.66",
-     "optn_hgpr": "7646.81",
-     "optn_lwpr": "7645.92",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152000",
-     "optn_prpr": "7646.65",
-     "optn_oprc": "7647.19",
-     "optn_hgpr": "7647.69",
-     "optn_lwpr": "7646.55",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151900",
-     "optn_prpr": "7647.27",
-     "optn_oprc": "7647.89",
-     "optn_hgpr": "7647.89",
-     "optn_lwpr": "7647.27",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151800",
-     "optn_prpr": "7647.83",
-     "optn_oprc": "7645.89",
-     "optn_hgpr": "7647.85",
-     "optn_lwpr": "7645.83",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151700",
-     "optn_prpr": "7645.85",
-     "optn_oprc": "7645.90",
-     "optn_hgpr": "7646.43",
-     "optn_lwpr": "7645.63",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151600",
-     "optn_prpr": "7645.93",
-     "optn_oprc": "7646.14",
-     "optn_hgpr": "7646.44",
-     "optn_lwpr": "7645.70",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151500",
-     "optn_prpr": "7646.21",
-     "optn_oprc": "7643.95",
-     "optn_hgpr": "7646.21",
-     "optn_lwpr": "7643.95",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151400",
-     "optn_prpr": "7644.04",
-     "optn_oprc": "7645.10",
-     "optn_hgpr": "7645.32",
-     "optn_lwpr": "7644.04",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151300",
-     "optn_prpr": "7645.21",
-     "optn_oprc": "7644.42",
-     "optn_hgpr": "7645.69",
-     "optn_lwpr": "7644.42",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151200",
-     "optn_prpr": "7644.38",
-     "optn_oprc": "7645.44",
-     "optn_hgpr": "7645.84",
-     "optn_lwpr": "7644.21",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151100",
-     "optn_prpr": "7645.47",
-     "optn_oprc": "7644.31",
-     "optn_hgpr": "7645.94",
-     "optn_lwpr": "7644.28",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151000",
-     "optn_prpr": "7644.33",
-     "optn_oprc": "7645.02",
-     "optn_hgpr": "7645.19",
-     "optn_lwpr": "7644.28",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150900",
-     "optn_prpr": "7645.05",
+     "stck_cntg_hour": "140000",
+     "optn_prpr": "7645.00",
      "optn_oprc": "7644.65",
-     "optn_hgpr": "7645.21",
-     "optn_lwpr": "7643.93",
+     "optn_hgpr": "7646.18",
+     "optn_lwpr": "7644.23",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150800",
-     "optn_prpr": "7644.65",
-     "optn_oprc": "7644.89",
-     "optn_hgpr": "7645.14",
-     "optn_lwpr": "7644.01",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150700",
-     "optn_prpr": "7644.93",
-     "optn_oprc": "7641.82",
-     "optn_hgpr": "7645.15",
-     "optn_lwpr": "7641.82",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150600",
-     "optn_prpr": "7641.84",
-     "optn_oprc": "7641.70",
-     "optn_hgpr": "7642.27",
-     "optn_lwpr": "7641.02",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150500",
-     "optn_prpr": "7641.80",
-     "optn_oprc": "7641.51",
-     "optn_hgpr": "7642.69",
-     "optn_lwpr": "7641.47",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150400",
-     "optn_prpr": "7641.51",
-     "optn_oprc": "7641.98",
-     "optn_hgpr": "7642.47",
-     "optn_lwpr": "7641.17",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150300",
+     "stck_cntg_hour": "140500",
      "optn_prpr": "7641.85",
-     "optn_oprc": "7641.23",
-     "optn_hgpr": "7642.53",
-     "optn_lwpr": "7641.22",
+     "optn_oprc": "7645.22",
+     "optn_hgpr": "7645.25",
+     "optn_lwpr": "7641.13",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150200",
-     "optn_prpr": "7641.13",
-     "optn_oprc": "7642.98",
-     "optn_hgpr": "7643.41",
-     "optn_lwpr": "7641.06",
+     "stck_cntg_hour": "141000",
+     "optn_prpr": "7638.80",
+     "optn_oprc": "7641.95",
+     "optn_hgpr": "7642.28",
+     "optn_lwpr": "7638.50",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150100",
-     "optn_prpr": "7642.86",
-     "optn_oprc": "7645.41",
-     "optn_hgpr": "7645.41",
-     "optn_lwpr": "7642.85",
+     "stck_cntg_hour": "141500",
+     "optn_prpr": "7640.10",
+     "optn_oprc": "7637.99",
+     "optn_hgpr": "7641.34",
+     "optn_lwpr": "7637.27",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150000",
-     "optn_prpr": "7645.52",
-     "optn_oprc": "7643.66",
-     "optn_hgpr": "7645.52",
-     "optn_lwpr": "7643.05",
+     "stck_cntg_hour": "142000",
+     "optn_prpr": "7644.08",
+     "optn_oprc": "7640.14",
+     "optn_hgpr": "7644.75",
+     "optn_lwpr": "7640.14",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145900",
-     "optn_prpr": "7643.79",
-     "optn_oprc": "7644.11",
-     "optn_hgpr": "7644.66",
-     "optn_lwpr": "7643.62",
+     "stck_cntg_hour": "142500",
+     "optn_prpr": "7643.15",
+     "optn_oprc": "7644.13",
+     "optn_hgpr": "7644.75",
+     "optn_lwpr": "7642.53",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145800",
-     "optn_prpr": "7644.11",
-     "optn_oprc": "7645.38",
-     "optn_hgpr": "7645.44",
-     "optn_lwpr": "7643.64",
+     "stck_cntg_hour": "143000",
+     "optn_prpr": "7642.04",
+     "optn_oprc": "7643.18",
+     "optn_hgpr": "7643.37",
+     "optn_lwpr": "7640.88",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145700",
-     "optn_prpr": "7645.40",
-     "optn_oprc": "7647.16",
-     "optn_hgpr": "7647.21",
-     "optn_lwpr": "7645.23",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145600",
-     "optn_prpr": "7647.14",
-     "optn_oprc": "7647.95",
-     "optn_hgpr": "7648.28",
-     "optn_lwpr": "7646.86",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145500",
-     "optn_prpr": "7647.91",
-     "optn_oprc": "7647.92",
-     "optn_hgpr": "7648.70",
-     "optn_lwpr": "7647.41",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145400",
-     "optn_prpr": "7647.88",
-     "optn_oprc": "7648.14",
-     "optn_hgpr": "7648.61",
-     "optn_lwpr": "7647.43",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145300",
-     "optn_prpr": "7648.14",
-     "optn_oprc": "7646.78",
-     "optn_hgpr": "7648.33",
-     "optn_lwpr": "7646.78",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145200",
-     "optn_prpr": "7646.76",
-     "optn_oprc": "7646.15",
-     "optn_hgpr": "7647.49",
-     "optn_lwpr": "7646.00",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145100",
-     "optn_prpr": "7646.11",
-     "optn_oprc": "7645.87",
-     "optn_hgpr": "7646.79",
-     "optn_lwpr": "7645.55",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145000",
-     "optn_prpr": "7645.59",
-     "optn_oprc": "7645.31",
-     "optn_hgpr": "7645.95",
-     "optn_lwpr": "7645.07",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144900",
-     "optn_prpr": "7645.09",
-     "optn_oprc": "7645.33",
-     "optn_hgpr": "7645.57",
-     "optn_lwpr": "7644.36",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144800",
-     "optn_prpr": "7645.46",
-     "optn_oprc": "7645.51",
-     "optn_hgpr": "7646.21",
-     "optn_lwpr": "7645.35",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144700",
-     "optn_prpr": "7645.30",
-     "optn_oprc": "7645.75",
-     "optn_hgpr": "7645.91",
-     "optn_lwpr": "7645.30",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144600",
-     "optn_prpr": "7645.79",
-     "optn_oprc": "7646.37",
-     "optn_hgpr": "7646.46",
-     "optn_lwpr": "7645.68",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144500",
-     "optn_prpr": "7646.38",
-     "optn_oprc": "7646.58",
-     "optn_hgpr": "7646.62",
-     "optn_lwpr": "7645.88",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144400",
-     "optn_prpr": "7646.69",
-     "optn_oprc": "7646.50",
-     "optn_hgpr": "7647.11",
-     "optn_lwpr": "7646.25",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144300",
-     "optn_prpr": "7646.81",
-     "optn_oprc": "7646.23",
-     "optn_hgpr": "7646.82",
-     "optn_lwpr": "7645.82",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144200",
-     "optn_prpr": "7646.44",
-     "optn_oprc": "7647.11",
-     "optn_hgpr": "7647.42",
-     "optn_lwpr": "7646.44",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144100",
-     "optn_prpr": "7646.93",
-     "optn_oprc": "7645.67",
-     "optn_hgpr": "7647.29",
-     "optn_lwpr": "7645.67",
+     "stck_cntg_hour": "143500",
+     "optn_prpr": "7644.37",
+     "optn_oprc": "7642.09",
+     "optn_hgpr": "7644.67",
+     "optn_lwpr": "7641.82",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
      "stck_cntg_hour": "144000",
-     "optn_prpr": "7645.80",
+     "optn_prpr": "7646.69",
      "optn_oprc": "7644.31",
-     "optn_hgpr": "7645.91",
+     "optn_hgpr": "7647.42",
      "optn_lwpr": "7644.31",
      "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "144500",
+     "optn_prpr": "7645.09",
+     "optn_oprc": "7646.58",
+     "optn_hgpr": "7646.62",
+     "optn_lwpr": "7644.36",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "145000",
+     "optn_prpr": "7647.88",
+     "optn_oprc": "7645.31",
+     "optn_hgpr": "7648.61",
+     "optn_lwpr": "7645.07",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "145500",
+     "optn_prpr": "7643.79",
+     "optn_oprc": "7647.92",
+     "optn_hgpr": "7648.70",
+     "optn_lwpr": "7643.62",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "150000",
+     "optn_prpr": "7641.51",
+     "optn_oprc": "7643.66",
+     "optn_hgpr": "7645.52",
+     "optn_lwpr": "7641.06",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "150500",
+     "optn_prpr": "7645.05",
+     "optn_oprc": "7641.51",
+     "optn_hgpr": "7645.21",
+     "optn_lwpr": "7641.02",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "151000",
+     "optn_prpr": "7644.04",
+     "optn_oprc": "7645.02",
+     "optn_hgpr": "7645.94",
+     "optn_lwpr": "7644.04",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "151500",
+     "optn_prpr": "7647.27",
+     "optn_oprc": "7643.95",
+     "optn_hgpr": "7647.89",
+     "optn_lwpr": "7643.95",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "152000",
+     "optn_prpr": "7646.76",
+     "optn_oprc": "7647.19",
+     "optn_hgpr": "7647.71",
+     "optn_lwpr": "7645.56",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "152500",
+     "optn_prpr": "7645.72",
+     "optn_oprc": "7646.73",
+     "optn_hgpr": "7648.52",
+     "optn_lwpr": "7645.53",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "153000",
+     "optn_prpr": "7644.14",
+     "optn_oprc": "7645.54",
+     "optn_hgpr": "7646.27",
+     "optn_lwpr": "7643.30",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "153500",
+     "optn_prpr": "7642.52",
+     "optn_oprc": "7644.23",
+     "optn_hgpr": "7644.87",
+     "optn_lwpr": "7642.47",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "154000",
+     "optn_prpr": "7642.23",
+     "optn_oprc": "7642.44",
+     "optn_hgpr": "7642.63",
+     "optn_lwpr": "7640.44",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "154500",
+     "optn_prpr": "7642.42",
+     "optn_oprc": "7642.18",
+     "optn_hgpr": "7643.42",
+     "optn_lwpr": "7640.82",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "155000",
+     "optn_prpr": "7638.47",
+     "optn_oprc": "7642.50",
+     "optn_hgpr": "7642.50",
+     "optn_lwpr": "7636.19",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "155500",
+     "optn_prpr": "7637.70",
+     "optn_oprc": "7638.73",
+     "optn_hgpr": "7638.88",
+     "optn_lwpr": "7634.98",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "160000",
+     "optn_prpr": "7636.36",
+     "optn_oprc": "7637.16",
+     "optn_hgpr": "7637.16",
+     "optn_lwpr": "7636.36",
+     "cntg_vol": "0"
     }
-   ]
+   ],
+   "raw_count": 102
   },
-  "NASDAQ": {
+  "COMP": {
    "symbol": "COMP",
+   "interval_sec": "300",
    "summary": {
     "ovrs_nmix_prdy_vrss": "-168.07",
     "prdy_vrss_sign": "5",
@@ -958,137 +1486,704 @@
    "bars": [
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161500",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "093000",
+     "optn_prpr": "26323.33",
+     "optn_oprc": "26325.06",
+     "optn_hgpr": "26343.36",
+     "optn_lwpr": "26288.17",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161400",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "093500",
+     "optn_prpr": "26339.61",
+     "optn_oprc": "26325.84",
+     "optn_hgpr": "26351.77",
+     "optn_lwpr": "26319.90",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161300",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "094000",
+     "optn_prpr": "26323.03",
+     "optn_oprc": "26341.34",
+     "optn_hgpr": "26348.61",
+     "optn_lwpr": "26319.82",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161200",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "094500",
+     "optn_prpr": "26329.94",
+     "optn_oprc": "26321.51",
+     "optn_hgpr": "26342.02",
+     "optn_lwpr": "26315.03",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161100",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "095000",
+     "optn_prpr": "26335.25",
+     "optn_oprc": "26329.24",
+     "optn_hgpr": "26343.17",
+     "optn_lwpr": "26318.27",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161000",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "095500",
+     "optn_prpr": "26364.53",
+     "optn_oprc": "26335.62",
+     "optn_hgpr": "26366.56",
+     "optn_lwpr": "26333.91",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160900",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "100000",
+     "optn_prpr": "26355.59",
+     "optn_oprc": "26358.03",
+     "optn_hgpr": "26363.09",
+     "optn_lwpr": "26330.32",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160800",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "100500",
+     "optn_prpr": "26360.83",
+     "optn_oprc": "26356.08",
+     "optn_hgpr": "26364.61",
+     "optn_lwpr": "26354.25",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160700",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "101000",
+     "optn_prpr": "26344.33",
+     "optn_oprc": "26360.74",
+     "optn_hgpr": "26361.99",
+     "optn_lwpr": "26334.41",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160600",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "101500",
+     "optn_prpr": "26295.85",
+     "optn_oprc": "26343.41",
+     "optn_hgpr": "26343.41",
+     "optn_lwpr": "26292.55",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160500",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "102000",
+     "optn_prpr": "26278.80",
+     "optn_oprc": "26295.84",
+     "optn_hgpr": "26299.82",
+     "optn_lwpr": "26275.49",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160400",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "102500",
+     "optn_prpr": "26330.39",
+     "optn_oprc": "26273.79",
+     "optn_hgpr": "26334.27",
+     "optn_lwpr": "26273.79",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160300",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "103000",
+     "optn_prpr": "26310.81",
+     "optn_oprc": "26330.32",
+     "optn_hgpr": "26330.32",
+     "optn_lwpr": "26304.69",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160200",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "103500",
+     "optn_prpr": "26309.04",
+     "optn_oprc": "26312.35",
+     "optn_hgpr": "26320.05",
+     "optn_lwpr": "26295.91",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160100",
-     "optn_prpr": "26253.34",
-     "optn_oprc": "26253.34",
-     "optn_hgpr": "26253.34",
-     "optn_lwpr": "26253.34",
+     "stck_cntg_hour": "104000",
+     "optn_prpr": "26321.64",
+     "optn_oprc": "26309.59",
+     "optn_hgpr": "26325.48",
+     "optn_lwpr": "26306.83",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "104500",
+     "optn_prpr": "26323.88",
+     "optn_oprc": "26322.88",
+     "optn_hgpr": "26327.07",
+     "optn_lwpr": "26313.66",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "105000",
+     "optn_prpr": "26302.41",
+     "optn_oprc": "26323.83",
+     "optn_hgpr": "26324.74",
+     "optn_lwpr": "26300.95",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "105500",
+     "optn_prpr": "26318.87",
+     "optn_oprc": "26303.23",
+     "optn_hgpr": "26318.87",
+     "optn_lwpr": "26293.31",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "110000",
+     "optn_prpr": "26282.45",
+     "optn_oprc": "26314.79",
+     "optn_hgpr": "26332.10",
+     "optn_lwpr": "26276.75",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "110500",
+     "optn_prpr": "26250.25",
+     "optn_oprc": "26281.65",
+     "optn_hgpr": "26288.63",
+     "optn_lwpr": "26246.43",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "111000",
+     "optn_prpr": "26214.05",
+     "optn_oprc": "26251.35",
+     "optn_hgpr": "26255.95",
+     "optn_lwpr": "26211.47",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "111500",
+     "optn_prpr": "26248.81",
+     "optn_oprc": "26213.92",
+     "optn_hgpr": "26250.24",
+     "optn_lwpr": "26209.28",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "112000",
+     "optn_prpr": "26186.12",
+     "optn_oprc": "26247.89",
+     "optn_hgpr": "26253.70",
+     "optn_lwpr": "26184.21",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "112500",
+     "optn_prpr": "26200.22",
+     "optn_oprc": "26186.52",
+     "optn_hgpr": "26204.62",
+     "optn_lwpr": "26185.84",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "113000",
+     "optn_prpr": "26234.59",
+     "optn_oprc": "26200.83",
+     "optn_hgpr": "26236.67",
+     "optn_lwpr": "26200.83",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "113500",
+     "optn_prpr": "26268.19",
+     "optn_oprc": "26236.89",
+     "optn_hgpr": "26268.19",
+     "optn_lwpr": "26223.43",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "114000",
+     "optn_prpr": "26243.53",
+     "optn_oprc": "26268.15",
+     "optn_hgpr": "26275.33",
+     "optn_lwpr": "26233.25",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "114500",
+     "optn_prpr": "26243.77",
+     "optn_oprc": "26243.16",
+     "optn_hgpr": "26245.92",
+     "optn_lwpr": "26234.71",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "115000",
+     "optn_prpr": "26261.56",
+     "optn_oprc": "26243.11",
+     "optn_hgpr": "26261.89",
+     "optn_lwpr": "26243.11",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "115500",
+     "optn_prpr": "26247.53",
+     "optn_oprc": "26261.51",
+     "optn_hgpr": "26261.75",
+     "optn_lwpr": "26234.01",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "120000",
+     "optn_prpr": "26252.77",
+     "optn_oprc": "26247.32",
+     "optn_hgpr": "26254.99",
+     "optn_lwpr": "26243.39",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "120500",
+     "optn_prpr": "26224.85",
+     "optn_oprc": "26253.22",
+     "optn_hgpr": "26257.96",
+     "optn_lwpr": "26224.85",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "121000",
+     "optn_prpr": "26223.16",
+     "optn_oprc": "26222.71",
+     "optn_hgpr": "26239.31",
+     "optn_lwpr": "26220.08",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "121500",
+     "optn_prpr": "26214.87",
+     "optn_oprc": "26223.17",
+     "optn_hgpr": "26223.96",
+     "optn_lwpr": "26212.89",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "122000",
+     "optn_prpr": "26217.83",
+     "optn_oprc": "26215.04",
+     "optn_hgpr": "26219.97",
+     "optn_lwpr": "26209.67",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "122500",
+     "optn_prpr": "26211.36",
+     "optn_oprc": "26218.31",
+     "optn_hgpr": "26220.63",
+     "optn_lwpr": "26205.18",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "123000",
+     "optn_prpr": "26232.48",
+     "optn_oprc": "26211.37",
+     "optn_hgpr": "26235.88",
+     "optn_lwpr": "26211.37",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "123500",
+     "optn_prpr": "26240.24",
+     "optn_oprc": "26232.22",
+     "optn_hgpr": "26240.25",
+     "optn_lwpr": "26228.33",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "124000",
+     "optn_prpr": "26252.81",
+     "optn_oprc": "26240.42",
+     "optn_hgpr": "26252.81",
+     "optn_lwpr": "26238.93",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "124500",
+     "optn_prpr": "26253.09",
+     "optn_oprc": "26253.41",
+     "optn_hgpr": "26257.75",
+     "optn_lwpr": "26244.62",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "125000",
+     "optn_prpr": "26264.01",
+     "optn_oprc": "26253.16",
+     "optn_hgpr": "26269.99",
+     "optn_lwpr": "26253.16",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "125500",
+     "optn_prpr": "26262.46",
+     "optn_oprc": "26263.87",
+     "optn_hgpr": "26266.80",
+     "optn_lwpr": "26259.69",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "130000",
+     "optn_prpr": "26251.23",
+     "optn_oprc": "26262.71",
+     "optn_hgpr": "26278.77",
+     "optn_lwpr": "26251.23",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "130500",
+     "optn_prpr": "26259.07",
+     "optn_oprc": "26251.77",
+     "optn_hgpr": "26263.50",
+     "optn_lwpr": "26251.77",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "131000",
+     "optn_prpr": "26270.06",
+     "optn_oprc": "26257.85",
+     "optn_hgpr": "26271.38",
+     "optn_lwpr": "26252.99",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "131500",
+     "optn_prpr": "26256.11",
+     "optn_oprc": "26270.05",
+     "optn_hgpr": "26275.11",
+     "optn_lwpr": "26255.43",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "132000",
+     "optn_prpr": "26270.46",
+     "optn_oprc": "26256.11",
+     "optn_hgpr": "26270.46",
+     "optn_lwpr": "26250.67",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "132500",
+     "optn_prpr": "26254.71",
+     "optn_oprc": "26270.93",
+     "optn_hgpr": "26270.94",
+     "optn_lwpr": "26248.82",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "133000",
+     "optn_prpr": "26253.09",
+     "optn_oprc": "26254.50",
+     "optn_hgpr": "26268.31",
+     "optn_lwpr": "26246.25",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "133500",
+     "optn_prpr": "26242.34",
+     "optn_oprc": "26253.69",
+     "optn_hgpr": "26258.99",
+     "optn_lwpr": "26240.35",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "134000",
+     "optn_prpr": "26264.04",
+     "optn_oprc": "26242.13",
+     "optn_hgpr": "26264.60",
+     "optn_lwpr": "26242.13",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "134500",
+     "optn_prpr": "26268.44",
+     "optn_oprc": "26263.68",
+     "optn_hgpr": "26273.81",
+     "optn_lwpr": "26263.27",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "135000",
+     "optn_prpr": "26279.14",
+     "optn_oprc": "26268.37",
+     "optn_hgpr": "26285.24",
+     "optn_lwpr": "26264.94",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "135500",
+     "optn_prpr": "26273.17",
+     "optn_oprc": "26279.64",
+     "optn_hgpr": "26287.38",
+     "optn_lwpr": "26273.17",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "140000",
+     "optn_prpr": "26272.44",
+     "optn_oprc": "26274.19",
+     "optn_hgpr": "26279.72",
+     "optn_lwpr": "26269.24",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "140500",
+     "optn_prpr": "26257.50",
+     "optn_oprc": "26273.36",
+     "optn_hgpr": "26273.36",
+     "optn_lwpr": "26254.04",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "141000",
+     "optn_prpr": "26243.51",
+     "optn_oprc": "26257.63",
+     "optn_hgpr": "26259.93",
+     "optn_lwpr": "26242.64",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "141500",
+     "optn_prpr": "26246.09",
+     "optn_oprc": "26238.64",
+     "optn_hgpr": "26253.01",
+     "optn_lwpr": "26237.65",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "142000",
+     "optn_prpr": "26266.04",
+     "optn_oprc": "26247.21",
+     "optn_hgpr": "26268.52",
+     "optn_lwpr": "26247.21",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "142500",
+     "optn_prpr": "26263.25",
+     "optn_oprc": "26266.30",
+     "optn_hgpr": "26269.86",
+     "optn_lwpr": "26258.39",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "143000",
+     "optn_prpr": "26259.97",
+     "optn_oprc": "26263.33",
+     "optn_hgpr": "26265.89",
+     "optn_lwpr": "26255.01",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "143500",
+     "optn_prpr": "26266.14",
+     "optn_oprc": "26259.87",
+     "optn_hgpr": "26268.81",
+     "optn_lwpr": "26258.59",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "144000",
+     "optn_prpr": "26276.91",
+     "optn_oprc": "26266.18",
+     "optn_hgpr": "26279.25",
+     "optn_lwpr": "26266.01",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "144500",
+     "optn_prpr": "26279.26",
+     "optn_oprc": "26277.11",
+     "optn_hgpr": "26283.99",
+     "optn_lwpr": "26274.46",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "145000",
+     "optn_prpr": "26292.18",
+     "optn_oprc": "26280.98",
+     "optn_hgpr": "26294.77",
+     "optn_lwpr": "26279.27",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "145500",
+     "optn_prpr": "26270.40",
+     "optn_oprc": "26291.99",
+     "optn_hgpr": "26296.18",
+     "optn_lwpr": "26270.12",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "150000",
+     "optn_prpr": "26255.72",
+     "optn_oprc": "26270.77",
+     "optn_hgpr": "26276.09",
+     "optn_lwpr": "26252.39",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "150500",
+     "optn_prpr": "26267.75",
+     "optn_oprc": "26255.86",
+     "optn_hgpr": "26272.12",
+     "optn_lwpr": "26252.83",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "151000",
+     "optn_prpr": "26264.36",
+     "optn_oprc": "26267.59",
+     "optn_hgpr": "26273.39",
+     "optn_lwpr": "26264.36",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "151500",
+     "optn_prpr": "26281.18",
+     "optn_oprc": "26264.30",
+     "optn_hgpr": "26283.02",
+     "optn_lwpr": "26264.10",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "152000",
+     "optn_prpr": "26278.45",
+     "optn_oprc": "26281.07",
+     "optn_hgpr": "26282.64",
+     "optn_lwpr": "26271.79",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "152500",
+     "optn_prpr": "26271.48",
+     "optn_oprc": "26278.67",
+     "optn_hgpr": "26284.41",
+     "optn_lwpr": "26271.28",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "153000",
+     "optn_prpr": "26261.71",
+     "optn_oprc": "26271.04",
+     "optn_hgpr": "26271.85",
+     "optn_lwpr": "26259.67",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "153500",
+     "optn_prpr": "26256.02",
+     "optn_oprc": "26262.15",
+     "optn_hgpr": "26262.81",
+     "optn_lwpr": "26253.65",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "154000",
+     "optn_prpr": "26257.99",
+     "optn_oprc": "26255.92",
+     "optn_hgpr": "26259.73",
+     "optn_lwpr": "26251.33",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "154500",
+     "optn_prpr": "26261.80",
+     "optn_oprc": "26257.78",
+     "optn_hgpr": "26263.71",
+     "optn_lwpr": "26254.17",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "155000",
+     "optn_prpr": "26255.73",
+     "optn_oprc": "26262.00",
+     "optn_hgpr": "26262.81",
+     "optn_lwpr": "26245.31",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "155500",
+     "optn_prpr": "26256.64",
+     "optn_oprc": "26245.75",
+     "optn_hgpr": "26256.64",
+     "optn_lwpr": "26238.68",
      "cntg_vol": "0"
     },
     {
@@ -1099,785 +2194,13 @@
      "optn_hgpr": "26256.66",
      "optn_lwpr": "26253.34",
      "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155900",
-     "optn_prpr": "26256.64",
-     "optn_oprc": "26250.88",
-     "optn_hgpr": "26256.64",
-     "optn_lwpr": "26244.42",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155800",
-     "optn_prpr": "26250.40",
-     "optn_oprc": "26244.43",
-     "optn_hgpr": "26250.69",
-     "optn_lwpr": "26242.12",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155700",
-     "optn_prpr": "26244.75",
-     "optn_oprc": "26245.78",
-     "optn_hgpr": "26245.87",
-     "optn_lwpr": "26243.30",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155600",
-     "optn_prpr": "26245.81",
-     "optn_oprc": "26246.06",
-     "optn_hgpr": "26249.23",
-     "optn_lwpr": "26244.08",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155500",
-     "optn_prpr": "26246.69",
-     "optn_oprc": "26245.75",
-     "optn_hgpr": "26247.02",
-     "optn_lwpr": "26238.68",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155400",
-     "optn_prpr": "26255.73",
-     "optn_oprc": "26250.54",
-     "optn_hgpr": "26262.81",
-     "optn_lwpr": "26250.38",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155300",
-     "optn_prpr": "26250.63",
-     "optn_oprc": "26248.06",
-     "optn_hgpr": "26253.27",
-     "optn_lwpr": "26248.06",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155200",
-     "optn_prpr": "26248.32",
-     "optn_oprc": "26248.72",
-     "optn_hgpr": "26252.46",
-     "optn_lwpr": "26246.90",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155100",
-     "optn_prpr": "26247.81",
-     "optn_oprc": "26249.86",
-     "optn_hgpr": "26250.87",
-     "optn_lwpr": "26245.31",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155000",
-     "optn_prpr": "26250.44",
-     "optn_oprc": "26262.00",
-     "optn_hgpr": "26262.00",
-     "optn_lwpr": "26250.44",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154900",
-     "optn_prpr": "26261.80",
-     "optn_oprc": "26259.12",
-     "optn_hgpr": "26263.71",
-     "optn_lwpr": "26259.12",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154800",
-     "optn_prpr": "26258.80",
-     "optn_oprc": "26255.15",
-     "optn_hgpr": "26259.99",
-     "optn_lwpr": "26254.64",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154700",
-     "optn_prpr": "26254.59",
-     "optn_oprc": "26255.09",
-     "optn_hgpr": "26258.16",
-     "optn_lwpr": "26254.17",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154600",
-     "optn_prpr": "26255.03",
-     "optn_oprc": "26255.62",
-     "optn_hgpr": "26258.36",
-     "optn_lwpr": "26254.24",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154500",
-     "optn_prpr": "26255.59",
-     "optn_oprc": "26257.78",
-     "optn_hgpr": "26260.59",
-     "optn_lwpr": "26255.59",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154400",
-     "optn_prpr": "26257.99",
-     "optn_oprc": "26257.40",
-     "optn_hgpr": "26259.73",
-     "optn_lwpr": "26254.35",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154300",
-     "optn_prpr": "26256.70",
-     "optn_oprc": "26252.33",
-     "optn_hgpr": "26257.02",
-     "optn_lwpr": "26251.52",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154200",
-     "optn_prpr": "26251.93",
-     "optn_oprc": "26254.03",
-     "optn_hgpr": "26257.07",
-     "optn_lwpr": "26251.33",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154100",
-     "optn_prpr": "26254.08",
-     "optn_oprc": "26256.52",
-     "optn_hgpr": "26257.76",
-     "optn_lwpr": "26254.08",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154000",
-     "optn_prpr": "26255.97",
-     "optn_oprc": "26255.92",
-     "optn_hgpr": "26256.98",
-     "optn_lwpr": "26254.08",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153900",
-     "optn_prpr": "26256.02",
-     "optn_oprc": "26256.50",
-     "optn_hgpr": "26258.43",
-     "optn_lwpr": "26256.02",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153800",
-     "optn_prpr": "26256.92",
-     "optn_oprc": "26255.02",
-     "optn_hgpr": "26258.36",
-     "optn_lwpr": "26254.94",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153700",
-     "optn_prpr": "26254.86",
-     "optn_oprc": "26256.50",
-     "optn_hgpr": "26256.97",
-     "optn_lwpr": "26253.65",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153600",
-     "optn_prpr": "26256.92",
-     "optn_oprc": "26260.96",
-     "optn_hgpr": "26262.28",
-     "optn_lwpr": "26256.01",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153500",
-     "optn_prpr": "26260.25",
-     "optn_oprc": "26262.15",
-     "optn_hgpr": "26262.81",
-     "optn_lwpr": "26259.65",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153400",
-     "optn_prpr": "26261.71",
-     "optn_oprc": "26261.31",
-     "optn_hgpr": "26264.73",
-     "optn_lwpr": "26261.15",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153300",
-     "optn_prpr": "26261.27",
-     "optn_oprc": "26262.56",
-     "optn_hgpr": "26263.85",
-     "optn_lwpr": "26259.67",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153200",
-     "optn_prpr": "26261.95",
-     "optn_oprc": "26266.78",
-     "optn_hgpr": "26267.24",
-     "optn_lwpr": "26261.95",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153100",
-     "optn_prpr": "26266.98",
-     "optn_oprc": "26268.37",
-     "optn_hgpr": "26269.41",
-     "optn_lwpr": "26266.42",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153000",
-     "optn_prpr": "26268.32",
-     "optn_oprc": "26271.04",
-     "optn_hgpr": "26271.85",
-     "optn_lwpr": "26267.59",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152900",
-     "optn_prpr": "26271.48",
-     "optn_oprc": "26274.63",
-     "optn_hgpr": "26275.34",
-     "optn_lwpr": "26271.28",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152800",
-     "optn_prpr": "26274.69",
-     "optn_oprc": "26277.18",
-     "optn_hgpr": "26277.69",
-     "optn_lwpr": "26272.43",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152700",
-     "optn_prpr": "26277.04",
-     "optn_oprc": "26281.24",
-     "optn_hgpr": "26281.41",
-     "optn_lwpr": "26276.66",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152600",
-     "optn_prpr": "26281.63",
-     "optn_oprc": "26284.05",
-     "optn_hgpr": "26284.41",
-     "optn_lwpr": "26281.63",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152500",
-     "optn_prpr": "26284.02",
-     "optn_oprc": "26278.67",
-     "optn_hgpr": "26284.02",
-     "optn_lwpr": "26276.69",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152400",
-     "optn_prpr": "26278.45",
-     "optn_oprc": "26280.27",
-     "optn_hgpr": "26281.10",
-     "optn_lwpr": "26277.50",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152300",
-     "optn_prpr": "26279.77",
-     "optn_oprc": "26273.16",
-     "optn_hgpr": "26279.77",
-     "optn_lwpr": "26272.86",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152200",
-     "optn_prpr": "26273.16",
-     "optn_oprc": "26278.29",
-     "optn_hgpr": "26278.42",
-     "optn_lwpr": "26271.79",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152100",
-     "optn_prpr": "26278.55",
-     "optn_oprc": "26275.91",
-     "optn_hgpr": "26279.23",
-     "optn_lwpr": "26274.28",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152000",
-     "optn_prpr": "26276.21",
-     "optn_oprc": "26281.07",
-     "optn_hgpr": "26282.64",
-     "optn_lwpr": "26276.08",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151900",
-     "optn_prpr": "26281.18",
-     "optn_oprc": "26283.00",
-     "optn_hgpr": "26283.01",
-     "optn_lwpr": "26280.10",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151800",
-     "optn_prpr": "26283.02",
-     "optn_oprc": "26272.59",
-     "optn_hgpr": "26283.02",
-     "optn_lwpr": "26272.01",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151700",
-     "optn_prpr": "26272.39",
-     "optn_oprc": "26274.00",
-     "optn_hgpr": "26276.56",
-     "optn_lwpr": "26272.06",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151600",
-     "optn_prpr": "26273.62",
-     "optn_oprc": "26275.92",
-     "optn_hgpr": "26276.23",
-     "optn_lwpr": "26273.28",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151500",
-     "optn_prpr": "26275.85",
-     "optn_oprc": "26264.30",
-     "optn_hgpr": "26276.58",
-     "optn_lwpr": "26264.10",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151400",
-     "optn_prpr": "26264.36",
-     "optn_oprc": "26270.28",
-     "optn_hgpr": "26271.10",
-     "optn_lwpr": "26264.36",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151300",
-     "optn_prpr": "26270.76",
-     "optn_oprc": "26267.43",
-     "optn_hgpr": "26272.61",
-     "optn_lwpr": "26267.42",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151200",
-     "optn_prpr": "26267.52",
-     "optn_oprc": "26271.84",
-     "optn_hgpr": "26273.39",
-     "optn_lwpr": "26266.44",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151100",
-     "optn_prpr": "26271.15",
-     "optn_oprc": "26264.85",
-     "optn_hgpr": "26272.69",
-     "optn_lwpr": "26264.58",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151000",
-     "optn_prpr": "26265.13",
-     "optn_oprc": "26267.59",
-     "optn_hgpr": "26270.16",
-     "optn_lwpr": "26264.97",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150900",
-     "optn_prpr": "26267.75",
-     "optn_oprc": "26266.59",
-     "optn_hgpr": "26268.15",
-     "optn_lwpr": "26263.19",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150800",
-     "optn_prpr": "26266.99",
-     "optn_oprc": "26270.28",
-     "optn_hgpr": "26271.82",
-     "optn_lwpr": "26265.28",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150700",
-     "optn_prpr": "26270.39",
-     "optn_oprc": "26257.61",
-     "optn_hgpr": "26272.12",
-     "optn_lwpr": "26257.25",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150600",
-     "optn_prpr": "26257.90",
-     "optn_oprc": "26257.17",
-     "optn_hgpr": "26258.78",
-     "optn_lwpr": "26252.83",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150500",
-     "optn_prpr": "26257.86",
-     "optn_oprc": "26255.86",
-     "optn_hgpr": "26260.56",
-     "optn_lwpr": "26255.45",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150400",
-     "optn_prpr": "26255.72",
-     "optn_oprc": "26256.07",
-     "optn_hgpr": "26260.99",
-     "optn_lwpr": "26254.46",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150300",
-     "optn_prpr": "26256.01",
-     "optn_oprc": "26253.14",
-     "optn_hgpr": "26259.73",
-     "optn_lwpr": "26253.05",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150200",
-     "optn_prpr": "26252.95",
-     "optn_oprc": "26261.24",
-     "optn_hgpr": "26263.78",
-     "optn_lwpr": "26252.39",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150100",
-     "optn_prpr": "26260.82",
-     "optn_oprc": "26275.25",
-     "optn_hgpr": "26275.25",
-     "optn_lwpr": "26260.38",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150000",
-     "optn_prpr": "26276.09",
-     "optn_oprc": "26270.77",
-     "optn_hgpr": "26276.09",
-     "optn_lwpr": "26266.41",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145900",
-     "optn_prpr": "26270.40",
-     "optn_oprc": "26272.20",
-     "optn_hgpr": "26274.75",
-     "optn_lwpr": "26270.12",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145800",
-     "optn_prpr": "26272.04",
-     "optn_oprc": "26280.04",
-     "optn_hgpr": "26280.04",
-     "optn_lwpr": "26270.37",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145700",
-     "optn_prpr": "26279.97",
-     "optn_oprc": "26286.76",
-     "optn_hgpr": "26286.76",
-     "optn_lwpr": "26279.67",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145600",
-     "optn_prpr": "26286.79",
-     "optn_oprc": "26291.03",
-     "optn_hgpr": "26291.32",
-     "optn_lwpr": "26284.37",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145500",
-     "optn_prpr": "26291.29",
-     "optn_oprc": "26291.99",
-     "optn_hgpr": "26296.18",
-     "optn_lwpr": "26289.07",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145400",
-     "optn_prpr": "26292.18",
-     "optn_oprc": "26292.34",
-     "optn_hgpr": "26294.77",
-     "optn_lwpr": "26288.70",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145300",
-     "optn_prpr": "26292.22",
-     "optn_oprc": "26287.35",
-     "optn_hgpr": "26294.08",
-     "optn_lwpr": "26287.35",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145200",
-     "optn_prpr": "26287.23",
-     "optn_oprc": "26285.91",
-     "optn_hgpr": "26290.84",
-     "optn_lwpr": "26285.03",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145100",
-     "optn_prpr": "26286.05",
-     "optn_oprc": "26283.86",
-     "optn_hgpr": "26290.41",
-     "optn_lwpr": "26283.82",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145000",
-     "optn_prpr": "26282.89",
-     "optn_oprc": "26280.98",
-     "optn_hgpr": "26284.47",
-     "optn_lwpr": "26279.27",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144900",
-     "optn_prpr": "26279.26",
-     "optn_oprc": "26281.13",
-     "optn_hgpr": "26282.51",
-     "optn_lwpr": "26276.89",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144800",
-     "optn_prpr": "26281.07",
-     "optn_oprc": "26280.52",
-     "optn_hgpr": "26283.99",
-     "optn_lwpr": "26279.73",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144700",
-     "optn_prpr": "26279.20",
-     "optn_oprc": "26279.43",
-     "optn_hgpr": "26281.22",
-     "optn_lwpr": "26278.43",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144600",
-     "optn_prpr": "26279.35",
-     "optn_oprc": "26278.27",
-     "optn_hgpr": "26281.01",
-     "optn_lwpr": "26276.55",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144500",
-     "optn_prpr": "26278.17",
-     "optn_oprc": "26277.11",
-     "optn_hgpr": "26278.70",
-     "optn_lwpr": "26274.46",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144400",
-     "optn_prpr": "26276.91",
-     "optn_oprc": "26274.92",
-     "optn_hgpr": "26279.25",
-     "optn_lwpr": "26274.24",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144300",
-     "optn_prpr": "26275.54",
-     "optn_oprc": "26275.65",
-     "optn_hgpr": "26277.54",
-     "optn_lwpr": "26273.29",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144200",
-     "optn_prpr": "26276.19",
-     "optn_oprc": "26278.05",
-     "optn_hgpr": "26278.76",
-     "optn_lwpr": "26275.06",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144100",
-     "optn_prpr": "26277.89",
-     "optn_oprc": "26272.93",
-     "optn_hgpr": "26279.14",
-     "optn_lwpr": "26272.93",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144000",
-     "optn_prpr": "26273.16",
-     "optn_oprc": "26266.18",
-     "optn_hgpr": "26273.37",
-     "optn_lwpr": "26266.01",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143900",
-     "optn_prpr": "26266.14",
-     "optn_oprc": "26265.84",
-     "optn_hgpr": "26268.81",
-     "optn_lwpr": "26265.64",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143800",
-     "optn_prpr": "26264.57",
-     "optn_oprc": "26261.94",
-     "optn_hgpr": "26264.86",
-     "optn_lwpr": "26261.53",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143700",
-     "optn_prpr": "26262.06",
-     "optn_oprc": "26265.12",
-     "optn_hgpr": "26265.52",
-     "optn_lwpr": "26260.81",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143600",
-     "optn_prpr": "26264.96",
-     "optn_oprc": "26263.75",
-     "optn_hgpr": "26265.19",
-     "optn_lwpr": "26260.87",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143500",
-     "optn_prpr": "26264.21",
-     "optn_oprc": "26259.87",
-     "optn_hgpr": "26264.25",
-     "optn_lwpr": "26258.59",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143400",
-     "optn_prpr": "26259.97",
-     "optn_oprc": "26265.40",
-     "optn_hgpr": "26265.46",
-     "optn_lwpr": "26259.65",
-     "cntg_vol": "0"
     }
-   ]
+   ],
+   "raw_count": 102
   },
   "VIX": {
    "symbol": "VIX",
+   "interval_sec": "300",
    "summary": {
     "ovrs_nmix_prdy_vrss": "0.74",
     "prdy_vrss_sign": "2",
@@ -1894,497 +2217,632 @@
    "bars": [
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161500",
-     "optn_prpr": "16.46",
-     "optn_oprc": "16.46",
-     "optn_hgpr": "16.46",
-     "optn_lwpr": "16.46",
+     "stck_cntg_hour": "093000",
+     "optn_prpr": "16.10",
+     "optn_oprc": "16.15",
+     "optn_hgpr": "16.21",
+     "optn_lwpr": "16.08",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161400",
-     "optn_prpr": "16.46",
-     "optn_oprc": "16.48",
-     "optn_hgpr": "16.48",
-     "optn_lwpr": "16.46",
+     "stck_cntg_hour": "093500",
+     "optn_prpr": "16.17",
+     "optn_oprc": "16.10",
+     "optn_hgpr": "16.17",
+     "optn_lwpr": "16.09",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161300",
-     "optn_prpr": "16.48",
-     "optn_oprc": "16.48",
-     "optn_hgpr": "16.48",
-     "optn_lwpr": "16.46",
+     "stck_cntg_hour": "094000",
+     "optn_prpr": "16.14",
+     "optn_oprc": "16.15",
+     "optn_hgpr": "16.20",
+     "optn_lwpr": "16.11",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161200",
-     "optn_prpr": "16.51",
-     "optn_oprc": "16.49",
-     "optn_hgpr": "16.51",
-     "optn_lwpr": "16.49",
+     "stck_cntg_hour": "094500",
+     "optn_prpr": "16.12",
+     "optn_oprc": "16.14",
+     "optn_hgpr": "16.19",
+     "optn_lwpr": "16.07",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161100",
-     "optn_prpr": "16.48",
-     "optn_oprc": "16.50",
-     "optn_hgpr": "16.50",
-     "optn_lwpr": "16.48",
+     "stck_cntg_hour": "095000",
+     "optn_prpr": "16.13",
+     "optn_oprc": "16.13",
+     "optn_hgpr": "16.21",
+     "optn_lwpr": "16.12",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "161000",
-     "optn_prpr": "16.50",
-     "optn_oprc": "16.51",
-     "optn_hgpr": "16.51",
-     "optn_lwpr": "16.50",
+     "stck_cntg_hour": "095500",
+     "optn_prpr": "16.07",
+     "optn_oprc": "16.14",
+     "optn_hgpr": "16.14",
+     "optn_lwpr": "16.07",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160900",
-     "optn_prpr": "16.51",
-     "optn_oprc": "16.49",
-     "optn_hgpr": "16.51",
-     "optn_lwpr": "16.49",
+     "stck_cntg_hour": "100000",
+     "optn_prpr": "16.00",
+     "optn_oprc": "16.06",
+     "optn_hgpr": "16.10",
+     "optn_lwpr": "16.00",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160800",
-     "optn_prpr": "16.49",
-     "optn_oprc": "16.51",
-     "optn_hgpr": "16.51",
-     "optn_lwpr": "16.49",
+     "stck_cntg_hour": "100500",
+     "optn_prpr": "15.97",
+     "optn_oprc": "16.03",
+     "optn_hgpr": "16.04",
+     "optn_lwpr": "15.97",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160700",
-     "optn_prpr": "16.53",
-     "optn_oprc": "16.54",
-     "optn_hgpr": "16.54",
-     "optn_lwpr": "16.53",
+     "stck_cntg_hour": "101000",
+     "optn_prpr": "15.97",
+     "optn_oprc": "15.97",
+     "optn_hgpr": "16.02",
+     "optn_lwpr": "15.96",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160600",
-     "optn_prpr": "16.52",
-     "optn_oprc": "16.53",
-     "optn_hgpr": "16.53",
-     "optn_lwpr": "16.52",
+     "stck_cntg_hour": "101500",
+     "optn_prpr": "16.20",
+     "optn_oprc": "15.97",
+     "optn_hgpr": "16.21",
+     "optn_lwpr": "15.97",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160500",
-     "optn_prpr": "16.53",
-     "optn_oprc": "16.56",
-     "optn_hgpr": "16.56",
-     "optn_lwpr": "16.53",
+     "stck_cntg_hour": "102000",
+     "optn_prpr": "16.23",
+     "optn_oprc": "16.20",
+     "optn_hgpr": "16.26",
+     "optn_lwpr": "16.19",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160400",
-     "optn_prpr": "16.51",
-     "optn_oprc": "16.48",
-     "optn_hgpr": "16.51",
-     "optn_lwpr": "16.48",
+     "stck_cntg_hour": "102500",
+     "optn_prpr": "16.03",
+     "optn_oprc": "16.27",
+     "optn_hgpr": "16.27",
+     "optn_lwpr": "16.02",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160300",
-     "optn_prpr": "16.48",
-     "optn_oprc": "16.48",
-     "optn_hgpr": "16.48",
-     "optn_lwpr": "16.47",
+     "stck_cntg_hour": "103000",
+     "optn_prpr": "16.05",
+     "optn_oprc": "16.01",
+     "optn_hgpr": "16.06",
+     "optn_lwpr": "16.01",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160200",
-     "optn_prpr": "16.47",
-     "optn_oprc": "16.46",
-     "optn_hgpr": "16.47",
-     "optn_lwpr": "16.46",
+     "stck_cntg_hour": "103500",
+     "optn_prpr": "16.09",
+     "optn_oprc": "16.07",
+     "optn_hgpr": "16.14",
+     "optn_lwpr": "16.06",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160100",
-     "optn_prpr": "16.47",
-     "optn_oprc": "16.46",
-     "optn_hgpr": "16.47",
-     "optn_lwpr": "16.46",
+     "stck_cntg_hour": "104000",
+     "optn_prpr": "16.03",
+     "optn_oprc": "16.09",
+     "optn_hgpr": "16.09",
+     "optn_lwpr": "16.03",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "160000",
-     "optn_prpr": "16.46",
-     "optn_oprc": "16.42",
-     "optn_hgpr": "16.46",
+     "stck_cntg_hour": "104500",
+     "optn_prpr": "16.06",
+     "optn_oprc": "16.03",
+     "optn_hgpr": "16.08",
+     "optn_lwpr": "16.03",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "105000",
+     "optn_prpr": "16.06",
+     "optn_oprc": "16.05",
+     "optn_hgpr": "16.07",
+     "optn_lwpr": "16.03",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "105500",
+     "optn_prpr": "16.05",
+     "optn_oprc": "16.06",
+     "optn_hgpr": "16.09",
+     "optn_lwpr": "16.04",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "110000",
+     "optn_prpr": "16.27",
+     "optn_oprc": "16.06",
+     "optn_hgpr": "16.27",
+     "optn_lwpr": "15.98",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "110500",
+     "optn_prpr": "16.41",
+     "optn_oprc": "16.26",
+     "optn_hgpr": "16.41",
+     "optn_lwpr": "16.24",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "111000",
+     "optn_prpr": "16.59",
+     "optn_oprc": "16.41",
+     "optn_hgpr": "16.61",
+     "optn_lwpr": "16.41",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "111500",
+     "optn_prpr": "16.44",
+     "optn_oprc": "16.58",
+     "optn_hgpr": "16.58",
+     "optn_lwpr": "16.43",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "112000",
+     "optn_prpr": "16.66",
+     "optn_oprc": "16.43",
+     "optn_hgpr": "16.66",
      "optn_lwpr": "16.42",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155900",
-     "optn_prpr": "16.45",
-     "optn_oprc": "16.46",
-     "optn_hgpr": "16.48",
-     "optn_lwpr": "16.45",
+     "stck_cntg_hour": "112500",
+     "optn_prpr": "16.56",
+     "optn_oprc": "16.67",
+     "optn_hgpr": "16.68",
+     "optn_lwpr": "16.56",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155800",
-     "optn_prpr": "16.47",
-     "optn_oprc": "16.47",
-     "optn_hgpr": "16.47",
-     "optn_lwpr": "16.47",
+     "stck_cntg_hour": "113000",
+     "optn_prpr": "16.39",
+     "optn_oprc": "16.54",
+     "optn_hgpr": "16.54",
+     "optn_lwpr": "16.39",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155700",
-     "optn_prpr": "16.47",
-     "optn_oprc": "16.45",
-     "optn_hgpr": "16.47",
-     "optn_lwpr": "16.45",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155600",
+     "stck_cntg_hour": "113500",
      "optn_prpr": "16.44",
-     "optn_oprc": "16.45",
-     "optn_hgpr": "16.45",
-     "optn_lwpr": "16.44",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155500",
-     "optn_prpr": "16.46",
-     "optn_oprc": "16.43",
-     "optn_hgpr": "16.48",
-     "optn_lwpr": "16.43",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155400",
-     "optn_prpr": "16.41",
-     "optn_oprc": "16.44",
-     "optn_hgpr": "16.44",
-     "optn_lwpr": "16.40",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155300",
-     "optn_prpr": "16.43",
-     "optn_oprc": "16.46",
-     "optn_hgpr": "16.46",
-     "optn_lwpr": "16.43",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155200",
-     "optn_prpr": "16.45",
-     "optn_oprc": "16.46",
-     "optn_hgpr": "16.46",
-     "optn_lwpr": "16.44",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155100",
-     "optn_prpr": "16.47",
-     "optn_oprc": "16.44",
-     "optn_hgpr": "16.47",
-     "optn_lwpr": "16.44",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "155000",
-     "optn_prpr": "16.41",
-     "optn_oprc": "16.37",
-     "optn_hgpr": "16.42",
-     "optn_lwpr": "16.37",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154900",
-     "optn_prpr": "16.37",
-     "optn_oprc": "16.37",
-     "optn_hgpr": "16.37",
-     "optn_lwpr": "16.36",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154800",
-     "optn_prpr": "16.38",
-     "optn_oprc": "16.39",
-     "optn_hgpr": "16.39",
-     "optn_lwpr": "16.37",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154700",
-     "optn_prpr": "16.39",
-     "optn_oprc": "16.39",
-     "optn_hgpr": "16.39",
-     "optn_lwpr": "16.39",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154600",
-     "optn_prpr": "16.39",
-     "optn_oprc": "16.40",
-     "optn_hgpr": "16.40",
-     "optn_lwpr": "16.39",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154500",
-     "optn_prpr": "16.39",
-     "optn_oprc": "16.36",
-     "optn_hgpr": "16.39",
-     "optn_lwpr": "16.36",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154400",
-     "optn_prpr": "16.36",
-     "optn_oprc": "16.36",
-     "optn_hgpr": "16.36",
-     "optn_lwpr": "16.36",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154300",
-     "optn_prpr": "16.36",
-     "optn_oprc": "16.36",
-     "optn_hgpr": "16.37",
-     "optn_lwpr": "16.36",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154200",
-     "optn_prpr": "16.35",
      "optn_oprc": "16.38",
-     "optn_hgpr": "16.38",
+     "optn_hgpr": "16.45",
      "optn_lwpr": "16.35",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154100",
-     "optn_prpr": "16.38",
-     "optn_oprc": "16.37",
-     "optn_hgpr": "16.38",
-     "optn_lwpr": "16.37",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "154000",
-     "optn_prpr": "16.37",
-     "optn_oprc": "16.37",
-     "optn_hgpr": "16.38",
-     "optn_lwpr": "16.37",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153900",
-     "optn_prpr": "16.37",
-     "optn_oprc": "16.36",
-     "optn_hgpr": "16.37",
-     "optn_lwpr": "16.36",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153800",
-     "optn_prpr": "16.36",
-     "optn_oprc": "16.37",
-     "optn_hgpr": "16.37",
-     "optn_lwpr": "16.36",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153700",
-     "optn_prpr": "16.36",
-     "optn_oprc": "16.35",
-     "optn_hgpr": "16.36",
-     "optn_lwpr": "16.35",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153600",
+     "stck_cntg_hour": "114000",
      "optn_prpr": "16.34",
-     "optn_oprc": "16.34",
+     "optn_oprc": "16.24",
      "optn_hgpr": "16.34",
-     "optn_lwpr": "16.33",
+     "optn_lwpr": "16.24",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153500",
-     "optn_prpr": "16.34",
+     "stck_cntg_hour": "114500",
+     "optn_prpr": "16.35",
      "optn_oprc": "16.33",
-     "optn_hgpr": "16.34",
-     "optn_lwpr": "16.33",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153400",
-     "optn_prpr": "16.34",
-     "optn_oprc": "16.32",
-     "optn_hgpr": "16.35",
+     "optn_hgpr": "16.36",
      "optn_lwpr": "16.32",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153300",
-     "optn_prpr": "16.31",
+     "stck_cntg_hour": "115000",
+     "optn_prpr": "16.29",
      "optn_oprc": "16.32",
      "optn_hgpr": "16.32",
-     "optn_lwpr": "16.31",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153200",
-     "optn_prpr": "16.32",
-     "optn_oprc": "16.31",
-     "optn_hgpr": "16.32",
-     "optn_lwpr": "16.31",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153100",
-     "optn_prpr": "16.31",
-     "optn_oprc": "16.30",
-     "optn_hgpr": "16.31",
-     "optn_lwpr": "16.30",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "153000",
-     "optn_prpr": "16.30",
-     "optn_oprc": "16.30",
-     "optn_hgpr": "16.30",
-     "optn_lwpr": "16.29",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152900",
-     "optn_prpr": "16.30",
-     "optn_oprc": "16.30",
-     "optn_hgpr": "16.30",
-     "optn_lwpr": "16.30",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152800",
-     "optn_prpr": "16.30",
-     "optn_oprc": "16.29",
-     "optn_hgpr": "16.30",
-     "optn_lwpr": "16.29",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152700",
-     "optn_prpr": "16.29",
-     "optn_oprc": "16.27",
-     "optn_hgpr": "16.29",
      "optn_lwpr": "16.27",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152600",
-     "optn_prpr": "16.27",
-     "optn_oprc": "16.27",
-     "optn_hgpr": "16.27",
-     "optn_lwpr": "16.27",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152500",
-     "optn_prpr": "16.27",
-     "optn_oprc": "16.29",
-     "optn_hgpr": "16.29",
-     "optn_lwpr": "16.27",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152400",
-     "optn_prpr": "16.29",
-     "optn_oprc": "16.29",
-     "optn_hgpr": "16.29",
+     "stck_cntg_hour": "115500",
+     "optn_prpr": "16.34",
+     "optn_oprc": "16.28",
+     "optn_hgpr": "16.39",
      "optn_lwpr": "16.28",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152300",
-     "optn_prpr": "16.29",
+     "stck_cntg_hour": "120000",
+     "optn_prpr": "16.33",
+     "optn_oprc": "16.35",
+     "optn_hgpr": "16.37",
+     "optn_lwpr": "16.32",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "120500",
+     "optn_prpr": "16.47",
+     "optn_oprc": "16.33",
+     "optn_hgpr": "16.47",
+     "optn_lwpr": "16.33",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "121000",
+     "optn_prpr": "16.50",
+     "optn_oprc": "16.51",
+     "optn_hgpr": "16.54",
+     "optn_lwpr": "16.47",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "121500",
+     "optn_prpr": "16.58",
+     "optn_oprc": "16.52",
+     "optn_hgpr": "16.58",
+     "optn_lwpr": "16.52",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "122000",
+     "optn_prpr": "16.53",
+     "optn_oprc": "16.58",
+     "optn_hgpr": "16.60",
+     "optn_lwpr": "16.53",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "122500",
+     "optn_prpr": "16.54",
+     "optn_oprc": "16.51",
+     "optn_hgpr": "16.55",
+     "optn_lwpr": "16.49",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "123000",
+     "optn_prpr": "16.41",
+     "optn_oprc": "16.52",
+     "optn_hgpr": "16.52",
+     "optn_lwpr": "16.40",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "123500",
+     "optn_prpr": "16.39",
+     "optn_oprc": "16.41",
+     "optn_hgpr": "16.44",
+     "optn_lwpr": "16.39",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "124000",
+     "optn_prpr": "16.32",
+     "optn_oprc": "16.38",
+     "optn_hgpr": "16.38",
+     "optn_lwpr": "16.32",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "124500",
+     "optn_prpr": "16.31",
+     "optn_oprc": "16.30",
+     "optn_hgpr": "16.34",
+     "optn_lwpr": "16.30",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "125000",
+     "optn_prpr": "16.28",
      "optn_oprc": "16.31",
      "optn_hgpr": "16.31",
-     "optn_lwpr": "16.29",
+     "optn_lwpr": "16.24",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152200",
-     "optn_prpr": "16.32",
+     "stck_cntg_hour": "125500",
+     "optn_prpr": "16.30",
      "optn_oprc": "16.29",
-     "optn_hgpr": "16.32",
-     "optn_lwpr": "16.29",
+     "optn_hgpr": "16.30",
+     "optn_lwpr": "16.26",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "152100",
-     "optn_prpr": "16.29",
+     "stck_cntg_hour": "130000",
+     "optn_prpr": "16.33",
      "optn_oprc": "16.30",
+     "optn_hgpr": "16.34",
+     "optn_lwpr": "16.27",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "130500",
+     "optn_prpr": "16.30",
+     "optn_oprc": "16.34",
+     "optn_hgpr": "16.34",
+     "optn_lwpr": "16.28",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "131000",
+     "optn_prpr": "16.22",
+     "optn_oprc": "16.31",
      "optn_hgpr": "16.31",
-     "optn_lwpr": "16.29",
+     "optn_lwpr": "16.22",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "131500",
+     "optn_prpr": "16.26",
+     "optn_oprc": "16.22",
+     "optn_hgpr": "16.26",
+     "optn_lwpr": "16.21",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "132000",
+     "optn_prpr": "16.24",
+     "optn_oprc": "16.26",
+     "optn_hgpr": "16.28",
+     "optn_lwpr": "16.23",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "132500",
+     "optn_prpr": "16.26",
+     "optn_oprc": "16.22",
+     "optn_hgpr": "16.27",
+     "optn_lwpr": "16.22",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "133000",
+     "optn_prpr": "16.30",
+     "optn_oprc": "16.27",
+     "optn_hgpr": "16.31",
+     "optn_lwpr": "16.25",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "133500",
+     "optn_prpr": "16.34",
+     "optn_oprc": "16.30",
+     "optn_hgpr": "16.36",
+     "optn_lwpr": "16.28",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "134000",
+     "optn_prpr": "16.24",
+     "optn_oprc": "16.34",
+     "optn_hgpr": "16.34",
+     "optn_lwpr": "16.24",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "134500",
+     "optn_prpr": "16.22",
+     "optn_oprc": "16.24",
+     "optn_hgpr": "16.24",
+     "optn_lwpr": "16.20",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "135000",
+     "optn_prpr": "16.17",
+     "optn_oprc": "16.21",
+     "optn_hgpr": "16.22",
+     "optn_lwpr": "16.15",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "135500",
+     "optn_prpr": "16.18",
+     "optn_oprc": "16.16",
+     "optn_hgpr": "16.18",
+     "optn_lwpr": "16.15",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "140000",
+     "optn_prpr": "16.19",
+     "optn_oprc": "16.19",
+     "optn_hgpr": "16.19",
+     "optn_lwpr": "16.17",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "140500",
+     "optn_prpr": "16.24",
+     "optn_oprc": "16.19",
+     "optn_hgpr": "16.24",
+     "optn_lwpr": "16.19",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "141000",
+     "optn_prpr": "16.27",
+     "optn_oprc": "16.23",
+     "optn_hgpr": "16.27",
+     "optn_lwpr": "16.23",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "141500",
+     "optn_prpr": "16.27",
+     "optn_oprc": "16.29",
+     "optn_hgpr": "16.31",
+     "optn_lwpr": "16.25",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "142000",
+     "optn_prpr": "16.21",
+     "optn_oprc": "16.27",
+     "optn_hgpr": "16.27",
+     "optn_lwpr": "16.20",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "142500",
+     "optn_prpr": "16.21",
+     "optn_oprc": "16.19",
+     "optn_hgpr": "16.25",
+     "optn_lwpr": "16.18",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "143000",
+     "optn_prpr": "16.23",
+     "optn_oprc": "16.21",
+     "optn_hgpr": "16.24",
+     "optn_lwpr": "16.21",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "143500",
+     "optn_prpr": "16.19",
+     "optn_oprc": "16.23",
+     "optn_hgpr": "16.23",
+     "optn_lwpr": "16.19",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "144000",
+     "optn_prpr": "16.16",
+     "optn_oprc": "16.19",
+     "optn_hgpr": "16.19",
+     "optn_lwpr": "16.16",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "144500",
+     "optn_prpr": "16.20",
+     "optn_oprc": "16.16",
+     "optn_hgpr": "16.20",
+     "optn_lwpr": "16.16",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "145000",
+     "optn_prpr": "16.16",
+     "optn_oprc": "16.19",
+     "optn_hgpr": "16.19",
+     "optn_lwpr": "16.16",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "145500",
+     "optn_prpr": "16.20",
+     "optn_oprc": "16.16",
+     "optn_hgpr": "16.20",
+     "optn_lwpr": "16.15",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "150000",
+     "optn_prpr": "16.24",
+     "optn_oprc": "16.22",
+     "optn_hgpr": "16.24",
+     "optn_lwpr": "16.19",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "150500",
+     "optn_prpr": "16.22",
+     "optn_oprc": "16.24",
+     "optn_hgpr": "16.26",
+     "optn_lwpr": "16.20",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "151000",
+     "optn_prpr": "16.32",
+     "optn_oprc": "16.22",
+     "optn_hgpr": "16.37",
+     "optn_lwpr": "16.22",
+     "cntg_vol": "0"
+    },
+    {
+     "stck_bsop_date": "20260909",
+     "stck_cntg_hour": "151500",
+     "optn_prpr": "16.27",
+     "optn_oprc": "16.33",
+     "optn_hgpr": "16.33",
+     "optn_lwpr": "16.27",
      "cntg_vol": "0"
     },
     {
@@ -2392,425 +2850,84 @@
      "stck_cntg_hour": "152000",
      "optn_prpr": "16.29",
      "optn_oprc": "16.27",
-     "optn_hgpr": "16.29",
+     "optn_hgpr": "16.32",
      "optn_lwpr": "16.27",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151900",
-     "optn_prpr": "16.27",
-     "optn_oprc": "16.27",
-     "optn_hgpr": "16.28",
-     "optn_lwpr": "16.27",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151800",
-     "optn_prpr": "16.27",
-     "optn_oprc": "16.30",
+     "stck_cntg_hour": "152500",
+     "optn_prpr": "16.30",
+     "optn_oprc": "16.29",
      "optn_hgpr": "16.30",
      "optn_lwpr": "16.27",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151700",
-     "optn_prpr": "16.31",
+     "stck_cntg_hour": "153000",
+     "optn_prpr": "16.34",
      "optn_oprc": "16.30",
-     "optn_hgpr": "16.31",
-     "optn_lwpr": "16.30",
+     "optn_hgpr": "16.35",
+     "optn_lwpr": "16.29",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151600",
-     "optn_prpr": "16.31",
-     "optn_oprc": "16.30",
-     "optn_hgpr": "16.31",
-     "optn_lwpr": "16.30",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151500",
-     "optn_prpr": "16.32",
-     "optn_oprc": "16.33",
-     "optn_hgpr": "16.33",
-     "optn_lwpr": "16.32",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151400",
-     "optn_prpr": "16.32",
-     "optn_oprc": "16.31",
-     "optn_hgpr": "16.32",
-     "optn_lwpr": "16.31",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151300",
-     "optn_prpr": "16.31",
-     "optn_oprc": "16.31",
-     "optn_hgpr": "16.31",
-     "optn_lwpr": "16.30",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151200",
+     "stck_cntg_hour": "153500",
      "optn_prpr": "16.37",
-     "optn_oprc": "16.23",
+     "optn_oprc": "16.33",
      "optn_hgpr": "16.37",
-     "optn_lwpr": "16.23",
+     "optn_lwpr": "16.33",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151100",
-     "optn_prpr": "16.23",
-     "optn_oprc": "16.24",
-     "optn_hgpr": "16.24",
-     "optn_lwpr": "16.23",
+     "stck_cntg_hour": "154000",
+     "optn_prpr": "16.36",
+     "optn_oprc": "16.37",
+     "optn_hgpr": "16.38",
+     "optn_lwpr": "16.35",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "151000",
-     "optn_prpr": "16.23",
-     "optn_oprc": "16.22",
-     "optn_hgpr": "16.23",
-     "optn_lwpr": "16.22",
+     "stck_cntg_hour": "154500",
+     "optn_prpr": "16.37",
+     "optn_oprc": "16.36",
+     "optn_hgpr": "16.40",
+     "optn_lwpr": "16.36",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150900",
-     "optn_prpr": "16.22",
-     "optn_oprc": "16.21",
-     "optn_hgpr": "16.22",
-     "optn_lwpr": "16.21",
+     "stck_cntg_hour": "155000",
+     "optn_prpr": "16.41",
+     "optn_oprc": "16.37",
+     "optn_hgpr": "16.47",
+     "optn_lwpr": "16.37",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150800",
-     "optn_prpr": "16.20",
-     "optn_oprc": "16.20",
-     "optn_hgpr": "16.20",
-     "optn_lwpr": "16.20",
+     "stck_cntg_hour": "155500",
+     "optn_prpr": "16.45",
+     "optn_oprc": "16.43",
+     "optn_hgpr": "16.48",
+     "optn_lwpr": "16.43",
      "cntg_vol": "0"
     },
     {
      "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150700",
-     "optn_prpr": "16.21",
-     "optn_oprc": "16.25",
-     "optn_hgpr": "16.25",
-     "optn_lwpr": "16.21",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150600",
-     "optn_prpr": "16.25",
-     "optn_oprc": "16.25",
-     "optn_hgpr": "16.26",
-     "optn_lwpr": "16.25",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150500",
-     "optn_prpr": "16.24",
-     "optn_oprc": "16.24",
-     "optn_hgpr": "16.24",
-     "optn_lwpr": "16.24",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150400",
-     "optn_prpr": "16.24",
-     "optn_oprc": "16.24",
-     "optn_hgpr": "16.24",
-     "optn_lwpr": "16.24",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150300",
-     "optn_prpr": "16.23",
-     "optn_oprc": "16.24",
-     "optn_hgpr": "16.24",
-     "optn_lwpr": "16.23",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150200",
-     "optn_prpr": "16.23",
-     "optn_oprc": "16.21",
-     "optn_hgpr": "16.23",
-     "optn_lwpr": "16.21",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150100",
-     "optn_prpr": "16.20",
-     "optn_oprc": "16.19",
-     "optn_hgpr": "16.21",
-     "optn_lwpr": "16.19",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "150000",
-     "optn_prpr": "16.19",
-     "optn_oprc": "16.22",
-     "optn_hgpr": "16.22",
-     "optn_lwpr": "16.19",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145900",
-     "optn_prpr": "16.20",
-     "optn_oprc": "16.20",
-     "optn_hgpr": "16.20",
-     "optn_lwpr": "16.19",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145800",
-     "optn_prpr": "16.20",
-     "optn_oprc": "16.19",
-     "optn_hgpr": "16.20",
-     "optn_lwpr": "16.19",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145700",
-     "optn_prpr": "16.18",
-     "optn_oprc": "16.16",
-     "optn_hgpr": "16.18",
-     "optn_lwpr": "16.16",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145600",
-     "optn_prpr": "16.16",
-     "optn_oprc": "16.16",
-     "optn_hgpr": "16.16",
-     "optn_lwpr": "16.15",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145500",
-     "optn_prpr": "16.16",
-     "optn_oprc": "16.16",
-     "optn_hgpr": "16.17",
-     "optn_lwpr": "16.16",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145400",
-     "optn_prpr": "16.16",
-     "optn_oprc": "16.16",
-     "optn_hgpr": "16.16",
-     "optn_lwpr": "16.16",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145300",
-     "optn_prpr": "16.16",
-     "optn_oprc": "16.17",
-     "optn_hgpr": "16.17",
-     "optn_lwpr": "16.16",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145200",
-     "optn_prpr": "16.17",
-     "optn_oprc": "16.18",
-     "optn_hgpr": "16.18",
-     "optn_lwpr": "16.17",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145100",
-     "optn_prpr": "16.19",
-     "optn_oprc": "16.19",
-     "optn_hgpr": "16.19",
-     "optn_lwpr": "16.18",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "145000",
-     "optn_prpr": "16.19",
-     "optn_oprc": "16.19",
-     "optn_hgpr": "16.19",
-     "optn_lwpr": "16.19",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144900",
-     "optn_prpr": "16.20",
-     "optn_oprc": "16.19",
-     "optn_hgpr": "16.20",
-     "optn_lwpr": "16.19",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144800",
-     "optn_prpr": "16.18",
-     "optn_oprc": "16.19",
-     "optn_hgpr": "16.19",
-     "optn_lwpr": "16.18",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144700",
-     "optn_prpr": "16.19",
-     "optn_oprc": "16.18",
-     "optn_hgpr": "16.19",
-     "optn_lwpr": "16.18",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144600",
-     "optn_prpr": "16.18",
-     "optn_oprc": "16.17",
-     "optn_hgpr": "16.18",
-     "optn_lwpr": "16.17",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144500",
-     "optn_prpr": "16.17",
-     "optn_oprc": "16.16",
-     "optn_hgpr": "16.17",
-     "optn_lwpr": "16.16",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144400",
-     "optn_prpr": "16.16",
-     "optn_oprc": "16.16",
-     "optn_hgpr": "16.16",
-     "optn_lwpr": "16.16",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144300",
-     "optn_prpr": "16.17",
-     "optn_oprc": "16.17",
-     "optn_hgpr": "16.17",
-     "optn_lwpr": "16.17",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144200",
-     "optn_prpr": "16.16",
-     "optn_oprc": "16.16",
-     "optn_hgpr": "16.16",
-     "optn_lwpr": "16.16",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144100",
-     "optn_prpr": "16.16",
-     "optn_oprc": "16.16",
-     "optn_hgpr": "16.17",
-     "optn_lwpr": "16.16",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "144000",
-     "optn_prpr": "16.17",
-     "optn_oprc": "16.19",
-     "optn_hgpr": "16.19",
-     "optn_lwpr": "16.17",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143900",
-     "optn_prpr": "16.19",
-     "optn_oprc": "16.20",
-     "optn_hgpr": "16.20",
-     "optn_lwpr": "16.19",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143800",
-     "optn_prpr": "16.20",
-     "optn_oprc": "16.22",
-     "optn_hgpr": "16.22",
-     "optn_lwpr": "16.20",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143700",
-     "optn_prpr": "16.22",
-     "optn_oprc": "16.22",
-     "optn_hgpr": "16.22",
-     "optn_lwpr": "16.22",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143600",
-     "optn_prpr": "16.22",
-     "optn_oprc": "16.22",
-     "optn_hgpr": "16.22",
-     "optn_lwpr": "16.22",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143500",
-     "optn_prpr": "16.22",
-     "optn_oprc": "16.23",
-     "optn_hgpr": "16.23",
-     "optn_lwpr": "16.22",
-     "cntg_vol": "0"
-    },
-    {
-     "stck_bsop_date": "20260909",
-     "stck_cntg_hour": "143400",
-     "optn_prpr": "16.23",
-     "optn_oprc": "16.21",
-     "optn_hgpr": "16.23",
-     "optn_lwpr": "16.21",
+     "stck_cntg_hour": "160000",
+     "optn_prpr": "16.51",
+     "optn_oprc": "16.42",
+     "optn_hgpr": "16.51",
+     "optn_lwpr": "16.42",
      "cntg_vol": "0"
     }
-   ]
+   ],
+   "raw_count": 102
   }
  },
  "stocks": {
