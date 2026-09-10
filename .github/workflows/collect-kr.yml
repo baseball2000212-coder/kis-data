@@ -1,0 +1,30 @@
+name: collect-kr
+on:
+  schedule:
+    - cron: '50 6 * * 1-5'
+    - cron: '5 7 * * 1-5'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -r requirements.txt
+      - name: collect
+        env:
+          KIS_APP_KEY:    ${{ secrets.KIS_APP_KEY }}
+          KIS_APP_SECRET: ${{ secrets.KIS_APP_SECRET }}
+          KIS_ENV:        prod
+          KR_FUT_CODE:    ${{ vars.KR_FUT_CODE }}
+        run: mkdir -p data && PYTHONPATH=scripts python scripts/collect_kr.py
+      - name: commit
+        run: |
+          git config user.name  "kis-bot"
+          git config user.email "kis-bot@users.noreply.github.com"
+          git add -A data || true
+          git diff --staged --quiet || git commit -m "kr $(TZ=Asia/Seoul date +%F\ %H:%M)"
+          git push
