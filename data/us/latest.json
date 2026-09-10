@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-09-10T10:49:57+09:00",
+ "asof_kst": "2026-09-10T10:55:49+09:00",
  "session": "us",
  "nmin": "5",
  "indices": {
@@ -937,7 +937,8 @@
      "optn_lwpr": "7644.31",
      "cntg_vol": "0"
     }
-   ]
+   ],
+   "calls": 1
   },
   "NASDAQ": {
    "symbol": "COMP",
@@ -1873,7 +1874,8 @@
      "optn_lwpr": "26259.65",
      "cntg_vol": "0"
     }
-   ]
+   ],
+   "calls": 1
   },
   "VIX": {
    "symbol": "VIX",
@@ -2809,7 +2811,8 @@
      "optn_lwpr": "16.21",
      "cntg_vol": "0"
     }
-   ]
+   ],
+   "calls": 1
   }
  },
  "stocks": {
@@ -4387,7 +4390,8 @@
      "evol": "258006",
      "eamt": "185452449"
     }
-   ]
+   ],
+   "calls": 1
   },
   "NVDA": {
    "excd": "NAS",
@@ -5963,7 +5967,8 @@
      "evol": "1296172",
      "eamt": "290655279"
     }
-   ]
+   ],
+   "calls": 1
   },
   "SPY": {
    "excd": "AMS",
@@ -7539,12 +7544,17 @@
      "evol": "175084",
      "eamt": "133717336"
     }
-   ]
+   ],
+   "calls": 1
   }
  },
  "errors": [
-  "DOW/DJI 실패: bars 비어있음",
-  "DOW/INDU 실패: bars 비어있음",
-  "DOW/DJIA 실패: bars 비어있음"
+  "DOW/DJI: bars 비어있음",
+  "DOW/INDU: bars 비어있음",
+  "DOW/DJIA: bars 비어있음",
+  "DOW/DOWJONES: bars 비어있음",
+  "DOW/US30: bars 비어있음",
+  "DOW/DJX: bars 비어있음",
+  "DOW/COMPDJ: bars 비어있음"
  ]
 }
