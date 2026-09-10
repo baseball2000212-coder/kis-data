@@ -13,6 +13,9 @@ CHART_PATH = "/uapi/domestic-futureoption/v1/quotations/inquire-time-fuopchartpr
 PRICE_PATH = "/uapi/domestic-futureoption/v1/quotations/inquire-price"
 BOARD_PATH = "/uapi/domestic-futureoption/v1/quotations/display-board-callput"
 FUTBOARD_PATH = "/uapi/domestic-futureoption/v1/quotations/display-board-futures"
+INV_TIME_PATH  = "/uapi/domestic-stock/v1/quotations/inquire-investor-time-by-market"
+INV_DAILY_PATH = "/uapi/domestic-stock/v1/quotations/inquire-investor-daily-by-market"
+PROG_PATH      = "/uapi/domestic-stock/v1/quotations/investor-program-trade-today"
 
 CACHE = "data/kr/_futcode.json"
 SESSION_OPEN, SESSION_CLOSE = "090000", "154500"   # K200 선물 정규장
@@ -190,10 +193,74 @@ def main():
         out["errors"].append(f"옵션 전광판: {e}")
         print(f"[opt] 전광판 실패: {e}")
 
+    day = today.strftime("%Y%m%d")
+    for label, fn in (("수급 시간대별", lambda: investor_time("999", "S001")),
+                      ("수급 일별", lambda: investor_daily(day)),
+                      ("프로그램 코스피", lambda: program_trade("1")),
+                      ("프로그램 코스닥", lambda: program_trade("2"))):
+        key = {"수급 시간대별": "investor_time", "수급 일별": "investor_daily",
+               "프로그램 코스피": "program_kospi", "프로그램 코스닥": "program_kosdaq"}[label]
+        try:
+            rows = fn()
+            out[key] = rows
+            print(f"[flow] {label} {len(rows)}행")
+        except Exception as e:
+            out["errors"].append(f"{label}: {e}")
+            print(f"[flow] {label} 실패: {str(e)[:80]}")
+
     if out["errors"]:
         print(f"-- 실패 {len(out['errors'])}건")
     kis.save("kr", out)
 
 
+def investor_time(iscd, iscd2):
+    """시장별 투자자매매동향(시간대별) — HTS [0403] 상단표. 개인·외국인·기관 매도/매수/순매수."""
+    b = kis.fetch(INV_TIME_PATH, "FHPTJ04030000",
+                  {"FID_INPUT_ISCD": iscd, "FID_INPUT_ISCD_2": iscd2})
+    rows = b.get("output1") or b.get("output") or []
+    if isinstance(rows, dict):
+        rows = [rows]
+    return rows
+
+
+def investor_daily(day, iscd="0001", iscd1="KSP"):
+    """시장별 투자자매매동향(일별) — 기관 세부(증권·투신·사모·은행·보험·기금)까지 쪼개짐."""
+    b = kis.fetch(INV_DAILY_PATH, "FHPTJ04040000", {
+        "FID_COND_MRKT_DIV_CODE": "U", "FID_INPUT_ISCD": iscd,
+        "FID_INPUT_DATE_1": day, "FID_INPUT_ISCD_1": iscd1,
+        "FID_INPUT_DATE_2": day, "FID_INPUT_ISCD_2": iscd,
+    })
+    rows = b.get("output1") or b.get("output") or []
+    if isinstance(rows, dict):
+        rows = [rows]
+    return rows
+
+
+def program_trade(mrkt="1"):
+    """프로그램매매 투자자별 — 차익(arbt) vs 비차익(nabt) 구분이 핵심."""
+    b = kis.fetch(PROG_PATH, "HHPPG046600C1", {"MRKT_DIV_CLS_CODE": mrkt})
+    rows = b.get("output1") or b.get("output") or []
+    if isinstance(rows, dict):
+        rows = [rows]
+    return rows
+
+
+def probe_investor():
+    """시장구분 코드가 어디까지 먹는지 탐색 — 선물·옵션 수급이 되는지 확인용.
+    결과 보고 이 함수는 지운다."""
+    print("--- 투자자 수급 시장구분 탐색 ---")
+    for iscd in ("999", "0001", "1001", "2001", "3001", "4001", "0000"):
+        for iscd2 in ("S001", "0001"):
+            try:
+                rows = investor_time(iscd, iscd2)
+                head = rows[0] if rows else {}
+                print(f"  iscd={iscd:5s} iscd2={iscd2:5s} rows={len(rows):3d}  "
+                      f"키={list(head)[:4]}")
+            except Exception as e:
+                print(f"  iscd={iscd:5s} iscd2={iscd2:5s} 실패: {str(e)[:60]}")
+    print("--- 탐색 끝 ---")
+
+
 if __name__ == "__main__":
     main()
+    probe_investor()
