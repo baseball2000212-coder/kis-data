@@ -12,6 +12,7 @@ import kis
 CHART_PATH = "/uapi/domestic-futureoption/v1/quotations/inquire-time-fuopchartprice"
 PRICE_PATH = "/uapi/domestic-futureoption/v1/quotations/inquire-price"
 BOARD_PATH = "/uapi/domestic-futureoption/v1/quotations/display-board-callput"
+FUTBOARD_PATH = "/uapi/domestic-futureoption/v1/quotations/display-board-futures"
 
 CACHE = "data/kr/_futcode.json"
 SESSION_OPEN, SESSION_CLOSE = "090000", "154500"   # K200 선물 정규장
@@ -44,9 +45,20 @@ def option_expiry_month(today):
     return f"{y}{m:02d}"
 
 
+def list_futures():
+    """선물 전광판(FHPIF05030200)으로 상장 선물 목록을 받는다. 코드 추측이 필요 없다."""
+    b = kis.fetch(FUTBOARD_PATH, "FHPIF05030200", {
+        "FID_COND_MRKT_DIV_CODE": "F", "FID_COND_SCR_DIV_CODE": "20503",
+        "FID_COND_MRKT_CLS_CODE": "MKI",
+    })
+    rows = b.get("output1") or b.get("output") or []
+    if isinstance(rows, dict):
+        rows = [rows]
+    return [r for r in rows if r.get("futs_shrn_iscd")]
+
+
 def resolve_future_code(y, q):
-    """선물 종목코드 '101' + 연도문자 1자 + 월 2자리 (예: 101W09).
-    연도문자 매핑이 공개돼 있지 않아 한 번만 탐색하고 캐시한다."""
+    """1) 환경변수 2) 캐시 3) 전광판 목록 4) 코드 브루트포스 순으로 확정."""
     env = os.environ.get("KR_FUT_CODE", "").strip()
     if env:
         return env
@@ -54,19 +66,42 @@ def resolve_future_code(y, q):
         c = json.load(open(CACHE))
         if c.get("year") == y and c.get("quarter") == q:
             return c["code"]
+
+    # 3) 전광판에서 잔존일수가 가장 짧은(=최근월물) 종목을 고른다
+    try:
+        rows = list_futures()
+        for r in rows[:12]:
+            print(f"      {r.get('futs_shrn_iscd')}  {r.get('hts_kor_isnm')}  "
+                  f"잔존 {r.get('hts_rmnn_dynu')}  현재가 {r.get('futs_prpr')}")
+        cand = [r for r in rows if str(r.get("hts_rmnn_dynu") or "").strip().isdigit()]
+        cand.sort(key=lambda r: int(r["hts_rmnn_dynu"]))
+        if cand:
+            code = cand[0]["futs_shrn_iscd"]
+            os.makedirs("data/kr", exist_ok=True)
+            json.dump({"year": y, "quarter": q, "code": code}, open(CACHE, "w"))
+            print(f"[fut] 전광판에서 최근월물 확정: {code} ({cand[0].get('hts_kor_isnm')})")
+            return code
+        print("[fut] 전광판 응답에 종목이 없다")
+    except Exception as e:
+        print(f"[fut] 전광판 실패: {e}")
+
+    # 4) 마지막 수단 — 코드 브루트포스. 실패 사유를 처음 한 번은 보여준다.
+    first_err = None
     for ch in string.ascii_uppercase:
         code = f"101{ch}{q:02d}"
         try:
             b = kis.fetch(PRICE_PATH, "FHMIF10000000",
                           {"FID_COND_MRKT_DIV_CODE": "F", "FID_INPUT_ISCD": code})
-        except Exception:
+        except Exception as e:
+            if first_err is None:
+                first_err = f"{code}: {e}"
             continue
         if (b.get("output1") or {}).get("futs_prpr"):
             os.makedirs("data/kr", exist_ok=True)
             json.dump({"year": y, "quarter": q, "code": code}, open(CACHE, "w"))
-            print(f"[fut] 종목코드 확정: {code}")
+            print(f"[fut] 브루트포스로 확정: {code}")
             return code
-    raise RuntimeError(f"{y}년 {q}월물 선물 종목코드를 찾지 못했다")
+    raise RuntimeError(f"{y}년 {q}월물 코드를 찾지 못했다. 첫 실패 사유 → {first_err}")
 
 
 def futures_intraday(code, day, interval=INTERVAL, max_pages=MAX_PAGES):
@@ -111,6 +146,7 @@ def main():
            "interval_sec": INTERVAL, "errors": []}
 
     try:
+        print("[fut] 선물 종목 탐색")
         code = resolve_future_code(y, q)
     except Exception as e:
         out["errors"].append(f"선물 종목코드: {e}")
