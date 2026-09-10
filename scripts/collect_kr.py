@@ -138,7 +138,10 @@ def futures_intraday(code, day, interval=INTERVAL, max_pages=MAX_PAGES):
         k = (r.get(DKEY, ""), r[TKEY])
         if k not in seen:
             seen.add(k); uniq.append(r)
-    reg = [r for r in uniq if SESSION_OPEN <= r[TKEY] <= SESSION_CLOSE]
+    # 야간 세션 탓에 전일 데이터가 섞여 온다. 가장 최근 영업일만 남긴다.
+    day_max = max((r.get(DKEY, "") for r in uniq), default="")
+    reg = [r for r in uniq
+           if r.get(DKEY, "") == day_max and SESSION_OPEN <= r[TKEY] <= SESSION_CLOSE]
     return head, reg, calls, len(uniq)
 
 
@@ -189,6 +192,19 @@ def main():
         call, put = b.get("output1") or [], b.get("output2") or []
         out["option_board"] = {"call": call, "put": put}
         print(f"[opt] {exp} 콜 {len(call)}행 / 풋 {len(put)}행")
+        try:
+            ds = derivatives_summary((out.get("future_price") or {}).get("output1"), call, put)
+            out["derivatives"] = ds
+            f = ds["future"]
+            print(f"[drv] 베이시스 {f['basis']} 괴리 {f['disparity']} "
+                  f"미결제 {f['open_interest']:,.0f}({f['oi_change']:+,.0f}) "
+                  f"{f.get('position_read','')}")
+            print(f"[drv] P/C OI {ds.get('put_call_oi_ratio')} · "
+                  f"최대OI 콜 {ds['call']['max_oi_strike']} / 풋 {ds['put']['max_oi_strike']} · "
+                  f"ATM IV 콜 {ds['call']['atm_iv']} 풋 {ds['put']['atm_iv']}")
+        except Exception as e:
+            out["errors"].append(f"파생 요약: {e}")
+            print(f"[drv] 요약 실패: {e}")
     except Exception as e:
         out["errors"].append(f"옵션 전광판: {e}")
         print(f"[opt] 전광판 실패: {e}")
@@ -236,13 +252,66 @@ def investor_daily(day, iscd="0001", iscd1="KSP"):
     return rows
 
 
-def program_trade(mrkt="1"):
-    """프로그램매매 투자자별 — 차익(arbt) vs 비차익(nabt) 구분이 핵심."""
-    b = kis.fetch(PROG_PATH, "HHPPG046600C1", {"MRKT_DIV_CLS_CODE": mrkt})
+def program_trade(mrkt="1", exch="1"):
+    """프로그램매매 투자자별 — 차익(arbt) vs 비차익(nabt) 구분이 핵심.
+    예제에는 MRKT_DIV_CLS_CODE만 있으나 실제로는 EXCH_DIV_CLS_CODE도 요구한다."""
+    b = kis.fetch(PROG_PATH, "HHPPG046600C1",
+                  {"MRKT_DIV_CLS_CODE": mrkt, "EXCH_DIV_CLS_CODE": exch})
     rows = b.get("output1") or b.get("output") or []
     if isinstance(rows, dict):
         rows = [rows]
     return rows
+
+
+def _f(x, d=0.0):
+    try:
+        return float(str(x).replace(",", ""))
+    except Exception:
+        return d
+
+
+def derivatives_summary(fut_o1, call_rows, put_rows):
+    """카드 세션이 200행을 다시 훑지 않도록 파생 핵심 지표를 미리 계산해 둔다."""
+    d = {}
+    o1 = fut_o1 or {}
+    oi, oi_chg = _f(o1.get("hts_otst_stpl_qty")), _f(o1.get("otst_stpl_qty_icdc"))
+    chg = _f(o1.get("futs_prdy_vrss"))
+    d["future"] = {
+        "price": _f(o1.get("futs_prpr")), "change": chg,
+        "basis": _f(o1.get("basis")), "theoretical": _f(o1.get("hts_thpr")),
+        "disparity": _f(o1.get("dprt")), "kospi200": _f(o1.get("kospi200_nmix")),
+        "open_interest": oi, "oi_change": oi_chg,
+    }
+    # 가격 방향 x 미결제 증감 → 신규/청산 판별
+    if chg and oi_chg:
+        d["future"]["position_read"] = (
+            "신규 매수" if chg > 0 and oi_chg > 0 else
+            "숏커버"   if chg > 0 and oi_chg < 0 else
+            "신규 매도" if chg < 0 and oi_chg > 0 else "롱청산")
+
+    def side(rows, tag):
+        out = {"oi_total": 0.0, "vol_total": 0.0, "max_oi_strike": None,
+               "max_oi": 0.0, "gamma_oi": 0.0, "atm_iv": None}
+        for r in rows:
+            k, o = _f(r.get("acpr")), _f(r.get("hts_otst_stpl_qty"))
+            out["oi_total"] += o
+            out["vol_total"] += _f(r.get("acml_vol"))
+            out["gamma_oi"] += _f(r.get("gama")) * o
+            if o > out["max_oi"]:
+                out["max_oi"], out["max_oi_strike"] = o, k
+            if str(r.get("atm_cls_name") or "").strip() == "ATM":
+                out["atm_iv"] = _f(r.get("hts_ints_vltl"))
+        return out
+
+    c, p = side(call_rows, "call"), side(put_rows, "put")
+    d["call"], d["put"] = c, p
+    if c["oi_total"]:
+        d["put_call_oi_ratio"] = round(p["oi_total"] / c["oi_total"], 3)
+    if c["vol_total"]:
+        d["put_call_vol_ratio"] = round(p["vol_total"] / c["vol_total"], 3)
+    # 딜러 포지션 가정은 사람마다 다르므로 부호를 붙이지 않고 양쪽을 따로 남긴다
+    d["gamma_oi_note"] = "call/put 각각 Σ(감마×미결제). 딜러 부호 가정은 사용하는 쪽에서 적용할 것"
+    return d
 
 
 def probe_investor():
@@ -253,9 +322,10 @@ def probe_investor():
         for iscd2 in ("S001", "0001"):
             try:
                 rows = investor_time(iscd, iscd2)
-                head = rows[0] if rows else {}
+                h = rows[0] if rows else {}
                 print(f"  iscd={iscd:5s} iscd2={iscd2:5s} rows={len(rows):3d}  "
-                      f"키={list(head)[:4]}")
+                      f"외인순매수={h.get('frgn_ntby_qty')} 개인={h.get('prsn_ntby_qty')} "
+                      f"기관={h.get('orgn_ntby_qty')}")
             except Exception as e:
                 print(f"  iscd={iscd:5s} iscd2={iscd2:5s} 실패: {str(e)[:60]}")
     print("--- 탐색 끝 ---")
