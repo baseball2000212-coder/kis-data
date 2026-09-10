@@ -14,7 +14,11 @@ import kis
 IDX_PATH  = "/uapi/overseas-price/v1/quotations/inquire-time-indexchartprice"
 ITEM_PATH = "/uapi/overseas-price/v1/quotations/inquire-time-itemchartprice"
 
-INDICES = {"SPX": "SPX", "NASDAQ": "COMP", "VIX": "VIX"}   # 다우는 심볼이 없어 제외
+# 지수 분봉은 페이징이 없고 항상 최근 102봉이 온다. 대신 간격을 키우면 커버 범위가 늘어난다.
+# 정규장 390분 → 5분봉(code 300) 78봉이면 하루가 통째로 덮인다. (2026.9.10 실측 확인)
+INDICES = {"NDX": "NDX", "SPX": "SPX", "COMP": "COMP", "VIX": "VIX"}
+IDX_INTERVAL = "300"        # 60=1분 300=5분 900=15분 1800=30분
+IDX_DATE_KEY, IDX_TIME_KEY = "stck_bsop_date", "stck_cntg_hour"
 STOCKS  = [("NAS", "QQQ"), ("AMS", "SPY"), ("NAS", "NVDA")]
 
 NMIN = "1"              # 1분봉
@@ -66,28 +70,38 @@ def stock_intraday(excd, symb, nmin=NMIN, max_pages=MAX_PAGES):
     return head, reg, calls, len(uniq)
 
 
-def index_snapshot(symbol):
+def index_intraday(symbol, interval=IDX_INTERVAL):
+    """지수 분봉 1회 호출 → 최근 영업일의 정규장만 오름차순으로."""
     b = kis.fetch(IDX_PATH, "FHKST03030200", {
         "FID_COND_MRKT_DIV_CODE": "N", "FID_INPUT_ISCD": symbol,
-        "FID_HOUR_CLS_CODE": "0", "FID_PW_DATA_INCU_YN": "Y",
+        "FID_HOUR_CLS_CODE": interval, "FID_PW_DATA_INCU_YN": "Y",
     })
     bars = b.get("output2") or []
     if isinstance(bars, dict):
         bars = [bars]
-    return {"symbol": symbol, "summary": b.get("output1"), "bars": bars}
+    bars = [r for r in bars if r.get(IDX_DATE_KEY) and r.get(IDX_TIME_KEY)]
+    bars.sort(key=lambda r: r[IDX_DATE_KEY] + r[IDX_TIME_KEY])
+    day = bars[-1][IDX_DATE_KEY] if bars else ""
+    reg = [r for r in bars if r[IDX_DATE_KEY] == day
+           and SESSION_OPEN <= r[IDX_TIME_KEY] <= SESSION_CLOSE]
+    return {"symbol": symbol, "interval_sec": interval, "summary": b.get("output1"),
+            "bars": reg, "raw_count": len(bars)}
 
 
 def main():
     out = {"asof_kst": kis.now_kst().isoformat(timespec="seconds"),
-           "session": "us", "nmin": NMIN,
+           "session": "us", "nmin": NMIN, "idx_interval_sec": IDX_INTERVAL,
            "session_window": f"{SESSION_OPEN}-{SESSION_CLOSE} ET",
            "indices": {}, "stocks": {}, "errors": []}
 
     for name, sym in INDICES.items():
         try:
-            d = index_snapshot(sym)
+            d = index_intraday(sym)
             out["indices"][name] = d
-            print(f"[idx] {name} <- {sym}  bars={len(d['bars'])}  {kis.timespan(d['bars'])}")
+            t = [r[IDX_TIME_KEY] for r in d["bars"]]
+            rng = f"{t[0]}~{t[-1]}" if t else "-"
+            print(f"[idx] {name} <- {sym}  정규장 {len(d['bars'])}봉 ({rng})  "
+                  f"수집 {d['raw_count']}건")
         except Exception as e:
             out["errors"].append(f"index {name}/{sym}: {e}")
             print(f"[idx] {name} 실패")
@@ -109,30 +123,5 @@ def main():
     kis.save("us", out)
 
 
-# ─────────────────────────────────────────────────────────────
-# 일회성 탐색: 지수 분봉의 심볼·간격이 어디까지 먹는지 확인한다.
-# 결과 확인 후 이 블록은 지운다. (수집 데이터에는 영향 없음)
-def probe():
-    print("--- 지수 분봉 탐색 ---")
-    for sym in ("NDX", "COMP", "SPX", "NDXT", "IXIC"):
-        for code in ("0", "60", "300", "900", "1800"):
-            try:
-                b = kis.fetch(IDX_PATH, "FHKST03030200", {
-                    "FID_COND_MRKT_DIV_CODE": "N", "FID_INPUT_ISCD": sym,
-                    "FID_HOUR_CLS_CODE": code, "FID_PW_DATA_INCU_YN": "Y",
-                })
-                bars = b.get("output2") or []
-                if isinstance(bars, dict):
-                    bars = [bars]
-                if bars:
-                    print(f"  {sym:6s} code={code:5s} bars={len(bars):4d}  {kis.timespan(bars)}")
-                else:
-                    print(f"  {sym:6s} code={code:5s} 빈 응답")
-            except Exception as e:
-                print(f"  {sym:6s} code={code:5s} 실패: {str(e)[:70]}")
-    print("--- 탐색 끝 ---")
-
-
 if __name__ == "__main__":
     main()
-    probe()
