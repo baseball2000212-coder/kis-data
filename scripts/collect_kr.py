@@ -6,7 +6,7 @@
 선물옵션 현재가     FHMIF10000000
 국내옵션 전광판 콜풋 FHPIF05030100  행사가별 델타·감마·베가·세타·IV·미결제약정
 """
-import os, json, string, datetime as dt
+import os, json, string, time, datetime as dt
 import kis
 
 CHART_PATH = "/uapi/domestic-futureoption/v1/quotations/inquire-time-fuopchartprice"
@@ -16,6 +16,8 @@ FUTBOARD_PATH = "/uapi/domestic-futureoption/v1/quotations/display-board-futures
 INV_TIME_PATH  = "/uapi/domestic-stock/v1/quotations/inquire-investor-time-by-market"
 INV_DAILY_PATH = "/uapi/domestic-stock/v1/quotations/inquire-investor-daily-by-market"
 PROG_PATH      = "/uapi/domestic-stock/v1/quotations/investor-program-trade-today"
+IDXCHART_PATH  = "/uapi/domestic-stock/v1/quotations/inquire-time-indexchartprice"
+COMPPROG_PATH  = "/uapi/domestic-stock/v1/quotations/comp-program-trade-today"
 
 CACHE = "data/kr/_futcode.json"
 SESSION_OPEN, SESSION_CLOSE = "090000", "154500"   # K200 선물 정규장
@@ -39,9 +41,10 @@ def front_future_month(today):
 
 
 def option_expiry_month(today):
-    """옵션 최근월물 YYYYMM. 이번 달 만기일이 지났으면 다음 달."""
+    """옵션 주력 월물 YYYYMM. 만기일 당일부터는 다음 달."""
     y, m = today.year, today.month
-    if today.day > second_thursday(y, m):
+    # 만기 당일에는 근월물 미결제가 이미 소멸한다. 그날부터 다음 월물을 본다.
+    if today.day >= second_thursday(y, m):
         m += 1
         if m > 12:
             m, y = 1, y + 1
@@ -184,14 +187,16 @@ def main():
         print(f"[fut] 분봉 실패: {e}")
 
     try:
-        b = kis.fetch(BOARD_PATH, "FHPIF05030100", {
-            "FID_COND_MRKT_DIV_CODE": "O", "FID_COND_SCR_DIV_CODE": "20503",
-            "FID_MRKT_CLS_CODE": "CO", "FID_MTRT_CNT": exp,
-            "FID_MRKT_CLS_CODE1": "PO", "FID_COND_MRKT_CLS_CODE": "",
-        })
-        call, put = b.get("output1") or [], b.get("output2") or []
+        call, put, ncalls = option_board_all(exp)
         out["option_board"] = {"call": call, "put": put}
-        print(f"[opt] {exp} 콜 {len(call)}행 / 풋 {len(put)}행")
+        ks = sorted(_f(r.get("acpr")) for r in call if r.get("acpr"))
+        print(f"[opt] {exp} 콜 {len(call)}행 / 풋 {len(put)}행 (calls={ncalls}) "
+              f"행사가 {ks[0] if ks else '-'}~{ks[-1] if ks else '-'}")
+        for tag, rows in (("콜", call), ("풋", put)):
+            for r in rows[:2]:
+                print(f"      {tag} 행사가={r.get('acpr')} 현재가={r.get('optn_prpr')} "
+                      f"미결제={r.get('hts_otst_stpl_qty')} IV={r.get('hts_ints_vltl')} "
+                      f"ATM={r.get('atm_cls_name')} 기준가={r.get('nmix_sdpr')}")
         try:
             ds = derivatives_summary((out.get("future_price") or {}).get("output1"), call, put)
             out["derivatives"] = ds
@@ -210,16 +215,30 @@ def main():
         print(f"[opt] 전광판 실패: {e}")
 
     day = today.strftime("%Y%m%d")
+    for name, iscd in (("코스피", "0001"), ("코스닥", "1001")):
+        try:
+            head, reg, n, tk = index_intraday(iscd)
+            out[f"index_{name}"] = {"iscd": iscd, "summary": head, "bars": reg, "time_key": tk}
+            rng = f"{reg[0][tk]}~{reg[-1][tk]}" if reg else "-"
+            print(f"[idx] {name} 분봉 {len(reg)}봉 ({rng}) calls={n}")
+        except Exception as e:
+            out["errors"].append(f"{name} 분봉: {e}")
+            print(f"[idx] {name} 분봉 실패: {str(e)[:80]}")
+
     for label, fn in (("수급 시간대별", lambda: investor_time("999", "S001")),
                       ("수급 일별", lambda: investor_daily(day)),
-                      ("프로그램 코스피", lambda: program_trade("1")),
-                      ("프로그램 코스닥", lambda: program_trade("2"))):
+                      ("프로그램 코스피", lambda: comp_program("K")),
+                      ("프로그램 코스닥", lambda: comp_program("Q"))):
         key = {"수급 시간대별": "investor_time", "수급 일별": "investor_daily",
                "프로그램 코스피": "program_kospi", "프로그램 코스닥": "program_kosdaq"}[label]
         try:
             rows = fn()
             out[key] = rows
-            print(f"[flow] {label} {len(rows)}행")
+            extra = ""
+            if rows and label.startswith("프로그램"):
+                r = rows[0]
+                extra = ("  " + " ".join(f"{k}={r.get(k)}" for k in list(r)[:6]))[:150]
+            print(f"[flow] {label} {len(rows)}행{extra}")
         except Exception as e:
             out["errors"].append(f"{label}: {e}")
             print(f"[flow] {label} 실패: {str(e)[:80]}")
@@ -227,6 +246,44 @@ def main():
     if out["errors"]:
         print(f"-- 실패 {len(out['errors'])}건")
     kis.save("kr", out)
+
+
+def index_intraday(iscd="0001", interval="60"):
+    """국내 업종·지수 분봉 (FHKUP03500200). 0001=코스피 1001=코스닥.
+    FID_INPUT_HOUR_1 은 초 단위 간격(60=1분)."""
+    head, rows, cont, n = None, [], "", 0
+    for _ in range(6):
+        b, h = kis._call(IDXCHART_PATH, "FHKUP03500200", {
+            "FID_COND_MRKT_DIV_CODE": "U", "FID_ETC_CLS_CODE": "0",
+            "FID_INPUT_ISCD": iscd, "FID_INPUT_HOUR_1": interval,
+            "FID_PW_DATA_INCU_YN": "Y",
+        }, cont)
+        n += 1
+        if head is None:
+            head = b.get("output1")
+        page = b.get("output2") or []
+        if isinstance(page, dict):
+            page = [page]
+        if not page:
+            break
+        rows += page
+        if (h.get("tr_cont") or "").strip() not in ("M", "F"):
+            break
+        cont = "N"
+        time.sleep(0.3)
+    tk = next((k for k in ("stck_cntg_hour", "bsop_hour", "cntg_hour")
+               if rows and k in rows[0]), "stck_cntg_hour")
+    dk = next((k for k in ("stck_bsop_date", "bsop_date") if rows and k in rows[0]), None)
+    seen, uniq = set(), []
+    for r in sorted(rows, key=lambda r: ((r.get(dk) or "") if dk else "", r.get(tk) or "")):
+        key = ((r.get(dk) or "") if dk else "", r.get(tk) or "")
+        if key not in seen:
+            seen.add(key); uniq.append(r)
+    if dk and uniq:
+        day = max(r.get(dk) or "" for r in uniq)
+        uniq = [r for r in uniq if (r.get(dk) or "") == day]
+    reg = [r for r in uniq if SESSION_OPEN <= (r.get(tk) or "") <= "153000"]
+    return head, reg, n, tk
 
 
 def investor_time(iscd, iscd2):
@@ -252,6 +309,17 @@ def investor_daily(day, iscd="0001", iscd1="KSP"):
     return rows
 
 
+def comp_program(mrkt_cls="K"):
+    """프로그램매매 종합현황(시간) FHPPG04600101 — 차익/비차익.
+    K=코스피 Q=코스닥. 파라미터가 단순해 이쪽을 우선 쓴다."""
+    b = kis.fetch(COMPPROG_PATH, "FHPPG04600101", {
+        "FID_COND_MRKT_DIV_CODE": "J", "FID_MRKT_CLS_CODE": mrkt_cls,
+        "FID_SCTN_CLS_CODE": "", "FID_INPUT_ISCD": "",
+    })
+    rows = b.get("output") or b.get("output1") or []
+    return [rows] if isinstance(rows, dict) else rows
+
+
 def program_trade(mrkt="1", exch="1"):
     """프로그램매매 투자자별 — 차익(arbt) vs 비차익(nabt) 구분이 핵심.
     예제에는 MRKT_DIV_CLS_CODE만 있으나 실제로는 EXCH_DIV_CLS_CODE도 요구한다."""
@@ -261,6 +329,38 @@ def program_trade(mrkt="1", exch="1"):
     if isinstance(rows, dict):
         rows = [rows]
     return rows
+
+
+def option_board_all(exp, max_pages=6):
+    """전광판은 한 번에 100행(가장 높은 행사가부터)만 준다.
+    tr_cont 연속조회로 ATM 근처까지 내려간다. 반환: (콜, 풋, 호출수)"""
+    calls, puts, cont, n = [], [], "", 0
+    for _ in range(max_pages):
+        b, h = kis._call(BOARD_PATH, "FHPIF05030100", {
+            "FID_COND_MRKT_DIV_CODE": "O", "FID_COND_SCR_DIV_CODE": "20503",
+            "FID_MRKT_CLS_CODE": "CO", "FID_MTRT_CNT": exp,
+            "FID_MRKT_CLS_CODE1": "PO", "FID_COND_MRKT_CLS_CODE": "",
+        }, cont)
+        n += 1
+        c, p = b.get("output1") or [], b.get("output2") or []
+        if isinstance(c, dict): c = [c]
+        if isinstance(p, dict): p = [p]
+        if not c and not p:
+            break
+        calls += c; puts += p
+        if (h.get("tr_cont") or "").strip() not in ("M", "F"):
+            break
+        cont = "N"
+        time.sleep(0.3)
+
+    def dedup(rows):
+        seen, out = set(), []
+        for r in sorted(rows, key=lambda r: _f(r.get("acpr")), reverse=True):
+            k = r.get("acpr")
+            if k and k not in seen:
+                seen.add(k); out.append(r)
+        return out
+    return dedup(calls), dedup(puts), n
 
 
 def _f(x, d=0.0):
@@ -289,9 +389,14 @@ def derivatives_summary(fut_o1, call_rows, put_rows):
             "숏커버"   if chg > 0 and oi_chg < 0 else
             "신규 매도" if chg < 0 and oi_chg > 0 else "롱청산")
 
+    # nmix_sdpr 는 지수가 아니다(실측). 선물 가격을 기준가로 쓴다.
+    spot = d["future"]["price"] or d["future"]["kospi200"]
+
     def side(rows, tag):
         out = {"oi_total": 0.0, "vol_total": 0.0, "max_oi_strike": None,
-               "max_oi": 0.0, "gamma_oi": 0.0, "atm_iv": None}
+               "max_oi": 0.0, "gamma_oi": 0.0, "atm_iv": None, "n": len(rows),
+               "strike_min": None, "strike_max": None}
+        near, near_gap = None, 1e18
         for r in rows:
             k, o = _f(r.get("acpr")), _f(r.get("hts_otst_stpl_qty"))
             out["oi_total"] += o
@@ -299,10 +404,20 @@ def derivatives_summary(fut_o1, call_rows, put_rows):
             out["gamma_oi"] += _f(r.get("gama")) * o
             if o > out["max_oi"]:
                 out["max_oi"], out["max_oi_strike"] = o, k
+            if k:
+                out["strike_min"] = k if out["strike_min"] is None else min(out["strike_min"], k)
+                out["strike_max"] = k if out["strike_max"] is None else max(out["strike_max"], k)
+                if spot and abs(k - spot) < near_gap:
+                    near_gap, near = abs(k - spot), r
             if str(r.get("atm_cls_name") or "").strip() == "ATM":
                 out["atm_iv"] = _f(r.get("hts_ints_vltl"))
+        # atm_cls_name 이 비어 있으면 기준가에 가장 가까운 행사가로 대체
+        if out["atm_iv"] is None and near is not None:
+            out["atm_iv"] = _f(near.get("hts_ints_vltl"))
+            out["atm_strike"] = _f(near.get("acpr"))
         return out
 
+    d["spot_ref"] = spot
     c, p = side(call_rows, "call"), side(put_rows, "put")
     d["call"], d["put"] = c, p
     if c["oi_total"]:
@@ -314,23 +429,104 @@ def derivatives_summary(fut_o1, call_rows, put_rows):
     return d
 
 
-def probe_investor():
-    """시장구분 코드가 어디까지 먹는지 탐색 — 선물·옵션 수급이 되는지 확인용.
-    결과 보고 이 함수는 지운다."""
-    print("--- 투자자 수급 시장구분 탐색 ---")
-    for iscd in ("999", "0001", "1001", "2001", "3001", "4001", "0000"):
-        for iscd2 in ("S001", "0001"):
+# ─────────────────────────────────────────────────────────────
+# 진단: 모르는 코드값을 한 번에 훑어 data/kr/_diag.json 에 남긴다.
+# 레포가 public이라 결과를 원격에서 바로 읽을 수 있다. 확정되면 이 블록은 지운다.
+def diagnose():
+    import traceback
+    D = {"asof_kst": kis.now_kst().isoformat(timespec="seconds")}
+
+    def rows_of(b):
+        r = b.get("output1") or b.get("output") or []
+        return [r] if isinstance(r, dict) else r
+
+    # 1) 선물 전광판 시장구분 — 정규 K200 선물(101…)이 나오는 코드를 찾는다
+    D["futures_board"] = {}
+    for cls in ("MKI", "KI", "MKM", "SPI", "F", "FUT", "K200", "KSP", "", "0", "1"):
+        try:
+            b = kis.fetch(FUTBOARD_PATH, "FHPIF05030200", {
+                "FID_COND_MRKT_DIV_CODE": "F", "FID_COND_SCR_DIV_CODE": "20503",
+                "FID_COND_MRKT_CLS_CODE": cls})
+            rs = rows_of(b)
+            D["futures_board"][cls] = [
+                {"code": r.get("futs_shrn_iscd"), "name": r.get("hts_kor_isnm"),
+                 "price": r.get("futs_prpr"), "oi": r.get("hts_otst_stpl_qty"),
+                 "days": r.get("hts_rmnn_dynu")} for r in rs[:6]]
+        except Exception as e:
+            D["futures_board"][cls] = f"실패: {str(e)[:120]}"
+
+    # 2) 프로그램매매 EXCH_DIV_CLS_CODE
+    D["program"] = {}
+    for exch in ("1", "2", "3", "01", "02", "K", "Q", "KSP", "KSQ", "UN", "A", ""):
+        try:
+            b = kis.fetch(PROG_PATH, "HHPPG046600C1",
+                          {"MRKT_DIV_CLS_CODE": "1", "EXCH_DIV_CLS_CODE": exch})
+            rs = rows_of(b)
+            D["program"][exch or "(빈값)"] = {
+                "n": len(rs),
+                "sample": [{"투자자": r.get("invr_cls_name"),
+                            "전체순매수": r.get("all_ntby_amt"),
+                            "차익순매수": r.get("arbt_ntby_amt"),
+                            "비차익순매수": r.get("nabt_ntby_amt")} for r in rs[:3]]}
+        except Exception as e:
+            D["program"][exch or "(빈값)"] = f"실패: {str(e)[:120]}"
+
+    # 3) 옵션 전광판 — 월물별·시장구분별 행사가 분포
+    D["option_board"] = {}
+    today = kis.now_kst().date()
+    for exp in (option_expiry_month(today),
+                f"{today.year}{today.month:02d}"):
+        for cls in ("", "MKI", "KI"):
+            key = f"{exp}/{cls or '기본'}"
             try:
-                rows = investor_time(iscd, iscd2)
-                h = rows[0] if rows else {}
-                print(f"  iscd={iscd:5s} iscd2={iscd2:5s} rows={len(rows):3d}  "
-                      f"외인순매수={h.get('frgn_ntby_qty')} 개인={h.get('prsn_ntby_qty')} "
-                      f"기관={h.get('orgn_ntby_qty')}")
+                b = kis.fetch(BOARD_PATH, "FHPIF05030100", {
+                    "FID_COND_MRKT_DIV_CODE": "O", "FID_COND_SCR_DIV_CODE": "20503",
+                    "FID_MRKT_CLS_CODE": "CO", "FID_MTRT_CNT": exp,
+                    "FID_MRKT_CLS_CODE1": "PO", "FID_COND_MRKT_CLS_CODE": cls})
+                call = b.get("output1") or []
+                put = b.get("output2") or []
+                if isinstance(call, dict): call = [call]
+                if isinstance(put, dict): put = [put]
+                ks = sorted({_f(r.get("acpr")) for r in call if r.get("acpr")})
+                D["option_board"][key] = {
+                    "n_call": len(call), "n_put": len(put),
+                    "strike_min": ks[0] if ks else None,
+                    "strike_max": ks[-1] if ks else None,
+                    "strike_step": round(ks[1] - ks[0], 3) if len(ks) > 1 else None,
+                    "sample_call": call[:2], "sample_put": put[:1]}
             except Exception as e:
-                print(f"  iscd={iscd:5s} iscd2={iscd2:5s} 실패: {str(e)[:60]}")
-    print("--- 탐색 끝 ---")
+                D["option_board"][key] = f"실패: {str(e)[:120]}"
+
+    # 3b) 프로그램매매 종합현황
+    D["comp_program"] = {}
+    for mc in ("K", "Q", "1", "2", ""):
+        try:
+            rs = comp_program(mc)
+            D["comp_program"][mc or "(빈값)"] = {"n": len(rs), "sample": rs[:2]}
+        except Exception as e:
+            D["comp_program"][mc or "(빈값)"] = f"실패: {str(e)[:120]}"
+
+    # 4) 수급 일별 — 코스피/코스닥 분리가 되는지
+    D["investor_daily"] = {}
+    day = today.strftime("%Y%m%d")
+    for iscd, iscd1 in (("0001", "KSP"), ("1001", "KSQ"), ("2001", "KSP"), ("0001", "KSQ")):
+        try:
+            rs = investor_daily(day, iscd=iscd, iscd1=iscd1)
+            D["investor_daily"][f"{iscd}/{iscd1}"] = {
+                "n": len(rs),
+                "sample": [{k: r.get(k) for k in
+                            ("stck_bsop_date", "bstp_nmix_prpr", "frgn_ntby_qty",
+                             "prsn_ntby_qty", "orgn_ntby_qty", "frgn_ntby_tr_pbmn")}
+                           for r in rs[:2]]}
+        except Exception as e:
+            D["investor_daily"][f"{iscd}/{iscd1}"] = f"실패: {str(e)[:120]}"
+
+    os.makedirs("data/kr", exist_ok=True)
+    with open("data/kr/_diag.json", "w", encoding="utf-8") as f:
+        json.dump(D, f, ensure_ascii=False, indent=1)
+    print("진단 저장: data/kr/_diag.json")
 
 
 if __name__ == "__main__":
     main()
-    probe_investor()
+    diagnose()
