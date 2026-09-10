@@ -109,5 +109,30 @@ def main():
     kis.save("us", out)
 
 
+# ─────────────────────────────────────────────────────────────
+# 일회성 탐색: 지수 분봉의 심볼·간격이 어디까지 먹는지 확인한다.
+# 결과 확인 후 이 블록은 지운다. (수집 데이터에는 영향 없음)
+def probe():
+    print("--- 지수 분봉 탐색 ---")
+    for sym in ("NDX", "COMP", "SPX", "NDXT", "IXIC"):
+        for code in ("0", "60", "300", "900", "1800"):
+            try:
+                b = kis.fetch(IDX_PATH, "FHKST03030200", {
+                    "FID_COND_MRKT_DIV_CODE": "N", "FID_INPUT_ISCD": sym,
+                    "FID_HOUR_CLS_CODE": code, "FID_PW_DATA_INCU_YN": "Y",
+                })
+                bars = b.get("output2") or []
+                if isinstance(bars, dict):
+                    bars = [bars]
+                if bars:
+                    print(f"  {sym:6s} code={code:5s} bars={len(bars):4d}  {kis.timespan(bars)}")
+                else:
+                    print(f"  {sym:6s} code={code:5s} 빈 응답")
+            except Exception as e:
+                print(f"  {sym:6s} code={code:5s} 실패: {str(e)[:70]}")
+    print("--- 탐색 끝 ---")
+
+
 if __name__ == "__main__":
     main()
+    probe()
