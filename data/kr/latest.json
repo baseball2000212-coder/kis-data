@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-09-11T20:51:01+09:00",
+ "asof_kst": "2026-09-11T21:10:10+09:00",
  "session": "kr",
  "interval_sec": "60",
  "errors": [
@@ -86,7 +86,7 @@
    "kospi200_nmix": "1090.22",
    "hts_otst_stpl_qty": "52941",
    "otst_stpl_qty_icdc": "-1413",
-   "tday_rltv": "98.53",
+   "tday_rltv": "98.51",
    "hts_thpr": "1092.28",
    "dprt": "-0.76"
   },
