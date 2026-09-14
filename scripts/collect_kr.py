@@ -290,7 +290,16 @@ def main():
                 def _eok2(v):
                     try: return round(float(v) / 100.0)      # 백만원 -> 억원
                     except Exception: return None
-                arb, nab = _eok2(r0.get("arbt_ntby_amt")), _eok2(r0.get("nabt_ntby_amt"))
+                def _ntby(pfx):
+                    # 2026.9.14 실측: 종합현황 응답은 arbt_smtn_ntby_tr_pbmn /
+                    # nabt_smtn_ntby_tr_pbmn (백만원). 없으면 매수-매도로 직접 계산.
+                    v = _eok2(r0.get(f"{pfx}_smtn_ntby_tr_pbmn"))
+                    if v is None:
+                        b = _eok2(r0.get(f"{pfx}_smtn_shnu_tr_pbmn"))
+                        sl = _eok2(r0.get(f"{pfx}_smtn_seln_tr_pbmn"))
+                        v = (b - sl) if (b is not None and sl is not None) else None
+                    return v
+                arb, nab = _ntby("arbt"), _ntby("nabt")
                 tot = (arb + nab) if (arb is not None and nab is not None) else None
                 out["program_check_eok"] = {
                     "time": r0.get("bsop_hour"), "차익": arb, "비차익": nab, "전체": tot,
@@ -388,14 +397,36 @@ def comp_program(mrkt_cls="K"):
     return [rows] if isinstance(rows, dict) else rows
 
 
+# EXCH_DIV_CLS_CODE 후보 — 공식 예제엔 아예 없는 필드인데 서버는 요구한다.
+# 9/10 "1" → INVALID, 9/14 미전송 → INPUT FIELD NOT FOUND. 값 규격이 문서에 없어
+# 한 번의 런에서 후보를 순서대로 시도하고, 성공한 값을 로그에 남긴다.
+EXCH_CANDIDATES = ["UN", "NX", "J", "K", "3", "2", "0", ""]
+_exch_ok = None
+
+
 def investor_program(mrkt="1"):
     """프로그램매매 투자자매매동향(당일) HHPPG046600C1 — 1:코스피 4:코스닥.
-    ※ 필수 인자는 MRKT_DIV_CLS_CODE 하나뿐이다. EXCH_DIV_CLS_CODE 를 같이 보내면 거부된다.
-    응답에 투자자별 arbt_ntby_amt(차익 순매수대금) / nabt_ntby_amt(비차익) 가 들어온다 —
+    응답에 투자자별 차익/비차익 순매수대금이 들어온다 —
     네이버 화면이 주는 시장 전체 합계보다 한 단계 깊다."""
-    b = kis.fetch(PROG_PATH, "HHPPG046600C1", {"MRKT_DIV_CLS_CODE": mrkt})
-    rows = b.get("output1") or b.get("output") or []
-    return [rows] if isinstance(rows, dict) else rows
+    global _exch_ok
+    tried = []
+    for exch in ([_exch_ok] if _exch_ok is not None else EXCH_CANDIDATES):
+        try:
+            b = kis.fetch(PROG_PATH, "HHPPG046600C1",
+                          {"MRKT_DIV_CLS_CODE": mrkt, "EXCH_DIV_CLS_CODE": exch})
+        except Exception as e:
+            tried.append(f"{exch or '(빈값)'}:{str(e)[:40]}")
+            continue
+        rows = b.get("output1") or b.get("output") or []
+        if isinstance(rows, dict):
+            rows = [rows]
+        if rows:
+            if _exch_ok != exch:
+                print(f"[prog] EXCH_DIV_CLS_CODE='{exch}' 로 투자자별 조회 성공")
+            _exch_ok = exch
+            return rows
+        tried.append(f"{exch or '(빈값)'}:0행")
+    raise RuntimeError("EXCH_DIV_CLS_CODE 후보 전부 실패 — " + " / ".join(tried[:6]))
 
 
 def program_trade(mrkt="1", exch="1"):
@@ -500,7 +531,8 @@ def option_chain(span=OPT_SPAN, pause=0.15):
             except Exception as e:
                 bad.append(f"{tag}{r['행사가']}:{str(e)[:40]}")
             time.sleep(pause)
-    meta = {"center": picked["center"], "span": span, "calls": len(calls),
+    meta = {"month": picked.get("month"),
+            "center": picked["center"], "span": span, "calls": len(calls),
             "puts": len(puts), "calls_api": n, "failed": bad[:8]}
     ks = sorted(_f(r.get("acpr")) for r in calls if r.get("acpr"))
     print(f"[opt] 체인 ATM {picked['center']} · 콜 {len(calls)} 풋 {len(puts)} "
@@ -666,17 +698,24 @@ def diagnose():
             raise RuntimeError("fo_master 모듈 없음")
         rows = fo_master.load()
         D["master"] = fo_master.summary(rows)
+        D["master_sample"] = rows[:4]          # 레이아웃 육안 확인용
         ff = fo_master.front_future(rows)
         D["master_front_future"] = {"code": ff[0], "name": ff[1], "kind": ff[2]} if ff else None
+    except Exception as e:
+        D["master"] = f"실패: {str(e)[:200]}"
+        rows = None
+    try:                                        # ATM 실패해도 위 분포는 남긴다
+        if not rows:
+            raise RuntimeError("마스터 미로드")
         pick = fo_master.atm_options(rows, span=3)
         D["master_atm"] = {
-            "center": pick["center"],
+            "month": pick.get("month"), "center": pick["center"],
             "calls": [{k: r[k] for k in ("단축코드", "행사가", "ATM구분", "종목명")}
                       for r in pick["calls"]],
             "puts": [{k: r[k] for k in ("단축코드", "행사가", "ATM구분")}
                      for r in pick["puts"]]}
     except Exception as e:
-        D["master"] = f"실패: {str(e)[:200]}"
+        D["master_atm"] = f"실패: {str(e)[:200]}"
 
     os.makedirs("data/kr", exist_ok=True)
     with open("data/kr/_diag.json", "w", encoding="utf-8") as f:

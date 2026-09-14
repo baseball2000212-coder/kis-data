@@ -8,26 +8,28 @@
   - 정규 K200 선물 코드도 전광판 시장구분으로는 미니선물만 나온다.
 마스터에서 최근월물 + ATM 근처 종목코드를 직접 뽑아, 개별 시세 API로 조회한다.
 
-레이아웃 (공식 예제 stocks_info/domestic_index_future_code.py 기준, '|' 구분 9필드):
+레이아웃 ('|' 구분 9필드, cp949):
   0 상품종류  1 단축코드  2 표준코드  3 한글종목명  4 ATM구분
   5 행사가    6 월물구분  7 기초자산 단축코드  8 기초자산명
 
-상품종류: 1=지수선물(정규 K200)  5=지수콜옵션  6=지수풋옵션
-          B=미니선물  D=미니콜옵션  E=미니풋옵션
-ATM구분:  1=ATM  2=ITM  3=OTM
-월물구분: 0=연결선물  1=최근월물  2=차근월물  3=차차근월물  4=차차차근월물
+※ 상품종류·월물구분 코드값은 공식 문서에 없다. 2026.9.14 실측으로
+   선물 최근월물이 (종류 '1', 월물구분 '1', 종목명 'F 202612') 인 것만 확인됐고
+   **옵션은 종류 '5'/'6' 이 아니었다**(그 조건으로 0행). 그래서 아래 로직은
+   코드값을 믿지 않고 **행사가가 숫자인 행 = 옵션**, **종목명 첫 글자 C/P =
+   콜/풋**, **종목명 안의 YYYYMM = 월물** 로 판별한다. summary() 가
+   _diag.json 에 실제 분포를 남기니 레이아웃이 바뀌면 거기서 바로 보인다.
 """
-import io, os, zipfile, urllib.request, ssl
+import io, re, ssl, zipfile, datetime, urllib.request
 
 URL = "https://new.real.download.dws.co.kr/common/master/fo_idx_code_mts.mst.zip"
 COLS = ["종류", "단축코드", "표준코드", "종목명", "ATM구분",
         "행사가", "월물구분", "기초코드", "기초명"]
 
-IDX_FUT, IDX_CALL, IDX_PUT = "1", "5", "6"
-MINI_FUT, MINI_CALL, MINI_PUT = "B", "D", "E"
-NEAR = "1"                                    # 최근월물
+IDX_FUT, MINI_FUT = "1", "B"          # front_future() 가 이 순서로 시도
+NEAR = "1"                            # 월물구분 최근월물 (선물에서 실측 확인)
 
 _cache = None
+_YM = re.compile(r"(20\d{4})")
 
 
 def _f(v, default=None):
@@ -44,15 +46,14 @@ def load(force=False):
         return _cache
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE          # 한투 배포 서버 인증서가 종종 체인이 끊겨 있다
+    ctx.verify_mode = ssl.CERT_NONE      # 한투 배포 서버 인증서 체인이 종종 끊겨 있다
     with urllib.request.urlopen(URL, timeout=60, context=ctx) as r:
         blob = r.read()
     with zipfile.ZipFile(io.BytesIO(blob)) as z:
         name = next(n for n in z.namelist() if n.lower().endswith(".mst"))
         raw = z.read(name)
-    text = raw.decode("cp949", errors="replace")
     rows = []
-    for line in text.splitlines():
+    for line in raw.decode("cp949", errors="replace").splitlines():
         if not line.strip():
             continue
         p = [c.strip() for c in line.split("|")]
@@ -66,15 +67,54 @@ def load(force=False):
     return rows
 
 
+# ── 판별 ────────────────────────────────────────────────────────────────
+def _month(r):
+    m = _YM.search(r.get("종목명", "") or "")
+    return m.group(1) if m else (r.get("월물구분") or "")
+
+
+def _cp(r):
+    """콜/풋/선물 판별 — 종목명 첫 글자 우선, 없으면 행사가 유무."""
+    nm = (r.get("종목명") or "").strip().upper()
+    if nm[:1] == "C":
+        return "C"
+    if nm[:1] == "P":
+        return "P"
+    if nm[:1] == "F":
+        return "F"
+    return "C" if _f(r.get("행사가"), 0) else "F"
+
+
+def _is_opt(r):
+    return _f(r.get("행사가"), 0) > 0 and _cp(r) in ("C", "P")
+
+
+def _mini(r):
+    s = (r.get("종목명", "") or "") + (r.get("기초명", "") or "")
+    return ("미니" in s) or ("MINI" in s.upper())
+
+
 def summary(rows=None):
-    """상품종류·월물구분 분포 — 레이아웃이 바뀌었는지 한눈에 보는 용도."""
+    """상품종류·월물 분포 — 레이아웃/코드값이 바뀌었는지 _diag.json 에서 보는 용도."""
     rows = rows or load()
-    kinds, months = {}, {}
+    kinds = {}
     for r in rows:
-        kinds[r["종류"]] = kinds.get(r["종류"], 0) + 1
-        months[r["월물구분"]] = months.get(r["월물구분"], 0) + 1
-    return {"총행": len(rows), "상품종류별": kinds, "월물구분별": months,
-            "샘플": rows[:3]}
+        k = r["종류"]
+        d = kinds.setdefault(k, {"행": 0, "옵션행": 0, "월물구분값": set(),
+                                 "샘플종목명": r.get("종목명"),
+                                 "샘플행사가": r.get("행사가"),
+                                 "샘플기초명": r.get("기초명")})
+        d["행"] += 1
+        if _is_opt(r):
+            d["옵션행"] += 1
+        if len(d["월물구분값"]) < 8:
+            d["월물구분값"].add(r.get("월물구분"))
+    for d in kinds.values():
+        d["월물구분값"] = sorted(d["월물구분값"])
+    opts = [r for r in rows if _is_opt(r)]
+    months = sorted({_month(r) for r in opts})
+    return {"총행": len(rows), "옵션행": len(opts),
+            "옵션월물": months[:12], "상품종류별": kinds}
 
 
 def front_future(rows=None, prefer_regular=True):
@@ -90,21 +130,44 @@ def front_future(rows=None, prefer_regular=True):
     return None
 
 
-def atm_options(rows=None, span=20, mini=False):
+def _expiry(ym):
+    """YYYYMM 의 옵션 만기일(둘째 목요일)."""
+    y, m = int(ym[:4]), int(ym[4:])
+    d = datetime.date(y, m, 1)
+    first_thu = 1 + (3 - d.weekday()) % 7        # 목요일=3
+    return datetime.date(y, m, first_thu + 7)
+
+
+def front_month(rows=None, today=None, mini=False):
+    """옵션 최근월물 YYYYMM. **만기 당일이면 다음 월물** (만기일엔 근월물 미결제가
+    소멸해 P/C OI 가 왜곡된다 — 9/11 실측)."""
+    rows = rows or load()
+    today = today or datetime.date.today()
+    months = sorted({_month(r) for r in rows
+                     if _is_opt(r) and _mini(r) == mini and _YM.fullmatch(_month(r) or "")})
+    for ym in months:
+        if _expiry(ym) > today:
+            return ym
+    return months[0] if months else None
+
+
+def atm_options(rows=None, span=20, mini=False, month=None, today=None):
     """최근월물 콜·풋을 행사가 순으로 정렬해 ATM 기준 ±span 개만 반환.
 
     ATM 기준은 ① 마스터의 ATM구분='1' 을 우선 사용하고
-    ② 없으면 콜·풋 행사가 목록의 중앙값을 쓴다.
-    반환: {"center": 행사가, "calls": [...], "puts": [...]} — 각 원소는 마스터 행
+    ② 없으면 콜 행사가 목록의 중앙값을 쓴다.
+    반환: {"month": YYYYMM, "center": 행사가, "calls": [...], "puts": [...]}
     """
     rows = rows or load()
-    ck, pk = (MINI_CALL, MINI_PUT) if mini else (IDX_CALL, IDX_PUT)
-    calls = sorted([r for r in rows if r["종류"] == ck and r["월물구분"] == NEAR],
-                   key=lambda r: _f(r["행사가"], 0))
-    puts = sorted([r for r in rows if r["종류"] == pk and r["월물구분"] == NEAR],
-                  key=lambda r: _f(r["행사가"], 0))
+    ym = month or front_month(rows, today=today, mini=mini)
+    if not ym:
+        raise RuntimeError("마스터에서 옵션 월물을 못 찾았다")
+
+    sel = [r for r in rows if _is_opt(r) and _mini(r) == mini and _month(r) == ym]
+    calls = sorted([r for r in sel if _cp(r) == "C"], key=lambda r: _f(r["행사가"], 0))
+    puts = sorted([r for r in sel if _cp(r) == "P"], key=lambda r: _f(r["행사가"], 0))
     if not calls or not puts:
-        raise RuntimeError(f"최근월물 옵션이 비었다 (콜 {len(calls)} 풋 {len(puts)})")
+        raise RuntimeError(f"{ym} 월물 옵션이 비었다 (콜 {len(calls)} 풋 {len(puts)})")
 
     atm = next((_f(r["행사가"]) for r in calls if r["ATM구분"] == "1"), None)
     if atm is None:
@@ -115,7 +178,7 @@ def atm_options(rows=None, span=20, mini=False):
         return lst[max(0, i - span): i + span + 1]
 
     c, p = around(calls), around(puts)
-    print(f"[mst] 최근월물 ATM {atm} · 콜 {len(calls)}개 중 {len(c)}개 / "
+    print(f"[mst] {ym} 월물 ATM {atm} · 콜 {len(calls)}개 중 {len(c)}개 / "
           f"풋 {len(puts)}개 중 {len(p)}개 선택 "
           f"(행사가 {_f(c[0]['행사가'])}~{_f(c[-1]['행사가'])})")
-    return {"center": atm, "calls": c, "puts": p}
+    return {"month": ym, "center": atm, "calls": c, "puts": p}
