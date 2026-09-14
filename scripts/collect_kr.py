@@ -17,6 +17,7 @@ INV_TIME_PATH  = "/uapi/domestic-stock/v1/quotations/inquire-investor-time-by-ma
 INV_DAILY_PATH = "/uapi/domestic-stock/v1/quotations/inquire-investor-daily-by-market"
 PROG_PATH      = "/uapi/domestic-stock/v1/quotations/investor-program-trade-today"
 IDXCHART_PATH  = "/uapi/domestic-stock/v1/quotations/inquire-time-indexchartprice"
+IDX_INTERVAL   = "300"   # 초 단위. 60=1분(102봉 캡에 걸려 장 전체 못 덮음) 300=5분 900=15분
 COMPPROG_PATH  = "/uapi/domestic-stock/v1/quotations/comp-program-trade-today"
 
 CACHE = "data/kr/_futcode.json"
@@ -225,11 +226,12 @@ def main():
             out["errors"].append(f"{name} 분봉: {e}")
             print(f"[idx] {name} 분봉 실패: {str(e)[:80]}")
 
-    for label, fn in (("수급 시간대별", lambda: investor_time("999", "S001")),
-                      ("수급 일별", lambda: investor_daily(day)),
+    for label, fn in (("수급 일별(★기준)", lambda: investor_daily(day, "0001", "KSP")),
+                      ("수급 시간대별(참고용)", lambda: investor_time("999", "S001")),
                       ("프로그램 코스피", lambda: comp_program("K")),
                       ("프로그램 코스닥", lambda: comp_program("Q"))):
-        key = {"수급 시간대별": "investor_time", "수급 일별": "investor_daily",
+        key = {"수급 시간대별(참고용)": "investor_time_REF_ONLY",
+               "수급 일별(★기준)": "investor_daily",
                "프로그램 코스피": "program_kospi", "프로그램 코스닥": "program_kosdaq"}[label]
         try:
             rows = fn()
@@ -238,6 +240,20 @@ def main():
             if rows and label.startswith("프로그램"):
                 r = rows[0]
                 extra = ("  " + " ".join(f"{k}={r.get(k)}" for k in list(r)[:6]))[:150]
+            if key == "investor_daily" and rows:
+                r0 = rows[0]
+                def _eok(v):
+                    try: return round(float(v) / 100.0)      # 백만원 -> 억원
+                    except Exception: return None
+                chk = {"date": r0.get("stck_bsop_date"),
+                       "지수": r0.get("bstp_nmix_prpr"),
+                       "개인": _eok(r0.get("prsn_ntby_tr_pbmn")),
+                       "외국인": _eok(r0.get("frgn_ntby_tr_pbmn")),
+                       "기관": _eok(r0.get("orgn_ntby_tr_pbmn"))}
+                out["flow_check_eok"] = chk
+                print(f"[flow] ★대조용(억원) {chk['date']} 지수 {chk['지수']} | "
+                      f"개인 {chk['개인']:+,} 외국인 {chk['외국인']:+,} 기관 {chk['기관']:+,}")
+                print("[flow] ↑ 발행 전 네이버금융 투자자별 매매동향과 반드시 대조할 것")
             print(f"[flow] {label} {len(rows)}행{extra}")
         except Exception as e:
             out["errors"].append(f"{label}: {e}")
@@ -248,7 +264,7 @@ def main():
     kis.save("kr", out)
 
 
-def index_intraday(iscd="0001", interval="60"):
+def index_intraday(iscd="0001", interval=IDX_INTERVAL):
     """국내 업종·지수 분봉 (FHKUP03500200). 0001=코스피 1001=코스닥.
     FID_INPUT_HOUR_1 은 초 단위 간격(60=1분)."""
     head, rows, cont, n = None, [], "", 0

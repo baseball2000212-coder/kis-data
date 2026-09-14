@@ -9,6 +9,8 @@
 종가·지수 레벨 확인용으로만 쓰고, 차트는 QQQ/SPY로 그린다.
 """
 import datetime as dt
+import json
+import os
 import kis
 
 IDX_PATH  = "/uapi/overseas-price/v1/quotations/inquire-time-indexchartprice"
@@ -22,9 +24,16 @@ IDX_DATE_KEY, IDX_TIME_KEY = "stck_bsop_date", "stck_cntg_hour"
 STOCKS  = [("NAS", "QQQ"), ("AMS", "SPY"), ("NAS", "NVDA")]
 
 NMIN = "1"              # 1분봉
-SESSION_OPEN  = "093000"
-SESSION_CLOSE = "160000"
-MAX_PAGES = 6           # 120건 x 6 = 720분, 정규장 390분을 충분히 덮는다
+# SESSION=regular : 정규장 09:30~16:00 ET (기본, 미장 마감 카드용)
+# SESSION=premarket: 프리마켓 04:00~09:30 ET — CPI·고용지표처럼 개장 전 발표 이벤트용.
+#   발표 시각(08:30 ET) 전후 반응이 여기에 찍힌다. 정규장 봉은 이 시각엔 아직 존재하지 않는다.
+SESSION = os.environ.get("SESSION", "regular")
+if SESSION == "premarket":
+    SESSION_OPEN, SESSION_CLOSE = "070000", "093000"
+    MAX_PAGES = 3       # 150분이면 충분
+else:
+    SESSION_OPEN, SESSION_CLOSE = "093000", "160000"
+    MAX_PAGES = 6       # 120건 x 6 = 720분, 정규장 390분을 충분히 덮는다
 
 
 def _keyb(row, nmin):
@@ -90,11 +99,11 @@ def index_intraday(symbol, interval=IDX_INTERVAL):
 
 def main():
     out = {"asof_kst": kis.now_kst().isoformat(timespec="seconds"),
-           "session": "us", "nmin": NMIN, "idx_interval_sec": IDX_INTERVAL,
+           "session": f"us-{SESSION}", "nmin": NMIN, "idx_interval_sec": IDX_INTERVAL,
            "session_window": f"{SESSION_OPEN}-{SESSION_CLOSE} ET",
            "indices": {}, "stocks": {}, "errors": []}
 
-    for name, sym in INDICES.items():
+    for name, sym in (INDICES.items() if SESSION == "regular" else []):
         try:
             d = index_intraday(sym)
             out["indices"][name] = d
@@ -120,8 +129,47 @@ def main():
 
     if out["errors"]:
         print(f"-- 실패 {len(out['errors'])}건")
-    kis.save("us", out)
+    kis.save("us" if SESSION == "regular" else "us_premarket", out)
+
+# ── 나스닥100 선물(NQ) 연결 가능 여부 탐침 ───────────────────────────────
+# 해외선물옵션 계좌가 있어야 열리는 경우가 많다. 열리면 data/us/_nq_probe.json 에
+# 실제 분봉이 찍히고, 안 열리면 사유가 남는다. 실패해도 본 수집엔 영향 없음.
+NQ_CHART_PATH = "/uapi/overseas-futureoption/v1/quotations/inquire-time-futurechartprice"
+NQ_PRICE_PATH = "/uapi/overseas-futureoption/v1/quotations/inquire-price"
+
+def nq_probe():
+    res = {}
+    # 월물코드: 3=H 6=M 9=U 12=Z. 9월물/12월물 둘 다 찔러본다.
+    for srs in ("NQU26", "NQZ26", "MNQU26", "MNQZ26"):
+        try:
+            b = kis.fetch(NQ_PRICE_PATH, "HHDFC55010000",
+                          {"SRS_CD": srs, "EXCH_CD": "CME"})
+            o = b.get("output1") or b.get("output") or {}
+            res[f"price/{srs}"] = {k: o.get(k) for k in list(o)[:8]} if o else "빈 응답"
+        except Exception as e:
+            res[f"price/{srs}"] = f"실패: {str(e)[:140]}"
+    for srs in ("NQU26", "NQZ26"):
+        try:
+            b = kis.fetch(NQ_CHART_PATH, "HHDFC55020400", {
+                "SRS_CD": srs, "EXCH_CD": "CME", "START_DATE_TIME": "",
+                "CLOSE_DATE_TIME": "", "QRY_TP": "Q", "QRY_CNT": "120",
+                "QRY_GAP": "5", "INDEX_KEY": ""})
+            rows = b.get("output2") or []
+            if isinstance(rows, dict):
+                rows = [rows]
+            res[f"chart/{srs}"] = {"n": len(rows), "sample": rows[:2]}
+        except Exception as e:
+            res[f"chart/{srs}"] = f"실패: {str(e)[:140]}"
+    os.makedirs("data/us", exist_ok=True)
+    with open("data/us/_nq_probe.json", "w", encoding="utf-8") as f:
+        json.dump(res, f, ensure_ascii=False, indent=1)
+    ok = [k for k, v in res.items() if not isinstance(v, str)]
+    print(f"[nq ] 탐침 결과 저장 · 열린 엔드포인트 {len(ok)}/{len(res)} {ok}")
 
 
 if __name__ == "__main__":
     main()
+    try:
+        nq_probe()
+    except Exception as e:
+        print(f"[nq ] 탐침 자체 실패: {str(e)[:120]}")
