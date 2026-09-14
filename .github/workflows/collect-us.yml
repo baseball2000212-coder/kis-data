@@ -1,8 +1,7 @@
 name: collect-us
 on:
   schedule:
-    - cron: '0 22 * * 1-5'
-    - cron: '20 22 * * 1-5'
+    - cron: '0 22 * * 1-5'    # 07:00 KST(익일) — 미국 본장 마감 후
   workflow_dispatch:
 permissions:
   contents: write
@@ -14,7 +13,16 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
       - run: pip install -r requirements.txt
+      - name: KST 날짜 (토큰 캐시 키)
+        id: d
+        run: echo "day=$(TZ=Asia/Seoul date +%F)" >> $GITHUB_OUTPUT
+      - name: 접근토큰 캐시
+        uses: actions/cache@v4
+        with:
+          path: .tokencache
+          key: kis-token-${{ steps.d.outputs.day }}
       - name: collect
+        working-directory: .
         env:
           KIS_APP_KEY:    ${{ secrets.KIS_APP_KEY }}
           KIS_APP_SECRET: ${{ secrets.KIS_APP_SECRET }}
