@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-09-14T22:24:14+09:00",
+ "asof_kst": "2026-09-14T22:55:21+09:00",
  "session": "kr",
  "interval_sec": "60",
  "errors": [],
@@ -87,7 +87,7 @@
    "kospi200_nmix": "1050.83",
    "hts_otst_stpl_qty": "129661",
    "otst_stpl_qty_icdc": "1069",
-   "tday_rltv": "95.12",
+   "tday_rltv": "95.10",
    "hts_thpr": "1057.64",
    "dprt": "-0.87"
   },
@@ -608,7 +608,7 @@
     "futs_prpr": "1056.50",
     "futs_oprc": "1056.45",
     "futs_hgpr": "1056.90",
-    "futs_lwpr": "1055.05",
+    "futs_lwpr": "1055.00",
     "cntg_vol": "306",
     "acml_tr_pbmn": "7684045513"
    },
