@@ -1,7 +1,7 @@
 name: collect-kr
 on:
   schedule:
-    - cron: '20 3 * * 1-5'    # 12:20 KST — 점심 중간 리서치용
+    - cron: '55 3 * * 1-5'    # 12:55 KST — 장중 파생 카드용(13:00 제작)
     - cron: '50 6 * * 1-5'    # 15:50 KST — 장 마감 직후
     - cron: '5 7 * * 1-5'     # 16:05 KST — 확정치 재수집
   workflow_dispatch:
