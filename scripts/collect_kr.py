@@ -8,6 +8,11 @@
 """
 import os, json, string, time, datetime as dt
 import kis
+try:
+    import fo_master                      # 종목 마스터(행사가·ATM 구분) — 같이 올려야 한다
+except Exception as _e:                   # 없어도 수집 전체가 죽지는 않게
+    fo_master = None
+    print(f"[mst] fo_master 없음 → 전광판 폴백으로 동작: {_e}")
 
 CHART_PATH = "/uapi/domestic-futureoption/v1/quotations/inquire-time-fuopchartprice"
 PRICE_PATH = "/uapi/domestic-futureoption/v1/quotations/inquire-price"
@@ -157,7 +162,21 @@ def main():
 
     try:
         print("[fut] 선물 종목 탐색")
-        code = resolve_future_code(y, q)
+        code = None
+        try:
+            if fo_master is None:
+                raise RuntimeError("fo_master 모듈 없음")
+            fm = fo_master.front_future()          # 정규 K200(종류 1) 우선
+            if fm:
+                code, fname, fkind = fm
+                out["future_name"], out["future_kind"] = fname, fkind
+                out["future_is_mini"] = (fkind == fo_master.MINI_FUT)
+        except Exception as e:
+            print(f"[fut] 마스터 실패 → 전광판으로 폴백: {str(e)[:90]}")
+            out["errors"].append(f"선물 마스터: {e}")
+        if not code:
+            code = resolve_future_code(y, q)
+            out["future_is_mini"] = True
     except Exception as e:
         out["errors"].append(f"선물 종목코드: {e}")
         print(f"[fut] 종목코드 실패: {e}")
@@ -188,7 +207,14 @@ def main():
         print(f"[fut] 분봉 실패: {e}")
 
     try:
-        call, put, ncalls = option_board_all(exp)
+        try:
+            call, put, ncalls, cmeta = option_chain()
+            out["option_source"], out["option_meta"] = "chain", cmeta
+        except Exception as e:
+            out["errors"].append(f"옵션 체인(마스터): {e}")
+            print(f"[opt] 체인 실패 → 전광판으로 폴백: {str(e)[:100]}")
+            call, put, ncalls = option_board_all(exp)
+            out["option_source"] = "board(ATM 미포함 가능)"
         out["option_board"] = {"call": call, "put": put}
         ks = sorted(_f(r.get("acpr")) for r in call if r.get("acpr"))
         print(f"[opt] {exp} 콜 {len(call)}행 / 풋 {len(put)}행 (calls={ncalls}) "
@@ -228,11 +254,16 @@ def main():
 
     for label, fn in (("수급 일별(★기준)", lambda: investor_daily(day, "0001", "KSP")),
                       ("수급 시간대별(참고용)", lambda: investor_time("999", "S001")),
-                      ("프로그램 코스피", lambda: comp_program("K")),
-                      ("프로그램 코스닥", lambda: comp_program("Q"))):
+                      ("프로그램 종합 코스피", lambda: comp_program("K")),
+                      ("프로그램 종합 코스닥", lambda: comp_program("Q")),
+                      ("프로그램 투자자별 코스피", lambda: investor_program("1")),
+                      ("프로그램 투자자별 코스닥", lambda: investor_program("4"))):
         key = {"수급 시간대별(참고용)": "investor_time_REF_ONLY",
                "수급 일별(★기준)": "investor_daily",
-               "프로그램 코스피": "program_kospi", "프로그램 코스닥": "program_kosdaq"}[label]
+               "프로그램 종합 코스피": "program_kospi",
+               "프로그램 종합 코스닥": "program_kosdaq",
+               "프로그램 투자자별 코스피": "program_investor_kospi",
+               "프로그램 투자자별 코스닥": "program_investor_kosdaq"}[label]
         try:
             rows = fn()
             out[key] = rows
@@ -254,6 +285,20 @@ def main():
                 print(f"[flow] ★대조용(억원) {chk['date']} 지수 {chk['지수']} | "
                       f"개인 {chk['개인']:+,} 외국인 {chk['외국인']:+,} 기관 {chk['기관']:+,}")
                 print("[flow] ↑ 발행 전 네이버금융 투자자별 매매동향과 반드시 대조할 것")
+            if key == "program_kospi" and rows:
+                r0 = rows[0]
+                def _eok2(v):
+                    try: return round(float(v) / 100.0)      # 백만원 -> 억원
+                    except Exception: return None
+                arb, nab = _eok2(r0.get("arbt_ntby_amt")), _eok2(r0.get("nabt_ntby_amt"))
+                tot = (arb + nab) if (arb is not None and nab is not None) else None
+                out["program_check_eok"] = {
+                    "time": r0.get("bsop_hour"), "차익": arb, "비차익": nab, "전체": tot,
+                    "비차익비중": (round(abs(nab) / abs(tot) * 100, 1)
+                                 if tot else None)}
+                print(f"[prog] ★차익/비차익(억원) {r0.get('bsop_hour')} "
+                      f"차익 {arb} · 비차익 {nab} · 전체 {tot} "
+                      f"(비차익 {out['program_check_eok']['비차익비중']}%)")
             print(f"[flow] {label} {len(rows)}행{extra}")
         except Exception as e:
             out["errors"].append(f"{label}: {e}")
@@ -326,13 +371,30 @@ def investor_daily(day, iscd="0001", iscd1="KSP"):
 
 
 def comp_program(mrkt_cls="K"):
-    """프로그램매매 종합현황(시간) FHPPG04600101 — 차익/비차익.
-    K=코스피 Q=코스닥. 파라미터가 단순해 이쪽을 우선 쓴다."""
+    """프로그램매매 종합현황(시간) FHPPG04600101 — 차익/비차익 시계열.
+    K=코스피 Q=코스닥.
+    ※ 선택 인자라도 **키 자체는 반드시 보내야 한다.** 빠뜨리면
+       INPUT FIELD NOT FOUND [FID_COND_MRKT_DIV_CODE1] 로 떨어진다(9/10~9/14 원인).
+    ※ 장중에는 최근 30분치만 오고 다음조회 불가. 15:30 이후엔 마감 데이터가 반복된다."""
     b = kis.fetch(COMPPROG_PATH, "FHPPG04600101", {
-        "FID_COND_MRKT_DIV_CODE": "J", "FID_MRKT_CLS_CODE": mrkt_cls,
-        "FID_SCTN_CLS_CODE": "", "FID_INPUT_ISCD": "",
+        "FID_COND_MRKT_DIV_CODE": "J",      # J:KRX
+        "FID_MRKT_CLS_CODE": mrkt_cls,      # K:코스피 Q:코스닥
+        "FID_SCTN_CLS_CODE": "",
+        "FID_INPUT_ISCD": "",
+        "FID_COND_MRKT_DIV_CODE1": "",      # 빠뜨리면 에러
+        "FID_INPUT_HOUR_1": "",             # 빠뜨리면 에러
     })
     rows = b.get("output") or b.get("output1") or []
+    return [rows] if isinstance(rows, dict) else rows
+
+
+def investor_program(mrkt="1"):
+    """프로그램매매 투자자매매동향(당일) HHPPG046600C1 — 1:코스피 4:코스닥.
+    ※ 필수 인자는 MRKT_DIV_CLS_CODE 하나뿐이다. EXCH_DIV_CLS_CODE 를 같이 보내면 거부된다.
+    응답에 투자자별 arbt_ntby_amt(차익 순매수대금) / nabt_ntby_amt(비차익) 가 들어온다 —
+    네이버 화면이 주는 시장 전체 합계보다 한 단계 깊다."""
+    b = kis.fetch(PROG_PATH, "HHPPG046600C1", {"MRKT_DIV_CLS_CODE": mrkt})
+    rows = b.get("output1") or b.get("output") or []
     return [rows] if isinstance(rows, dict) else rows
 
 
@@ -384,6 +446,67 @@ def _f(x, d=0.0):
         return float(str(x).replace(",", ""))
     except Exception:
         return d
+
+
+OPT_SPAN = int(os.environ.get("OPT_SPAN", "15"))   # ATM 기준 위아래 행사가 개수
+
+
+def _opt_quote(code):
+    """개별 옵션 시세 1건. 전광판과 같은 키로 정규화해서 돌려준다."""
+    b = kis.fetch(PRICE_PATH, "FHMIF10000000",
+                  {"FID_COND_MRKT_DIV_CODE": "O", "FID_INPUT_ISCD": code})
+    o1 = b.get("output1") or {}
+    o2 = b.get("output2") or {}
+    src = {**o2, **o1}                       # output1 우선
+    return {
+        "acpr": src.get("acpr"),
+        "optn_prpr": src.get("optn_prpr") or src.get("futs_prpr"),
+        "hts_otst_stpl_qty": src.get("hts_otst_stpl_qty"),
+        "otst_stpl_qty_icdc": src.get("otst_stpl_qty_icdc"),
+        "acml_vol": src.get("acml_vol"),
+        "hts_ints_vltl": src.get("hts_ints_vltl"),
+        "hist_vltl": src.get("hist_vltl"),
+        "delta_val": src.get("delta_val"),
+        "gama": src.get("gama") or src.get("gamma"),
+        "vega": src.get("vega"), "theta": src.get("theta"), "rho": src.get("rho"),
+        "atm_cls_name": src.get("atm_cls_name"),
+        "bstp_nmix_prpr": src.get("bstp_nmix_prpr"),
+        "_code": code,
+    }
+
+
+def option_chain(span=OPT_SPAN, pause=0.15):
+    """마스터에서 최근월물 ATM 근처 종목코드를 뽑아 개별 시세로 조회.
+
+    전광판(FHPIF05030100)은 output 각 100건 하드 제한이라 행사가가 많으면
+    ATM 근처가 아예 안 온다(공식 문서 명시). 그래서 종목코드를 직접 들고 온다.
+    반환: (콜 리스트, 풋 리스트, 호출수, 메타)
+    """
+    if fo_master is None:
+        raise RuntimeError("fo_master 모듈 없음")
+    rows = fo_master.load()
+    picked = fo_master.atm_options(rows, span=span)
+    calls, puts, n, bad = [], [], 0, []
+    for tag, src, dst in (("콜", picked["calls"], calls), ("풋", picked["puts"], puts)):
+        for r in src:
+            try:
+                q = _opt_quote(r["단축코드"])
+                q.setdefault("acpr", r["행사가"])
+                if not q.get("acpr"):
+                    q["acpr"] = r["행사가"]
+                if not q.get("atm_cls_name") and r["ATM구분"] == "1":
+                    q["atm_cls_name"] = "ATM"
+                dst.append(q); n += 1
+            except Exception as e:
+                bad.append(f"{tag}{r['행사가']}:{str(e)[:40]}")
+            time.sleep(pause)
+    meta = {"center": picked["center"], "span": span, "calls": len(calls),
+            "puts": len(puts), "calls_api": n, "failed": bad[:8]}
+    ks = sorted(_f(r.get("acpr")) for r in calls if r.get("acpr"))
+    print(f"[opt] 체인 ATM {picked['center']} · 콜 {len(calls)} 풋 {len(puts)} "
+          f"행사가 {ks[0] if ks else '-'}~{ks[-1] if ks else '-'} "
+          f"(API {n}콜{', 실패 ' + str(len(bad)) if bad else ''})")
+    return calls, puts, n, meta
 
 
 def derivatives_summary(fut_o1, call_rows, put_rows):
@@ -536,6 +659,24 @@ def diagnose():
                            for r in rs[:2]]}
         except Exception as e:
             D["investor_daily"][f"{iscd}/{iscd1}"] = f"실패: {str(e)[:120]}"
+
+    # 5) 종목 마스터 — 레이아웃·최근월물·ATM 이 제대로 잡히는지
+    try:
+        if fo_master is None:
+            raise RuntimeError("fo_master 모듈 없음")
+        rows = fo_master.load()
+        D["master"] = fo_master.summary(rows)
+        ff = fo_master.front_future(rows)
+        D["master_front_future"] = {"code": ff[0], "name": ff[1], "kind": ff[2]} if ff else None
+        pick = fo_master.atm_options(rows, span=3)
+        D["master_atm"] = {
+            "center": pick["center"],
+            "calls": [{k: r[k] for k in ("단축코드", "행사가", "ATM구분", "종목명")}
+                      for r in pick["calls"]],
+            "puts": [{k: r[k] for k in ("단축코드", "행사가", "ATM구분")}
+                     for r in pick["puts"]]}
+    except Exception as e:
+        D["master"] = f"실패: {str(e)[:200]}"
 
     os.makedirs("data/kr", exist_ok=True)
     with open("data/kr/_diag.json", "w", encoding="utf-8") as f:
