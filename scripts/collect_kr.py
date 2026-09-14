@@ -185,6 +185,7 @@ def main():
 
     exp = option_expiry_month(today)
     out["future_code"], out["option_expiry"] = code, exp
+    opt_center = None
 
     try:
         b = kis.fetch(PRICE_PATH, "FHMIF10000000",
@@ -193,6 +194,12 @@ def main():
         o1 = b.get("output1") or {}
         print(f"[fut] {code} 현재가 {o1.get('futs_prpr')} "
               f"베이시스 {o1.get('basis')} 미결제 {o1.get('hts_otst_stpl_qty')}")
+        # 옵션 ATM 중심용 K200 현물 = 선물 - 베이시스.
+        # 마스터의 ATM구분은 기준가가 낡아 못 쓴다(9/14 선물 1051 vs 마스터 1090).
+        _fp, _bs = _f(o1.get("futs_prpr")), _f(o1.get("basis"))
+        if _fp:
+            opt_center = _fp - (_bs or 0.0)
+            out["k200_spot_est"] = round(opt_center, 2)
     except Exception as e:
         out["errors"].append(f"선물 현재가: {e}")
         print(f"[fut] 현재가 실패: {e}")
@@ -208,7 +215,7 @@ def main():
 
     try:
         try:
-            call, put, ncalls, cmeta = option_chain()
+            call, put, ncalls, cmeta = option_chain(center=opt_center)
             out["option_source"], out["option_meta"] = "chain", cmeta
         except Exception as e:
             out["errors"].append(f"옵션 체인(마스터): {e}")
@@ -479,7 +486,7 @@ def _f(x, d=0.0):
         return d
 
 
-OPT_SPAN = int(os.environ.get("OPT_SPAN", "15"))   # ATM 기준 위아래 행사가 개수
+OPT_SPAN = int(os.environ.get("OPT_SPAN", "20"))   # ATM 기준 위아래 행사가 개수
 
 
 def _opt_quote(code):
@@ -506,7 +513,7 @@ def _opt_quote(code):
     }
 
 
-def option_chain(span=OPT_SPAN, pause=0.15):
+def option_chain(span=OPT_SPAN, pause=0.15, center=None):
     """마스터에서 최근월물 ATM 근처 종목코드를 뽑아 개별 시세로 조회.
 
     전광판(FHPIF05030100)은 output 각 100건 하드 제한이라 행사가가 많으면
@@ -516,7 +523,7 @@ def option_chain(span=OPT_SPAN, pause=0.15):
     if fo_master is None:
         raise RuntimeError("fo_master 모듈 없음")
     rows = fo_master.load()
-    picked = fo_master.atm_options(rows, span=span)
+    picked = fo_master.atm_options(rows, span=span, center=center)
     calls, puts, n, bad = [], [], 0, []
     for tag, src, dst in (("콜", picked["calls"], calls), ("풋", picked["puts"], puts)):
         for r in src:
@@ -531,11 +538,12 @@ def option_chain(span=OPT_SPAN, pause=0.15):
             except Exception as e:
                 bad.append(f"{tag}{r['행사가']}:{str(e)[:40]}")
             time.sleep(pause)
-    meta = {"month": picked.get("month"),
+    meta = {"month": picked.get("month"), "center_src": picked.get("center_src"),
             "center": picked["center"], "span": span, "calls": len(calls),
             "puts": len(puts), "calls_api": n, "failed": bad[:8]}
     ks = sorted(_f(r.get("acpr")) for r in calls if r.get("acpr"))
-    print(f"[opt] 체인 ATM {picked['center']} · 콜 {len(calls)} 풋 {len(puts)} "
+    print(f"[opt] 체인 중심 {picked['center']}({picked.get('center_src')}) "
+          f"· 콜 {len(calls)} 풋 {len(puts)} "
           f"행사가 {ks[0] if ks else '-'}~{ks[-1] if ks else '-'} "
           f"(API {n}콜{', 실패 ' + str(len(bad)) if bad else ''})")
     return calls, puts, n, meta

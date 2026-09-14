@@ -12,12 +12,17 @@
   0 상품종류  1 단축코드  2 표준코드  3 한글종목명  4 ATM구분
   5 행사가    6 월물구분  7 기초자산 단축코드  8 기초자산명
 
-※ 상품종류·월물구분 코드값은 공식 문서에 없다. 2026.9.14 실측으로
-   선물 최근월물이 (종류 '1', 월물구분 '1', 종목명 'F 202612') 인 것만 확인됐고
-   **옵션은 종류 '5'/'6' 이 아니었다**(그 조건으로 0행). 그래서 아래 로직은
-   코드값을 믿지 않고 **행사가가 숫자인 행 = 옵션**, **종목명 첫 글자 C/P =
-   콜/풋**, **종목명 안의 YYYYMM = 월물** 로 판별한다. summary() 가
-   _diag.json 에 실제 분포를 남기니 레이아웃이 바뀌면 거기서 바로 보인다.
+※ 2026.9.14 마스터 실측으로 확정된 코드표:
+   상품종류 1=K200선물 B=미니선물 7=변동성선물 3=코스닥150선물 H=KRX300선물
+            9=섹터선물 2/8/C/4/I/A=스프레드
+            **5=K200콜 6=K200풋** (월물옵션, 기초명 KOSPI200)
+            D/E=미니콜/풋  J/K=코스닥150콜/풋  L/M=위클리  N/O=위클리M
+            P/Q/R/S=코스닥 위클리
+   월물구분: **선물만 1~7(1=최근월물). 옵션은 전부 빈 값** — 월물은 종목명의
+            YYYYMM 으로 읽어야 한다(9/14 1차 실패 원인).
+   ATM구분: 1=ATM 2=ITM 3=OTM 인데 **기준가가 낡았다**. 9/14 실측에서 선물이
+            1051인데 마스터 ATM 은 1090 을 가리켰다. ATM 중심은 반드시
+            호출부에서 실시간 기초자산 가격(center=)을 넘겨서 잡을 것.
 """
 import io, re, ssl, zipfile, datetime, urllib.request
 
@@ -26,6 +31,9 @@ COLS = ["종류", "단축코드", "표준코드", "종목명", "ATM구분",
         "행사가", "월물구분", "기초코드", "기초명"]
 
 IDX_FUT, MINI_FUT = "1", "B"          # front_future() 가 이 순서로 시도
+IDX_CALL, IDX_PUT = "5", "6"          # K200 월물 콜/풋 (실측 확정)
+MINI_CALL, MINI_PUT = "D", "E"        # 미니 콜/풋
+UNDERLYING = "KOSPI200"
 NEAR = "1"                            # 월물구분 최근월물 (선물에서 실측 확인)
 
 _cache = None
@@ -86,12 +94,23 @@ def _cp(r):
 
 
 def _is_opt(r):
+    """행사가가 있는 모든 옵션(코스닥150·위클리 포함) — summary 통계용."""
     return _f(r.get("행사가"), 0) > 0 and _cp(r) in ("C", "P")
 
 
-def _mini(r):
-    s = (r.get("종목명", "") or "") + (r.get("기초명", "") or "")
-    return ("미니" in s) or ("MINI" in s.upper())
+def _kinds(mini=False):
+    return (MINI_CALL, MINI_PUT) if mini else (IDX_CALL, IDX_PUT)
+
+
+def _is_monthly(r, mini=False):
+    """K200(또는 미니) **월물** 옵션만. 코스닥150(J/K)·위클리(L/M/N/O)는 뺀다.
+    종류 코드로 1차 거르고, 종목명에 YYYYMM 이 있는지로 위클리를 2차로 뺀다."""
+    ck, pk = _kinds(mini)
+    if r.get("종류") not in (ck, pk):
+        return False
+    if UNDERLYING not in (r.get("기초명") or "").upper().replace(" ", ""):
+        return False
+    return bool(_YM.fullmatch(_month(r) or ""))
 
 
 def summary(rows=None):
@@ -143,15 +162,14 @@ def front_month(rows=None, today=None, mini=False):
     소멸해 P/C OI 가 왜곡된다 — 9/11 실측)."""
     rows = rows or load()
     today = today or datetime.date.today()
-    months = sorted({_month(r) for r in rows
-                     if _is_opt(r) and _mini(r) == mini and _YM.fullmatch(_month(r) or "")})
+    months = sorted({_month(r) for r in rows if _is_monthly(r, mini)})
     for ym in months:
         if _expiry(ym) > today:
             return ym
     return months[0] if months else None
 
 
-def atm_options(rows=None, span=20, mini=False, month=None, today=None):
+def atm_options(rows=None, span=20, mini=False, month=None, today=None, center=None):
     """최근월물 콜·풋을 행사가 순으로 정렬해 ATM 기준 ±span 개만 반환.
 
     ATM 기준은 ① 마스터의 ATM구분='1' 을 우선 사용하고
@@ -163,22 +181,29 @@ def atm_options(rows=None, span=20, mini=False, month=None, today=None):
     if not ym:
         raise RuntimeError("마스터에서 옵션 월물을 못 찾았다")
 
-    sel = [r for r in rows if _is_opt(r) and _mini(r) == mini and _month(r) == ym]
-    calls = sorted([r for r in sel if _cp(r) == "C"], key=lambda r: _f(r["행사가"], 0))
-    puts = sorted([r for r in sel if _cp(r) == "P"], key=lambda r: _f(r["행사가"], 0))
+    ck, pk = _kinds(mini)
+    sel = [r for r in rows if _is_monthly(r, mini) and _month(r) == ym]
+    calls = sorted([r for r in sel if r["종류"] == ck], key=lambda r: _f(r["행사가"], 0))
+    puts = sorted([r for r in sel if r["종류"] == pk], key=lambda r: _f(r["행사가"], 0))
     if not calls or not puts:
         raise RuntimeError(f"{ym} 월물 옵션이 비었다 (콜 {len(calls)} 풋 {len(puts)})")
 
-    atm = next((_f(r["행사가"]) for r in calls if r["ATM구분"] == "1"), None)
-    if atm is None:
-        atm = _f(calls[len(calls) // 2]["행사가"])
+    # 중심: ① 호출부가 넘긴 실시간 기초자산 가격 ② 마스터 ATM구분 ③ 행사가 중앙값
+    atm = _f(center)
+    if atm:
+        src = "실시간"
+    else:
+        atm = next((_f(r["행사가"]) for r in calls if r["ATM구분"] == "1"), None)
+        src = "마스터ATM"
+        if atm is None:
+            atm = _f(calls[len(calls) // 2]["행사가"]); src = "중앙값"
 
     def around(lst):
         i = min(range(len(lst)), key=lambda k: abs(_f(lst[k]["행사가"], 0) - atm))
         return lst[max(0, i - span): i + span + 1]
 
     c, p = around(calls), around(puts)
-    print(f"[mst] {ym} 월물 ATM {atm} · 콜 {len(calls)}개 중 {len(c)}개 / "
+    print(f"[mst] {ym} 월물 중심 {atm}({src}) · 콜 {len(calls)}개 중 {len(c)}개 / "
           f"풋 {len(puts)}개 중 {len(p)}개 선택 "
           f"(행사가 {_f(c[0]['행사가'])}~{_f(c[-1]['행사가'])})")
-    return {"month": ym, "center": atm, "calls": c, "puts": p}
+    return {"month": ym, "center": atm, "center_src": src, "calls": c, "puts": p}
