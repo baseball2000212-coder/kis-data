@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-09-18T17:32:31+09:00",
+ "asof_kst": "2026-09-18T20:54:54+09:00",
  "futures_board": {
   "MKI": [
    {
@@ -458,27 +458,27 @@
    "n": 30,
    "sample": [
     {
-     "bsop_hour": "173200",
-     "arbt_smtn_seln_tr_pbmn": "190898",
-     "arbt_smtn_shnu_tr_pbmn": "298600",
-     "nabt_smtn_seln_tr_pbmn": "11441921",
-     "nabt_smtn_shnu_tr_pbmn": "11680939",
-     "arbt_smtn_ntby_tr_pbmn": "107703",
-     "nabt_smtn_ntby_tr_pbmn": "239018",
-     "whol_smtn_ntby_tr_pbmn": "346720",
+     "bsop_hour": "200500",
+     "arbt_smtn_seln_tr_pbmn": "196325",
+     "arbt_smtn_shnu_tr_pbmn": "325881",
+     "nabt_smtn_seln_tr_pbmn": "11471355",
+     "nabt_smtn_shnu_tr_pbmn": "11740680",
+     "arbt_smtn_ntby_tr_pbmn": "129557",
+     "nabt_smtn_ntby_tr_pbmn": "269325",
+     "whol_smtn_ntby_tr_pbmn": "398882",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
     },
     {
-     "bsop_hour": "173100",
-     "arbt_smtn_seln_tr_pbmn": "190898",
-     "arbt_smtn_shnu_tr_pbmn": "298600",
-     "nabt_smtn_seln_tr_pbmn": "11441911",
-     "nabt_smtn_shnu_tr_pbmn": "11680880",
-     "arbt_smtn_ntby_tr_pbmn": "107703",
-     "nabt_smtn_ntby_tr_pbmn": "238969",
-     "whol_smtn_ntby_tr_pbmn": "346672",
+     "bsop_hour": "200400",
+     "arbt_smtn_seln_tr_pbmn": "196325",
+     "arbt_smtn_shnu_tr_pbmn": "325881",
+     "nabt_smtn_seln_tr_pbmn": "11471355",
+     "nabt_smtn_shnu_tr_pbmn": "11740680",
+     "arbt_smtn_ntby_tr_pbmn": "129557",
+     "nabt_smtn_ntby_tr_pbmn": "269325",
+     "whol_smtn_ntby_tr_pbmn": "398882",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
@@ -489,27 +489,27 @@
    "n": 30,
    "sample": [
     {
-     "bsop_hour": "173200",
-     "arbt_smtn_seln_tr_pbmn": "154",
-     "arbt_smtn_shnu_tr_pbmn": "1787",
-     "nabt_smtn_seln_tr_pbmn": "2128941",
-     "nabt_smtn_shnu_tr_pbmn": "2136072",
-     "arbt_smtn_ntby_tr_pbmn": "1633",
-     "nabt_smtn_ntby_tr_pbmn": "7130",
-     "whol_smtn_ntby_tr_pbmn": "8763",
+     "bsop_hour": "200500",
+     "arbt_smtn_seln_tr_pbmn": "558",
+     "arbt_smtn_shnu_tr_pbmn": "2190",
+     "nabt_smtn_seln_tr_pbmn": "2139901",
+     "nabt_smtn_shnu_tr_pbmn": "2147142",
+     "arbt_smtn_ntby_tr_pbmn": "1632",
+     "nabt_smtn_ntby_tr_pbmn": "7240",
+     "whol_smtn_ntby_tr_pbmn": "8872",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
     },
     {
-     "bsop_hour": "173100",
-     "arbt_smtn_seln_tr_pbmn": "154",
-     "arbt_smtn_shnu_tr_pbmn": "1787",
-     "nabt_smtn_seln_tr_pbmn": "2128912",
-     "nabt_smtn_shnu_tr_pbmn": "2135986",
-     "arbt_smtn_ntby_tr_pbmn": "1633",
-     "nabt_smtn_ntby_tr_pbmn": "7074",
-     "whol_smtn_ntby_tr_pbmn": "8706",
+     "bsop_hour": "200400",
+     "arbt_smtn_seln_tr_pbmn": "558",
+     "arbt_smtn_shnu_tr_pbmn": "2190",
+     "nabt_smtn_seln_tr_pbmn": "2139901",
+     "nabt_smtn_shnu_tr_pbmn": "2147142",
+     "arbt_smtn_ntby_tr_pbmn": "1632",
+     "nabt_smtn_ntby_tr_pbmn": "7240",
+     "whol_smtn_ntby_tr_pbmn": "8872",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
@@ -536,10 +536,10 @@
     {
      "stck_bsop_date": "20260918",
      "bstp_nmix_prpr": "6894.23",
-     "frgn_ntby_qty": "-13021",
-     "prsn_ntby_qty": "1205",
-     "orgn_ntby_qty": "7838",
-     "frgn_ntby_tr_pbmn": "425980"
+     "frgn_ntby_qty": "-13106",
+     "prsn_ntby_qty": "1168",
+     "orgn_ntby_qty": "7968",
+     "frgn_ntby_tr_pbmn": "448633"
     },
     {
      "stck_bsop_date": "20260917",
@@ -557,10 +557,10 @@
     {
      "stck_bsop_date": "20260918",
      "bstp_nmix_prpr": "827.12",
-     "frgn_ntby_qty": "600",
-     "prsn_ntby_qty": "-5978",
-     "orgn_ntby_qty": "3659",
-     "frgn_ntby_tr_pbmn": "-51048"
+     "frgn_ntby_qty": "1269",
+     "prsn_ntby_qty": "-6173",
+     "orgn_ntby_qty": "3554",
+     "frgn_ntby_tr_pbmn": "-47785"
     },
     {
      "stck_bsop_date": "20260917",
@@ -578,10 +578,10 @@
     {
      "stck_bsop_date": "20260918",
      "bstp_nmix_prpr": "1090.23",
-     "frgn_ntby_qty": "-12374",
-     "prsn_ntby_qty": "3942",
-     "orgn_ntby_qty": "5721",
-     "frgn_ntby_tr_pbmn": "394822"
+     "frgn_ntby_qty": "-12328",
+     "prsn_ntby_qty": "3779",
+     "orgn_ntby_qty": "5846",
+     "frgn_ntby_tr_pbmn": "421869"
     },
     {
      "stck_bsop_date": "20260917",
