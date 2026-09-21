@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-09-21T22:23:53+09:00",
+ "asof_kst": "2026-09-21T22:58:24+09:00",
  "session": "kr",
  "interval_sec": "60",
  "errors": [],
@@ -87,7 +87,7 @@
    "kospi200_nmix": "1112.16",
    "hts_otst_stpl_qty": "133123",
    "otst_stpl_qty_icdc": "556",
-   "tday_rltv": "110.86",
+   "tday_rltv": "110.93",
    "hts_thpr": "1118.92",
    "dprt": "-0.34"
   },
@@ -295,12 +295,12 @@
    {
     "stck_bsop_date": "20260921",
     "stck_cntg_hour": "092000",
-    "futs_prpr": "1102.85",
+    "futs_prpr": "1102.80",
     "futs_oprc": "1101.10",
     "futs_hgpr": "1102.90",
     "futs_lwpr": "1100.75",
-    "cntg_vol": "386",
-    "acml_tr_pbmn": "4019795000"
+    "cntg_vol": "388",
+    "acml_tr_pbmn": "4020346400"
    },
    {
     "stck_bsop_date": "20260921",
@@ -309,7 +309,7 @@
     "futs_oprc": "1102.80",
     "futs_hgpr": "1103.35",
     "futs_lwpr": "1101.75",
-    "cntg_vol": "225",
+    "cntg_vol": "223",
     "acml_tr_pbmn": "4081815413"
    },
    {
