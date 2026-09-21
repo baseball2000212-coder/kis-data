@@ -1,48 +1,48 @@
 {
- "asof_kst": "2026-09-18T21:13:26+09:00",
+ "asof_kst": "2026-09-21T13:25:48+09:00",
  "futures_board": {
   "MKI": [
    {
     "code": "A05610",
     "name": "미니F 202610",
-    "price": "1087.26",
-    "oi": "62643",
-    "days": "21"
+    "price": "1111.78",
+    "oi": "63248",
+    "days": "18"
    },
    {
     "code": "A05611",
     "name": "미니F 202611",
-    "price": "1088.04",
-    "oi": "2446",
-    "days": "56"
+    "price": "1114.88",
+    "oi": "2468",
+    "days": "53"
    },
    {
     "code": "A05612",
     "name": "미니F 202612",
-    "price": "1091.64",
-    "oi": "2195",
-    "days": "84"
+    "price": "1117.46",
+    "oi": "2152",
+    "days": "81"
    },
    {
     "code": "A05701",
     "name": "미니F 202701",
-    "price": "1085.62",
+    "price": "1102.02",
     "oi": "178",
-    "days": "119"
+    "days": "116"
    },
    {
     "code": "A05702",
     "name": "미니F 202702",
-    "price": "1074.74",
-    "oi": "16",
-    "days": "147"
+    "price": "1103.22",
+    "oi": "17",
+    "days": "144"
    },
    {
     "code": "A05703",
     "name": "미니F 202703",
-    "price": "1074.04",
-    "oi": "3",
-    "days": "175"
+    "price": "1105.00",
+    "oi": "5",
+    "days": "172"
    }
   ],
   "KI": [],
@@ -56,44 +56,44 @@
    {
     "code": "A01612",
     "name": "F 202612",
-    "price": "1092.45",
-    "oi": "132567",
-    "days": "84"
+    "price": "1117.35",
+    "oi": "133555",
+    "days": "81"
    },
    {
     "code": "A01703",
     "name": "F 202703",
-    "price": "1079.05",
-    "oi": "4422",
-    "days": "175"
+    "price": "1097.60",
+    "oi": "4414",
+    "days": "172"
    },
    {
     "code": "A01706",
     "name": "F 202706",
-    "price": "1086.50",
+    "price": "1096.15",
     "oi": "2080",
-    "days": "266"
+    "days": "263"
    },
    {
     "code": "A01709",
     "name": "F 202709",
-    "price": "1087.35",
+    "price": "1119.40",
     "oi": "0",
-    "days": "357"
+    "days": "354"
    },
    {
     "code": "A01712",
     "name": "F 202712",
-    "price": "1095.05",
+    "price": "1125.10",
     "oi": "2138",
-    "days": "448"
+    "days": "445"
    },
    {
     "code": "A01806",
     "name": "F 202806",
-    "price": "1112.75",
+    "price": "1145.45",
     "oi": "0",
-    "days": "630"
+    "days": "627"
    }
   ],
   "0": [],
@@ -114,21 +114,21 @@
    "sample": [
     {
      "투자자": "기 타",
-     "전체순매수": "-2539",
+     "전체순매수": "-5996",
      "차익순매수": "0",
-     "비차익순매수": "-2539"
+     "비차익순매수": "-5996"
     },
     {
      "투자자": "연기금등",
-     "전체순매수": "-5392",
-     "차익순매수": "5262",
-     "비차익순매수": "-10654"
+     "전체순매수": "262702",
+     "차익순매수": "268229",
+     "비차익순매수": "-5526"
     },
     {
      "투자자": "기타금융",
-     "전체순매수": "-1750",
+     "전체순매수": "-1542",
      "차익순매수": "0",
-     "비차익순매수": "-1750"
+     "비차익순매수": "-1542"
     }
    ]
   },
@@ -145,42 +145,42 @@
    "sample_call": [
     {
      "acpr": "1595.00",
-     "unch_prpr": "10086.22",
+     "unch_prpr": "10046.81",
      "optn_shrn_iscd": "B01610C41",
-     "optn_prpr": "0.12",
-     "optn_prdy_vrss": "0.03",
-     "prdy_vrss_sign": "2",
-     "optn_prdy_ctrt": "33.33",
-     "optn_bidp": "0.11",
-     "optn_askp": "0.12",
-     "tmvl_val": "0.12",
-     "nmix_sdpr": "0.09",
-     "acml_vol": "3559",
-     "seln_rsqn": "45",
-     "shnu_rsqn": "64",
-     "acml_tr_pbmn": "98845",
-     "hts_otst_stpl_qty": "7222",
-     "otst_stpl_qty_icdc": "343",
-     "delta_val": "0.0000",
-     "gama": "0.0000",
-     "vega": "0.0000",
-     "theta": "-0.0000",
-     "rho": "0.0000",
-     "hts_ints_vltl": "62.2905",
+     "optn_prpr": "0.08",
+     "optn_prdy_vrss": "-0.04",
+     "prdy_vrss_sign": "5",
+     "optn_prdy_ctrt": "-33.33",
+     "optn_bidp": "0.08",
+     "optn_askp": "0.09",
+     "tmvl_val": "0.08",
+     "nmix_sdpr": "0.12",
+     "acml_vol": "1445",
+     "seln_rsqn": "106",
+     "shnu_rsqn": "7",
+     "acml_tr_pbmn": "34800",
+     "hts_otst_stpl_qty": "7047",
+     "otst_stpl_qty_icdc": "-175",
+     "delta_val": "0.0185",
+     "gama": "0.0002",
+     "vega": "0.1092",
+     "theta": "-0.2468",
+     "rho": "0.0091",
+     "hts_ints_vltl": "56.5070",
      "invl_val": "0.00",
-     "esdg": "0.12",
-     "dprt": "9999.99",
-     "hist_vltl": "76.3277",
-     "hts_thpr": "0.00",
-     "optn_oprc": "0.13",
-     "optn_hgpr": "0.13",
-     "optn_lwpr": "0.10",
-     "optn_mxpr": "20.75",
+     "esdg": "-1.09",
+     "dprt": "-93.16",
+     "hist_vltl": "76.3206",
+     "hts_thpr": "1.17",
+     "optn_oprc": "0.09",
+     "optn_hgpr": "0.11",
+     "optn_lwpr": "0.08",
+     "optn_mxpr": "18.85",
      "optn_llam": "0.01",
      "atm_cls_name": "OTM",
-     "rgbf_vrss_icdc": "21",
-     "total_askp_rsqn": "468",
-     "total_bidp_rsqn": "948",
+     "rgbf_vrss_icdc": "0",
+     "total_askp_rsqn": "753",
+     "total_bidp_rsqn": "2800",
      "futs_antc_cnpr": "0.00",
      "futs_antc_cntg_vrss": "0.00",
      "antc_cntg_vrss_sign": "0",
@@ -188,42 +188,42 @@
     },
     {
      "acpr": "1592.50",
-     "unch_prpr": "10070.41",
+     "unch_prpr": "10031.06",
      "optn_shrn_iscd": "B01610C40",
-     "optn_prpr": "0.12",
-     "optn_prdy_vrss": "0.03",
-     "prdy_vrss_sign": "2",
-     "optn_prdy_ctrt": "33.33",
-     "optn_bidp": "0.11",
-     "optn_askp": "0.12",
-     "tmvl_val": "0.12",
-     "nmix_sdpr": "0.09",
-     "acml_vol": "64",
-     "seln_rsqn": "1",
-     "shnu_rsqn": "1",
-     "acml_tr_pbmn": "1803",
-     "hts_otst_stpl_qty": "474",
-     "otst_stpl_qty_icdc": "-17",
-     "delta_val": "0.0000",
-     "gama": "0.0000",
-     "vega": "0.0000",
-     "theta": "-0.0000",
-     "rho": "0.0000",
-     "hts_ints_vltl": "62.0627",
+     "optn_prpr": "0.09",
+     "optn_prdy_vrss": "-0.03",
+     "prdy_vrss_sign": "5",
+     "optn_prdy_ctrt": "-25.00",
+     "optn_bidp": "0.08",
+     "optn_askp": "0.09",
+     "tmvl_val": "0.09",
+     "nmix_sdpr": "0.12",
+     "acml_vol": "24",
+     "seln_rsqn": "17",
+     "shnu_rsqn": "6",
+     "acml_tr_pbmn": "585",
+     "hts_otst_stpl_qty": "469",
+     "otst_stpl_qty_icdc": "-5",
+     "delta_val": "0.0190",
+     "gama": "0.0003",
+     "vega": "0.1114",
+     "theta": "-0.2518",
+     "rho": "0.0093",
+     "hts_ints_vltl": "56.8879",
      "invl_val": "0.00",
-     "esdg": "0.12",
-     "dprt": "9999.99",
-     "hist_vltl": "76.3277",
-     "hts_thpr": "0.00",
-     "optn_oprc": "0.10",
-     "optn_hgpr": "0.12",
-     "optn_lwpr": "0.10",
-     "optn_mxpr": "20.60",
+     "esdg": "-1.11",
+     "dprt": "-92.50",
+     "hist_vltl": "76.3206",
+     "hts_thpr": "1.20",
+     "optn_oprc": "0.09",
+     "optn_hgpr": "0.10",
+     "optn_lwpr": "0.09",
+     "optn_mxpr": "18.85",
      "optn_llam": "0.01",
      "atm_cls_name": "OTM",
-     "rgbf_vrss_icdc": "-1",
-     "total_askp_rsqn": "3",
-     "total_bidp_rsqn": "30",
+     "rgbf_vrss_icdc": "2",
+     "total_askp_rsqn": "44",
+     "total_bidp_rsqn": "79",
      "futs_antc_cnpr": "0.00",
      "futs_antc_cntg_vrss": "0.00",
      "antc_cntg_vrss_sign": "0",
@@ -233,42 +233,42 @@
    "sample_put": [
     {
      "acpr": "1595.00",
-     "unch_prpr": "10086.22",
+     "unch_prpr": "10046.81",
      "optn_shrn_iscd": "C01610C41",
-     "optn_prpr": "508.40",
-     "optn_prdy_vrss": "-26.35",
+     "optn_prpr": "483.15",
+     "optn_prdy_vrss": "-25.25",
      "prdy_vrss_sign": "5",
-     "optn_prdy_ctrt": "-4.93",
-     "optn_bidp": "449.90",
-     "optn_askp": "0.00",
-     "tmvl_val": "3.63",
-     "nmix_sdpr": "534.75",
-     "acml_vol": "3",
-     "seln_rsqn": "0",
-     "shnu_rsqn": "10",
-     "acml_tr_pbmn": "380713",
-     "hts_otst_stpl_qty": "26",
-     "otst_stpl_qty_icdc": "-3",
-     "delta_val": "-1.0000",
-     "gama": "0.0000",
-     "vega": "0.0000",
-     "theta": "0.0000",
-     "rho": "-0.7429",
-     "hts_ints_vltl": "93.8748",
-     "invl_val": "504.77",
-     "esdg": "3.09",
-     "dprt": "0.61",
-     "hist_vltl": "76.3277",
-     "hts_thpr": "505.31",
-     "optn_oprc": "506.80",
-     "optn_hgpr": "508.40",
-     "optn_lwpr": "506.80",
-     "optn_mxpr": "628.80",
-     "optn_llam": "449.80",
+     "optn_prdy_ctrt": "-4.97",
+     "optn_bidp": "480.95",
+     "optn_askp": "488.50",
+     "tmvl_val": "3.62",
+     "nmix_sdpr": "508.40",
+     "acml_vol": "2",
+     "seln_rsqn": "10",
+     "shnu_rsqn": "2",
+     "acml_tr_pbmn": "241725",
+     "hts_otst_stpl_qty": "24",
+     "otst_stpl_qty_icdc": "-2",
+     "delta_val": "-0.9815",
+     "gama": "0.0002",
+     "vega": "0.1092",
+     "theta": "-0.1132",
+     "rho": "-0.7327",
+     "hts_ints_vltl": "97.0373",
+     "invl_val": "479.53",
+     "esdg": "3.85",
+     "dprt": "0.80",
+     "hist_vltl": "76.3206",
+     "hts_thpr": "479.30",
+     "optn_oprc": "483.75",
+     "optn_hgpr": "483.75",
+     "optn_lwpr": "483.15",
+     "optn_mxpr": "623.10",
+     "optn_llam": "415.65",
      "atm_cls_name": "ITM",
      "rgbf_vrss_icdc": "-1",
-     "total_askp_rsqn": "0",
-     "total_bidp_rsqn": "10",
+     "total_askp_rsqn": "18",
+     "total_bidp_rsqn": "24",
      "futs_antc_cnpr": "0.00",
      "futs_antc_cntg_vrss": "0.00",
      "antc_cntg_vrss_sign": "0",
@@ -285,42 +285,42 @@
    "sample_call": [
     {
      "acpr": "1595.00",
-     "unch_prpr": "10086.22",
+     "unch_prpr": "10048.97",
      "optn_shrn_iscd": "B05610C41",
-     "optn_prpr": "0.12",
-     "optn_prdy_vrss": "0.03",
-     "prdy_vrss_sign": "2",
-     "optn_prdy_ctrt": "33.33",
-     "optn_bidp": "0.11",
-     "optn_askp": "0.12",
-     "tmvl_val": "0.12",
-     "nmix_sdpr": "0.09",
-     "acml_vol": "260",
-     "seln_rsqn": "1",
-     "shnu_rsqn": "1",
-     "acml_tr_pbmn": "1422",
-     "hts_otst_stpl_qty": "816",
-     "otst_stpl_qty_icdc": "-127",
-     "delta_val": "0.0000",
-     "gama": "0.0000",
-     "vega": "0.0000",
-     "theta": "-0.0000",
-     "rho": "0.0000",
-     "hts_ints_vltl": "62.2905",
+     "optn_prpr": "0.08",
+     "optn_prdy_vrss": "-0.04",
+     "prdy_vrss_sign": "5",
+     "optn_prdy_ctrt": "-33.33",
+     "optn_bidp": "0.07",
+     "optn_askp": "0.09",
+     "tmvl_val": "0.08",
+     "nmix_sdpr": "0.12",
+     "acml_vol": "45",
+     "seln_rsqn": "2",
+     "shnu_rsqn": "14",
+     "acml_tr_pbmn": "220",
+     "hts_otst_stpl_qty": "842",
+     "otst_stpl_qty_icdc": "26",
+     "delta_val": "0.0186",
+     "gama": "0.0002",
+     "vega": "0.1093",
+     "theta": "-0.2471",
+     "rho": "0.0091",
+     "hts_ints_vltl": "56.4965",
      "invl_val": "0.00",
-     "esdg": "0.12",
-     "dprt": "9999.99",
-     "hist_vltl": "76.3277",
-     "hts_thpr": "0.00",
+     "esdg": "-1.10",
+     "dprt": "-93.22",
+     "hist_vltl": "76.3212",
+     "hts_thpr": "1.18",
      "optn_oprc": "0.11",
-     "optn_hgpr": "0.12",
-     "optn_lwpr": "0.10",
-     "optn_mxpr": "20.75",
+     "optn_hgpr": "0.11",
+     "optn_lwpr": "0.08",
+     "optn_mxpr": "18.85",
      "optn_llam": "0.01",
      "atm_cls_name": "OTM",
-     "rgbf_vrss_icdc": "1",
-     "total_askp_rsqn": "25",
-     "total_bidp_rsqn": "75",
+     "rgbf_vrss_icdc": "-1",
+     "total_askp_rsqn": "58",
+     "total_bidp_rsqn": "50",
      "futs_antc_cnpr": "0.00",
      "futs_antc_cntg_vrss": "0.00",
      "antc_cntg_vrss_sign": "0",
@@ -328,42 +328,42 @@
     },
     {
      "acpr": "1592.50",
-     "unch_prpr": "10070.41",
+     "unch_prpr": "10033.22",
      "optn_shrn_iscd": "B05610C40",
-     "optn_prpr": "0.09",
+     "optn_prpr": "0.12",
      "optn_prdy_vrss": "0.00",
      "prdy_vrss_sign": "3",
      "optn_prdy_ctrt": "0.00",
-     "optn_bidp": "0.01",
-     "optn_askp": "0.12",
-     "tmvl_val": "0.09",
-     "nmix_sdpr": "0.09",
+     "optn_bidp": "0.07",
+     "optn_askp": "0.10",
+     "tmvl_val": "0.12",
+     "nmix_sdpr": "0.12",
      "acml_vol": "0",
-     "seln_rsqn": "1",
-     "shnu_rsqn": "5",
+     "seln_rsqn": "13",
+     "shnu_rsqn": "13",
      "acml_tr_pbmn": "0",
      "hts_otst_stpl_qty": "28",
      "otst_stpl_qty_icdc": "0",
-     "delta_val": "0.0000",
-     "gama": "0.0000",
-     "vega": "0.0000",
-     "theta": "-0.0000",
-     "rho": "0.0000",
-     "hts_ints_vltl": "62.0627",
+     "delta_val": "0.0190",
+     "gama": "0.0003",
+     "vega": "0.1115",
+     "theta": "-0.2520",
+     "rho": "0.0093",
+     "hts_ints_vltl": "58.4230",
      "invl_val": "0.00",
-     "esdg": "0.09",
-     "dprt": "9999.99",
-     "hist_vltl": "76.3277",
-     "hts_thpr": "0.00",
+     "esdg": "-1.09",
+     "dprt": "-90.08",
+     "hist_vltl": "76.3212",
+     "hts_thpr": "1.21",
      "optn_oprc": "0.00",
      "optn_hgpr": "0.00",
      "optn_lwpr": "0.00",
-     "optn_mxpr": "20.60",
+     "optn_mxpr": "18.85",
      "optn_llam": "0.01",
      "atm_cls_name": "OTM",
      "rgbf_vrss_icdc": "0",
-     "total_askp_rsqn": "2",
-     "total_bidp_rsqn": "5",
+     "total_askp_rsqn": "34",
+     "total_bidp_rsqn": "30",
      "futs_antc_cnpr": "0.00",
      "futs_antc_cntg_vrss": "0.00",
      "antc_cntg_vrss_sign": "0",
@@ -373,42 +373,42 @@
    "sample_put": [
     {
      "acpr": "1595.00",
-     "unch_prpr": "10086.22",
+     "unch_prpr": "10048.97",
      "optn_shrn_iscd": "C05610C41",
-     "optn_prpr": "534.75",
+     "optn_prpr": "508.40",
      "optn_prdy_vrss": "0.00",
      "prdy_vrss_sign": "3",
      "optn_prdy_ctrt": "0.00",
-     "optn_bidp": "503.30",
-     "optn_askp": "516.80",
-     "tmvl_val": "29.98",
-     "nmix_sdpr": "534.75",
+     "optn_bidp": "480.05",
+     "optn_askp": "490.00",
+     "tmvl_val": "28.63",
+     "nmix_sdpr": "508.40",
      "acml_vol": "0",
-     "seln_rsqn": "2",
+     "seln_rsqn": "10",
      "shnu_rsqn": "2",
      "acml_tr_pbmn": "0",
      "hts_otst_stpl_qty": "0",
      "otst_stpl_qty_icdc": "0",
-     "delta_val": "-1.0000",
-     "gama": "0.0000",
-     "vega": "0.0000",
-     "theta": "0.0000",
-     "rho": "-0.7429",
-     "hts_ints_vltl": "93.8748",
-     "invl_val": "504.77",
-     "esdg": "29.44",
-     "dprt": "5.83",
-     "hist_vltl": "76.3277",
-     "hts_thpr": "505.31",
+     "delta_val": "-0.9814",
+     "gama": "0.0002",
+     "vega": "0.1093",
+     "theta": "-0.1134",
+     "rho": "-0.7327",
+     "hts_ints_vltl": "151.8550",
+     "invl_val": "479.77",
+     "esdg": "29.18",
+     "dprt": "6.09",
+     "hist_vltl": "76.3212",
+     "hts_thpr": "479.22",
      "optn_oprc": "0.00",
      "optn_hgpr": "0.00",
      "optn_lwpr": "0.00",
-     "optn_mxpr": "628.80",
-     "optn_llam": "449.80",
+     "optn_mxpr": "623.10",
+     "optn_llam": "415.65",
      "atm_cls_name": "ITM",
      "rgbf_vrss_icdc": "0",
-     "total_askp_rsqn": "12",
-     "total_bidp_rsqn": "38",
+     "total_askp_rsqn": "24",
+     "total_bidp_rsqn": "46",
      "futs_antc_cnpr": "0.00",
      "futs_antc_cntg_vrss": "0.00",
      "antc_cntg_vrss_sign": "0",
@@ -458,27 +458,27 @@
    "n": 30,
    "sample": [
     {
-     "bsop_hour": "200500",
-     "arbt_smtn_seln_tr_pbmn": "196325",
-     "arbt_smtn_shnu_tr_pbmn": "325881",
-     "nabt_smtn_seln_tr_pbmn": "11471355",
-     "nabt_smtn_shnu_tr_pbmn": "11740680",
-     "arbt_smtn_ntby_tr_pbmn": "129557",
-     "nabt_smtn_ntby_tr_pbmn": "269325",
-     "whol_smtn_ntby_tr_pbmn": "398882",
+     "bsop_hour": "132600",
+     "arbt_smtn_seln_tr_pbmn": "105857",
+     "arbt_smtn_shnu_tr_pbmn": "388872",
+     "nabt_smtn_seln_tr_pbmn": "3595751",
+     "nabt_smtn_shnu_tr_pbmn": "3133349",
+     "arbt_smtn_ntby_tr_pbmn": "283015",
+     "nabt_smtn_ntby_tr_pbmn": "-462402",
+     "whol_smtn_ntby_tr_pbmn": "-179387",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
     },
     {
-     "bsop_hour": "200400",
-     "arbt_smtn_seln_tr_pbmn": "196325",
-     "arbt_smtn_shnu_tr_pbmn": "325881",
-     "nabt_smtn_seln_tr_pbmn": "11471355",
-     "nabt_smtn_shnu_tr_pbmn": "11740680",
-     "arbt_smtn_ntby_tr_pbmn": "129557",
-     "nabt_smtn_ntby_tr_pbmn": "269325",
-     "whol_smtn_ntby_tr_pbmn": "398882",
+     "bsop_hour": "132500",
+     "arbt_smtn_seln_tr_pbmn": "105857",
+     "arbt_smtn_shnu_tr_pbmn": "384845",
+     "nabt_smtn_seln_tr_pbmn": "3587711",
+     "nabt_smtn_shnu_tr_pbmn": "3107588",
+     "arbt_smtn_ntby_tr_pbmn": "278988",
+     "nabt_smtn_ntby_tr_pbmn": "-480124",
+     "whol_smtn_ntby_tr_pbmn": "-201136",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
@@ -489,27 +489,27 @@
    "n": 30,
    "sample": [
     {
-     "bsop_hour": "200500",
-     "arbt_smtn_seln_tr_pbmn": "558",
-     "arbt_smtn_shnu_tr_pbmn": "2190",
-     "nabt_smtn_seln_tr_pbmn": "2139901",
-     "nabt_smtn_shnu_tr_pbmn": "2147142",
-     "arbt_smtn_ntby_tr_pbmn": "1632",
-     "nabt_smtn_ntby_tr_pbmn": "7240",
-     "whol_smtn_ntby_tr_pbmn": "8872",
+     "bsop_hour": "132500",
+     "arbt_smtn_seln_tr_pbmn": "4564",
+     "arbt_smtn_shnu_tr_pbmn": "49",
+     "nabt_smtn_seln_tr_pbmn": "1261676",
+     "nabt_smtn_shnu_tr_pbmn": "1189638",
+     "arbt_smtn_ntby_tr_pbmn": "-4515",
+     "nabt_smtn_ntby_tr_pbmn": "-72038",
+     "whol_smtn_ntby_tr_pbmn": "-76553",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
     },
     {
-     "bsop_hour": "200400",
-     "arbt_smtn_seln_tr_pbmn": "558",
-     "arbt_smtn_shnu_tr_pbmn": "2190",
-     "nabt_smtn_seln_tr_pbmn": "2139901",
-     "nabt_smtn_shnu_tr_pbmn": "2147142",
-     "arbt_smtn_ntby_tr_pbmn": "1632",
-     "nabt_smtn_ntby_tr_pbmn": "7240",
-     "whol_smtn_ntby_tr_pbmn": "8872",
+     "bsop_hour": "132400",
+     "arbt_smtn_seln_tr_pbmn": "4564",
+     "arbt_smtn_shnu_tr_pbmn": "49",
+     "nabt_smtn_seln_tr_pbmn": "1259784",
+     "nabt_smtn_shnu_tr_pbmn": "1187401",
+     "arbt_smtn_ntby_tr_pbmn": "-4515",
+     "nabt_smtn_ntby_tr_pbmn": "-72383",
+     "whol_smtn_ntby_tr_pbmn": "-76898",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
@@ -521,14 +521,10 @@
    "sample": []
   },
   "2": {
-   "n": 0,
-   "sample": []
-  },
-  "(빈값)": {
    "n": 30,
    "sample": [
     {
-     "bsop_hour": "200500",
+     "bsop_hour": "132500",
      "arbt_smtn_seln_tr_pbmn": "0",
      "arbt_smtn_shnu_tr_pbmn": "0",
      "nabt_smtn_seln_tr_pbmn": "0",
@@ -541,7 +537,7 @@
      "prdy_vrss_sign": ""
     },
     {
-     "bsop_hour": "200400",
+     "bsop_hour": "132400",
      "arbt_smtn_seln_tr_pbmn": "0",
      "arbt_smtn_shnu_tr_pbmn": "0",
      "nabt_smtn_seln_tr_pbmn": "0",
@@ -554,6 +550,10 @@
      "prdy_vrss_sign": ""
     }
    ]
+  },
+  "(빈값)": {
+   "n": 0,
+   "sample": []
   }
  },
  "investor_daily": {
@@ -561,20 +561,20 @@
    "n": 300,
    "sample": [
     {
+     "stck_bsop_date": "20260921",
+     "bstp_nmix_prpr": "7023.99",
+     "frgn_ntby_qty": "-10369",
+     "prsn_ntby_qty": "2945",
+     "orgn_ntby_qty": "5104",
+     "frgn_ntby_tr_pbmn": "23963"
+    },
+    {
      "stck_bsop_date": "20260918",
      "bstp_nmix_prpr": "6894.23",
      "frgn_ntby_qty": "-13106",
      "prsn_ntby_qty": "1168",
      "orgn_ntby_qty": "7968",
      "frgn_ntby_tr_pbmn": "448633"
-    },
-    {
-     "stck_bsop_date": "20260917",
-     "bstp_nmix_prpr": "6715.41",
-     "frgn_ntby_qty": "-17243",
-     "prsn_ntby_qty": "7881",
-     "orgn_ntby_qty": "5306",
-     "frgn_ntby_tr_pbmn": "-2632088"
     }
    ]
   },
@@ -582,20 +582,20 @@
    "n": 300,
    "sample": [
     {
+     "stck_bsop_date": "20260921",
+     "bstp_nmix_prpr": "835.61",
+     "frgn_ntby_qty": "-12127",
+     "prsn_ntby_qty": "13520",
+     "orgn_ntby_qty": "-837",
+     "frgn_ntby_tr_pbmn": "-80753"
+    },
+    {
      "stck_bsop_date": "20260918",
      "bstp_nmix_prpr": "827.12",
      "frgn_ntby_qty": "1269",
      "prsn_ntby_qty": "-6173",
      "orgn_ntby_qty": "3554",
      "frgn_ntby_tr_pbmn": "-47785"
-    },
-    {
-     "stck_bsop_date": "20260917",
-     "bstp_nmix_prpr": "822.18",
-     "frgn_ntby_qty": "1415",
-     "prsn_ntby_qty": "649",
-     "orgn_ntby_qty": "2155",
-     "frgn_ntby_tr_pbmn": "46707"
     }
    ]
   },
@@ -603,20 +603,20 @@
    "n": 300,
    "sample": [
     {
+     "stck_bsop_date": "20260921",
+     "bstp_nmix_prpr": "1115.04",
+     "frgn_ntby_qty": "-4253",
+     "prsn_ntby_qty": "-2234",
+     "orgn_ntby_qty": "4421",
+     "frgn_ntby_tr_pbmn": "8235"
+    },
+    {
      "stck_bsop_date": "20260918",
      "bstp_nmix_prpr": "1090.23",
      "frgn_ntby_qty": "-12328",
      "prsn_ntby_qty": "3779",
      "orgn_ntby_qty": "5846",
      "frgn_ntby_tr_pbmn": "421869"
-    },
-    {
-     "stck_bsop_date": "20260917",
-     "bstp_nmix_prpr": "1058.27",
-     "frgn_ntby_qty": "-16660",
-     "prsn_ntby_qty": "9590",
-     "orgn_ntby_qty": "4089",
-     "frgn_ntby_tr_pbmn": "-2461433"
     }
    ]
   },
@@ -624,16 +624,16 @@
    "n": 300,
    "sample": [
     {
-     "stck_bsop_date": "20260918",
-     "bstp_nmix_prpr": "6894.23",
+     "stck_bsop_date": "20260921",
+     "bstp_nmix_prpr": "7025.85",
      "frgn_ntby_qty": "0",
      "prsn_ntby_qty": "0",
      "orgn_ntby_qty": "0",
      "frgn_ntby_tr_pbmn": "0"
     },
     {
-     "stck_bsop_date": "20260917",
-     "bstp_nmix_prpr": "6715.41",
+     "stck_bsop_date": "20260918",
+     "bstp_nmix_prpr": "6894.23",
      "frgn_ntby_qty": "0",
      "prsn_ntby_qty": "0",
      "orgn_ntby_qty": "0",
@@ -643,8 +643,8 @@
   }
  },
  "master": {
-  "총행": 8287,
-  "옵션행": 8106,
+  "총행": 8539,
+  "옵션행": 8358,
   "옵션월물": [
    "",
    "202610",
@@ -839,8 +839,8 @@
     "샘플기초명": "KSQ150"
    },
    "L": {
-    "행": 98,
-    "옵션행": 98,
+    "행": 110,
+    "옵션행": 110,
     "월물구분값": [
      ""
     ],
@@ -849,8 +849,8 @@
     "샘플기초명": "KOSPI200"
    },
    "N": {
-    "행": 116,
-    "옵션행": 116,
+    "행": 213,
+    "옵션행": 213,
     "월물구분값": [
      ""
     ],
@@ -869,8 +869,8 @@
     "샘플기초명": "KSQ150"
    },
    "R": {
-    "행": 18,
-    "옵션행": 18,
+    "행": 35,
+    "옵션행": 35,
     "월물구분값": [
      ""
     ],
@@ -909,8 +909,8 @@
     "샘플기초명": "KSQ150"
    },
    "M": {
-    "행": 98,
-    "옵션행": 98,
+    "행": 110,
+    "옵션행": 110,
     "월물구분값": [
      ""
     ],
@@ -919,8 +919,8 @@
     "샘플기초명": "KOSPI200"
    },
    "O": {
-    "행": 116,
-    "옵션행": 116,
+    "행": 213,
+    "옵션행": 213,
     "월물구분값": [
      ""
     ],
@@ -939,8 +939,8 @@
     "샘플기초명": "KSQ150"
    },
    "S": {
-    "행": 18,
-    "옵션행": 18,
+    "행": 35,
+    "옵션행": 35,
     "월물구분값": [
      ""
     ],
@@ -1003,85 +1003,85 @@
  },
  "master_atm": {
   "month": "202610",
-  "center": 1057.5,
+  "center": 1090.0,
   "calls": [
    {
-    "단축코드": "B01610A16",
-    "행사가": "01050.00",
+    "단축코드": "B01610A38",
+    "행사가": "01082.50",
     "ATM구분": "2",
-    "종목명": "C 202610 1,050.0"
+    "종목명": "C 202610 1,082.5"
    },
    {
-    "단축코드": "B01610A25",
-    "행사가": "01052.50",
+    "단축코드": "B01610A31",
+    "행사가": "01085.00",
     "ATM구분": "2",
-    "종목명": "C 202610 1,052.5"
+    "종목명": "C 202610 1,085.0"
    },
    {
-    "단축코드": "B01610A17",
-    "행사가": "01055.00",
+    "단축코드": "B01610A39",
+    "행사가": "01087.50",
     "ATM구분": "2",
-    "종목명": "C 202610 1,055.0"
+    "종목명": "C 202610 1,087.5"
    },
    {
-    "단축코드": "B01610A26",
-    "행사가": "01057.50",
+    "단축코드": "B01610A32",
+    "행사가": "01090.00",
     "ATM구분": "1",
-    "종목명": "C 202610 1,057.5"
+    "종목명": "C 202610 1,090.0"
    },
    {
-    "단축코드": "B01610A18",
-    "행사가": "01060.00",
+    "단축코드": "B01610A40",
+    "행사가": "01092.50",
     "ATM구분": "3",
-    "종목명": "C 202610 1,060.0"
+    "종목명": "C 202610 1,092.5"
    },
    {
-    "단축코드": "B01610A27",
-    "행사가": "01062.50",
+    "단축코드": "B01610A33",
+    "행사가": "01095.00",
     "ATM구분": "3",
-    "종목명": "C 202610 1,062.5"
+    "종목명": "C 202610 1,095.0"
    },
    {
-    "단축코드": "B01610A19",
-    "행사가": "01065.00",
+    "단축코드": "B01610A41",
+    "행사가": "01097.50",
     "ATM구분": "3",
-    "종목명": "C 202610 1,065.0"
+    "종목명": "C 202610 1,097.5"
    }
   ],
   "puts": [
    {
-    "단축코드": "C01610A16",
-    "행사가": "01050.00",
+    "단축코드": "C01610A38",
+    "행사가": "01082.50",
     "ATM구분": "3"
    },
    {
-    "단축코드": "C01610A25",
-    "행사가": "01052.50",
+    "단축코드": "C01610A31",
+    "행사가": "01085.00",
     "ATM구분": "3"
    },
    {
-    "단축코드": "C01610A17",
-    "행사가": "01055.00",
+    "단축코드": "C01610A39",
+    "행사가": "01087.50",
     "ATM구분": "3"
    },
    {
-    "단축코드": "C01610A26",
-    "행사가": "01057.50",
+    "단축코드": "C01610A32",
+    "행사가": "01090.00",
     "ATM구분": "1"
    },
    {
-    "단축코드": "C01610A18",
-    "행사가": "01060.00",
+    "단축코드": "C01610A40",
+    "행사가": "01092.50",
     "ATM구분": "2"
    },
    {
-    "단축코드": "C01610A27",
-    "행사가": "01062.50",
+    "단축코드": "C01610A33",
+    "행사가": "01095.00",
     "ATM구분": "2"
    },
    {
-    "단축코드": "C01610A19",
-    "행사가": "01065.00",
+    "단축코드": "C01610A41",
+    "행사가": "01097.50",
     "ATM구분": "2"
    }
   ]
