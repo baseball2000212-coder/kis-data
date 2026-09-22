@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-09-22T17:51:07+09:00",
+ "asof_kst": "2026-09-22T21:06:40+09:00",
  "futures_board": {
   "MKI": [
    {
@@ -458,27 +458,27 @@
    "n": 30,
    "sample": [
     {
-     "bsop_hour": "175100",
+     "bsop_hour": "200500",
      "arbt_smtn_seln_tr_pbmn": "345053",
-     "arbt_smtn_shnu_tr_pbmn": "413477",
-     "nabt_smtn_seln_tr_pbmn": "5873549",
-     "nabt_smtn_shnu_tr_pbmn": "5995074",
-     "arbt_smtn_ntby_tr_pbmn": "68424",
-     "nabt_smtn_ntby_tr_pbmn": "121525",
-     "whol_smtn_ntby_tr_pbmn": "189949",
+     "arbt_smtn_shnu_tr_pbmn": "413918",
+     "nabt_smtn_seln_tr_pbmn": "5917151",
+     "nabt_smtn_shnu_tr_pbmn": "6029668",
+     "arbt_smtn_ntby_tr_pbmn": "68865",
+     "nabt_smtn_ntby_tr_pbmn": "112517",
+     "whol_smtn_ntby_tr_pbmn": "181382",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
     },
     {
-     "bsop_hour": "175000",
+     "bsop_hour": "200400",
      "arbt_smtn_seln_tr_pbmn": "345053",
-     "arbt_smtn_shnu_tr_pbmn": "413477",
-     "nabt_smtn_seln_tr_pbmn": "5873117",
-     "nabt_smtn_shnu_tr_pbmn": "5994664",
-     "arbt_smtn_ntby_tr_pbmn": "68424",
-     "nabt_smtn_ntby_tr_pbmn": "121547",
-     "whol_smtn_ntby_tr_pbmn": "189971",
+     "arbt_smtn_shnu_tr_pbmn": "413918",
+     "nabt_smtn_seln_tr_pbmn": "5917151",
+     "nabt_smtn_shnu_tr_pbmn": "6029668",
+     "arbt_smtn_ntby_tr_pbmn": "68865",
+     "nabt_smtn_ntby_tr_pbmn": "112517",
+     "whol_smtn_ntby_tr_pbmn": "181382",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
@@ -489,27 +489,27 @@
    "n": 30,
    "sample": [
     {
-     "bsop_hour": "175100",
+     "bsop_hour": "200500",
      "arbt_smtn_seln_tr_pbmn": "8023",
      "arbt_smtn_shnu_tr_pbmn": "22",
-     "nabt_smtn_seln_tr_pbmn": "1759381",
-     "nabt_smtn_shnu_tr_pbmn": "1678618",
+     "nabt_smtn_seln_tr_pbmn": "1767381",
+     "nabt_smtn_shnu_tr_pbmn": "1693032",
      "arbt_smtn_ntby_tr_pbmn": "-8001",
-     "nabt_smtn_ntby_tr_pbmn": "-80763",
-     "whol_smtn_ntby_tr_pbmn": "-88764",
+     "nabt_smtn_ntby_tr_pbmn": "-74349",
+     "whol_smtn_ntby_tr_pbmn": "-82350",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
     },
     {
-     "bsop_hour": "175000",
+     "bsop_hour": "200400",
      "arbt_smtn_seln_tr_pbmn": "8023",
      "arbt_smtn_shnu_tr_pbmn": "22",
-     "nabt_smtn_seln_tr_pbmn": "1759344",
-     "nabt_smtn_shnu_tr_pbmn": "1678587",
+     "nabt_smtn_seln_tr_pbmn": "1767381",
+     "nabt_smtn_shnu_tr_pbmn": "1693032",
      "arbt_smtn_ntby_tr_pbmn": "-8001",
-     "nabt_smtn_ntby_tr_pbmn": "-80758",
-     "whol_smtn_ntby_tr_pbmn": "-88759",
+     "nabt_smtn_ntby_tr_pbmn": "-74349",
+     "whol_smtn_ntby_tr_pbmn": "-82350",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
@@ -536,10 +536,10 @@
     {
      "stck_bsop_date": "20260922",
      "bstp_nmix_prpr": "7017.91",
-     "frgn_ntby_qty": "-4537",
-     "prsn_ntby_qty": "-2100",
-     "orgn_ntby_qty": "2766",
-     "frgn_ntby_tr_pbmn": "65266"
+     "frgn_ntby_qty": "-4511",
+     "prsn_ntby_qty": "-2129",
+     "orgn_ntby_qty": "2786",
+     "frgn_ntby_tr_pbmn": "47857"
     },
     {
      "stck_bsop_date": "20260921",
@@ -557,10 +557,10 @@
     {
      "stck_bsop_date": "20260922",
      "bstp_nmix_prpr": "834.38",
-     "frgn_ntby_qty": "-9441",
-     "prsn_ntby_qty": "19838",
-     "orgn_ntby_qty": "-10818",
-     "frgn_ntby_tr_pbmn": "-61287"
+     "frgn_ntby_qty": "-9378",
+     "prsn_ntby_qty": "19730",
+     "orgn_ntby_qty": "-10817",
+     "frgn_ntby_tr_pbmn": "-56552"
     },
     {
      "stck_bsop_date": "20260921",
@@ -578,10 +578,10 @@
     {
      "stck_bsop_date": "20260922",
      "bstp_nmix_prpr": "1113.30",
-     "frgn_ntby_qty": "-1967",
-     "prsn_ntby_qty": "-2839",
-     "orgn_ntby_qty": "1789",
-     "frgn_ntby_tr_pbmn": "33553"
+     "frgn_ntby_qty": "-1940",
+     "prsn_ntby_qty": "-2864",
+     "orgn_ntby_qty": "1810",
+     "frgn_ntby_tr_pbmn": "23086"
     },
     {
      "stck_bsop_date": "20260921",
