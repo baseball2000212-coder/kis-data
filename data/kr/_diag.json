@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-09-25T18:08:16+09:00",
+ "asof_kst": "2026-09-25T21:22:18+09:00",
  "futures_board": {
   "MKI": [
    {
@@ -525,35 +525,8 @@
    "sample": []
   },
   "(빈값)": {
-   "n": 30,
-   "sample": [
-    {
-     "bsop_hour": "200500",
-     "arbt_smtn_seln_tr_pbmn": "0",
-     "arbt_smtn_shnu_tr_pbmn": "0",
-     "nabt_smtn_seln_tr_pbmn": "0",
-     "nabt_smtn_shnu_tr_pbmn": "0",
-     "arbt_smtn_ntby_tr_pbmn": "0",
-     "nabt_smtn_ntby_tr_pbmn": "0",
-     "whol_smtn_ntby_tr_pbmn": "0",
-     "bstp_nmix_prpr": "",
-     "bstp_nmix_prdy_vrss": "",
-     "prdy_vrss_sign": ""
-    },
-    {
-     "bsop_hour": "200400",
-     "arbt_smtn_seln_tr_pbmn": "0",
-     "arbt_smtn_shnu_tr_pbmn": "0",
-     "nabt_smtn_seln_tr_pbmn": "0",
-     "nabt_smtn_shnu_tr_pbmn": "0",
-     "arbt_smtn_ntby_tr_pbmn": "0",
-     "nabt_smtn_ntby_tr_pbmn": "0",
-     "whol_smtn_ntby_tr_pbmn": "0",
-     "bstp_nmix_prpr": "",
-     "bstp_nmix_prdy_vrss": "",
-     "prdy_vrss_sign": ""
-    }
-   ]
+   "n": 0,
+   "sample": []
   }
  },
  "investor_daily": {
