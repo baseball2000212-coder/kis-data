@@ -1,61 +1,62 @@
-# kis-data — 카드뉴스용 시장데이터 수집
+# 한국투자증권 Open API 시장 데이터 자동 수집
 
-카드뉴스 세션이 도는 컨테이너는 조직 egress 정책 때문에 KIS·KRX·네이버금융 등으로
-직접 못 나간다(전부 403). 게다가 KIS는 실전 `:9443` / 모의 `:29443`으로 **비 443 포트**라
-프록시가 원천 미지원이다. 반면 `raw.githubusercontent.com`은 열려 있다.
+한국투자증권(KIS) Open API로 **국내 파생·수급과 미국 지수·종목 데이터**를 평일마다 자동으로 모읍니다.
+GitHub Actions가 정해진 시각에 API를 호출하고 결과를 JSON으로 커밋합니다. 이 데이터로 인스타그램 [@winwin_macro](https://www.instagram.com/winwin_macro)에 시장 카드뉴스를 매일 발행합니다.
 
-그래서 **수집은 GitHub Actions 러너가 하고(egress 제한 없음), 카드 세션은 결과 JSON만 읽는다.**
+![예시](figures/example.png)
 
-```
-Actions (15:50·16:05 / 22:00·22:20 UTC)  →  KIS API 호출  →  data/*.json 커밋
-                                                                    ↓
-카드뉴스 세션                          raw.githubusercontent.com 에서 1회 읽기
-```
+## 수집 시각
 
-## 세팅 (한 번만)
-
-1. **KIS 앱키 발급** — KIS Developers에서 실전투자 앱키/앱시크릿 발급.
-   모의투자(vps)도 되지만 호출 제한이 낮고 시세가 제한되는 API가 있어 실전 권장.
-2. 이 레포를 본인 GitHub에 push.
-3. `Settings → Secrets and variables → Actions`
-   - **Secrets**: `KIS_APP_KEY`, `KIS_APP_SECRET`
-   - **Variables**(선택): `KR_FUT_CODE` — 비워두면 스크립트가 알아서 찾아 캐시한다.
-4. Actions 탭에서 `collect-kr` / `collect-us` 를 **Run workflow** 로 한 번 수동 실행 →
-   로그에서 어떤 심볼이 잡혔는지 확인.
+| 한국시간 | 카드뉴스 | 주요 데이터 |
+|---|---|---|
+| 평일 12:55 | 국장 장중 파생 수급 | K200 선물 흐름, 베이시스, 미결제약정, 옵션 전광판, 투자자별 순매수 |
+| 평일 15:50, 16:05 | 국장 마감 | 코스피·코스닥 5분봉, 투자자별 순매수, 프로그램매매 (16:05는 확정치 재수집) |
+| 화~토 07:00 | 미장 마감 | NDX·SPX·COMP·VIX 5분봉, QQQ·SPY·NVDA 정규장 1분봉 |
 
 ## 수집 항목
 
-### `data/kr/latest.json` — 국장
-| 필드 | API | 내용 |
+| 구분 | 항목 | API |
 |---|---|---|
-| `future_price` | `FHMIF10000000` | K200 선물 현재가·호가 |
-| `future_chart` | `FHKIF03020200` | **1분봉** + 베이시스·KOSPI200지수·미결제약정·이론가·괴리율 |
-| `option_board` | `FHPIF05030100` | 콜/풋 전광판 — 행사가별 **델타·감마·베가·세타·로우·IV·미결제약정** |
+| K200 선물 | 현재가, 1분봉(정규장 전체), 베이시스, 이론가, 미결제약정 | `FHMIF10000000`, `FHKIF03020200` |
+| K200 옵션 | ATM ±20 행사가 콜·풋의 IV, 델타·감마·베가·세타, 미결제약정 → P/C 비율, 최대 미결제 행사가, ATM IV | `FHPIF05030100` |
+| 선물 포지션 | 가격 방향 × 미결제 증감으로 신규매수·숏커버·신규매도·롱청산 구분 | — |
+| 수급 | 투자자별 순매수, 프로그램매매(차익·비차익), 투자자별 프로그램매매 | 국내주식 시세 API |
+| 미국 | 지수 5분봉, ETF·종목 1분봉 (`SESSION=premarket`이면 프리마켓 — CPI 등 개장 전 발표일용) | `FHKST03030200`, `HHDFS76950200` |
 
-`option_board` 만으로 GEX가 그대로 계산된다 (Σ 감마 × OI × 승수 × S²/100 부호처리).
+결과: `data/kr/latest.json`, `data/us/latest.json` (최신), `data/kr/YYYYMMDD.json` (날짜별 보관)
 
-### `data/us/latest.json` — 미장
-| 필드 | API | 내용 |
-|---|---|---|
-| `indices` | `FHKST03030200` | 지수 분봉, **`FID_HOUR_CLS_CODE=0` → 미국 정규장만** |
-| `stocks` | `HHDFS76950200` | QQQ·NVDA·SPY 5분봉 |
+## API를 쓰면서 해결한 것
 
-지수 심볼은 `SPX`만 문서에 확정돼 있어서, 나스닥·다우·VIX는 후보를 순서대로
-시도하고 성공한 것을 기록한다. 첫 실행 로그의 `[idx] NASDAQ <- XXXX` 줄에서
-확정된 심볼을 보고 `INDEX_CANDIDATES` 를 그 값 하나로 줄이면 호출이 줄어든다.
+| 문제 | 해결 |
+|---|---|
+| 옵션 시세가 한 번에 100개까지만 와서, 행사가가 많은 날은 등가격 근처가 빠짐 | 등가격 주변 행사가를 골라 하나씩 따로 조회 |
+| 해외 종목 분봉이 한 번에 120개, 최신→과거 순으로만 옴 | 이전 페이지의 가장 오래된 봉 1분 전으로 옮겨가며 09:30까지 거슬러 올라감 |
+| 지수 분봉은 페이징이 없어 최근 102봉만 옴 | 5분봉으로 받아 정규장(390분 = 78봉)을 한 번에 덮음 |
+| 문서 예제대로 요청하면 오류가 나는 API가 있음 | 필요한 입력값을 직접 시험해 찾아냄 |
+| 투자자별 매매 동향이 부호가 반대로 나오는 경우가 있음 | 네이버 금융 수치와 대조해 맞는 API만 사용 |
+| 실행할 때마다 접근 토큰을 새로 받으면 발급 제한(1분 1회)에 걸림 | 토큰을 캐시해 하루 1번만 발급 |
+| 선물 근월물 종목코드가 만기마다 바뀜 | 만기일(둘째 목요일)을 계산하고 종목 마스터에서 자동으로 찾아 저장 |
 
-## 카드 세션에서 읽는 법
+## 구성
 
 ```
-https://raw.githubusercontent.com/<계정>/kis-data/main/data/kr/latest.json
-https://raw.githubusercontent.com/<계정>/kis-data/main/data/us/latest.json
+scripts/
+  kis.py          토큰 발급·캐시, 공통 요청 함수 (키는 환경변수)
+  collect_kr.py   국장: K200 선물·옵션, 지수 분봉, 투자자·프로그램 수급
+  collect_us.py   미장: 지수 5분봉, 종목 1분봉 (페이징)
+  fo_master.py    선물옵션 종목 마스터 → 근월물 코드·행사가 찾기
+.github/workflows/
+  collect-kr.yml  평일 12:55, 15:50, 16:05 KST
+  collect-us.yml  화~토 07:00 KST
 ```
 
-날짜 고정본은 `data/kr/20260909.json` 형태로 같이 쌓인다.
+## 직접 돌려보기
 
-## 주의
+1. KIS Developers에서 앱키·앱시크릿 발급
+2. 저장소 **Settings → Secrets and variables → Actions**에 `KIS_APP_KEY`, `KIS_APP_SECRET` 등록 (코드·파일에는 키를 넣지 않음)
+3. Actions 탭에서 `collect-kr` / `collect-us`를 **Run workflow**로 실행
 
-- 실전 계좌 유량제한은 초당 20건. 지금 스크립트는 실행당 5~10건이라 여유롭다.
-- 접근토큰은 24시간 유효 + 1분 1회 발급 제한 → 워크플로 실행당 1회만 발급한다.
-- 어떤 항목이 실패해도 파이프라인은 계속 가고, 실패 사유는 JSON의 `errors` 배열에 남는다.
-  카드 세션은 값이 없으면 그 카드를 빼거나 `—` 로 처리하면 된다.
+```bash
+pip install -r requirements.txt
+KIS_APP_KEY=... KIS_APP_SECRET=... PYTHONPATH=scripts python scripts/collect_kr.py
+```
