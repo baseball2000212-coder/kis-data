@@ -1,7 +1,6 @@
-# 한국투자증권 Open API 시장 데이터 자동 수집
+# 한국투자증권 Open API 시장 데이터 수집
 
-한국투자증권(KIS) Open API로 **국내 파생·수급과 미국 지수·종목 데이터**를 평일마다 자동으로 모읍니다.
-GitHub Actions가 정해진 시각에 API를 호출하고 결과를 JSON으로 커밋합니다. 이 데이터로 인스타그램 [@winwin_macro](https://www.instagram.com/winwin_macro)에 시장 카드뉴스를 매일 발행합니다.
+한국투자증권(KIS) Open API로 국내 파생·수급 데이터와 미국 지수·종목 데이터를 평일마다 수집합니다. GitHub Actions가 정해진 시각에 API를 호출하고 결과를 JSON으로 저장합니다. 이 데이터로 인스타그램 [@winwin_macro](https://www.instagram.com/winwin_macro)에 매일 시장 카드뉴스를 올립니다.
 
 ![예시](figures/example.png)
 
@@ -19,13 +18,13 @@ GitHub Actions가 정해진 시각에 API를 호출하고 결과를 JSON으로 �
 |---|---|---|
 | K200 선물 | 현재가, 1분봉(정규장 전체), 베이시스, 이론가, 미결제약정 | `FHMIF10000000`, `FHKIF03020200` |
 | K200 옵션 | ATM ±20 행사가 콜·풋의 IV, 델타·감마·베가·세타, 미결제약정 → P/C 비율, 최대 미결제 행사가, ATM IV | `FHPIF05030100` |
-| 선물 포지션 | 가격 방향 × 미결제 증감으로 신규매수·숏커버·신규매도·롱청산 구분 | — |
+| 선물 포지션 | 가격 방향과 미결제 증감으로 신규매수, 숏커버, 신규매도, 롱청산 구분 | |
 | 수급 | 투자자별 순매수, 프로그램매매(차익·비차익), 투자자별 프로그램매매 | 국내주식 시세 API |
-| 미국 | 지수 5분봉, ETF·종목 1분봉 (`SESSION=premarket`이면 프리마켓 — CPI 등 개장 전 발표일용) | `FHKST03030200`, `HHDFS76950200` |
+| 미국 | 지수 5분봉, ETF·종목 1분봉 (`SESSION=premarket`이면 프리마켓, CPI처럼 개장 전 발표가 있는 날용) | `FHKST03030200`, `HHDFS76950200` |
 
 결과: `data/kr/latest.json`, `data/us/latest.json` (최신), `data/kr/YYYYMMDD.json` (날짜별 보관)
 
-## API를 쓰면서 해결한 것
+## 수집하면서 해결한 문제
 
 | 문제 | 해결 |
 |---|---|
@@ -50,11 +49,11 @@ scripts/
   collect-us.yml  화~토 07:00 KST
 ```
 
-## 직접 돌려보기
+## 실행
 
 1. KIS Developers에서 앱키·앱시크릿 발급
-2. 저장소 **Settings → Secrets and variables → Actions**에 `KIS_APP_KEY`, `KIS_APP_SECRET` 등록 (코드·파일에는 키를 넣지 않음)
-3. Actions 탭에서 `collect-kr` / `collect-us`를 **Run workflow**로 실행
+2. 저장소 Settings → Secrets and variables → Actions에 `KIS_APP_KEY`, `KIS_APP_SECRET` 등록 (코드·파일에는 키를 넣지 않음)
+3. Actions 탭에서 `collect-kr` 또는 `collect-us`를 Run workflow로 실행
 
 ```bash
 pip install -r requirements.txt
