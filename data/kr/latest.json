@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-10-02T22:15:00+09:00",
+ "asof_kst": "2026-10-02T22:47:46+09:00",
  "session": "kr",
  "interval_sec": "60",
  "errors": [],
@@ -1648,7 +1648,7 @@
     "futs_prpr": "1112.10",
     "futs_oprc": "1111.35",
     "futs_hgpr": "1112.15",
-    "futs_lwpr": "1111.10",
+    "futs_lwpr": "1111.20",
     "cntg_vol": "134",
     "acml_tr_pbmn": "11048832363"
    },
