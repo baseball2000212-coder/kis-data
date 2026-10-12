@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-10-12T20:21:41+09:00",
+ "asof_kst": "2026-10-13T01:11:20+09:00",
  "session": "kr",
  "interval_sec": "60",
  "errors": [],
@@ -87,7 +87,7 @@
    "kospi200_nmix": "1004.92",
    "hts_otst_stpl_qty": "140799",
    "otst_stpl_qty_icdc": "3863",
-   "tday_rltv": "106.33",
+   "tday_rltv": "106.37",
    "hts_thpr": "1009.61",
    "dprt": "-0.13"
   },
@@ -6623,7 +6623,7 @@
     "stck_bsop_date": "20261012",
     "stck_cntg_hour": "112000",
     "bstp_nmix_prpr": "860.91",
-    "bstp_nmix_oprc": "857.89",
+    "bstp_nmix_oprc": "857.86",
     "bstp_nmix_hgpr": "860.91",
     "bstp_nmix_lwpr": "857.86",
     "cntg_vol": "4542",
@@ -7123,8 +7123,8 @@
     "stck_bsop_date": "20261012",
     "stck_cntg_hour": "153000",
     "bstp_nmix_prpr": "849.19",
-    "bstp_nmix_oprc": "849.99",
-    "bstp_nmix_hgpr": "849.99",
+    "bstp_nmix_oprc": "849.76",
+    "bstp_nmix_hgpr": "849.76",
     "bstp_nmix_lwpr": "849.19",
     "cntg_vol": "5390",
     "acml_tr_pbmn": "6421545"
