@@ -320,9 +320,92 @@ def main():
             out["errors"].append(f"{label}: {e}")
             print(f"[flow] {label} 실패: {str(e)[:80]}")
 
+    # 섹터 대장주 현재가 (FHKST01010100) — 카드 4 섹터 표를 웹 검색 없이 만든다
+    stocks, sectors = {}, {}
+    for sec, pair in SECTOR_LEADERS.items():
+        vals = []
+        for code, nm in pair:
+            try:
+                q = stock_price(code)
+                stocks[code] = q
+                if q.get("chg_pct") is not None:
+                    vals.append(q["chg_pct"])
+                print(f"[stk] {nm} {q.get('close')} ({q.get('chg_pct')}%)")
+            except Exception as e:
+                out["errors"].append(f"종목 {nm}({code}): {e}")
+                print(f"[stk] {nm} 실패: {str(e)[:80]}")
+            time.sleep(0.12)                     # 초당 호출 제한 여유
+        sectors[sec] = {
+            "leaders": [nm for _, nm in pair],
+            "avg_pct": round(sum(vals) / len(vals), 1) if vals else None,
+            "n": len(vals)}                      # n=1 이면 카드에 '1종목 기준'
+    out["stocks"], out["sectors"] = stocks, sectors
+
+    # 환율 (FHKST03030100, 시장구분 X) — 실패해도 errors 에만 남김
+    fx = {}
+    for key, iscd in FX_CODES.items():
+        try:
+            fx[key] = fx_daily(iscd, day)
+            print(f"[fx] {key} {fx[key].get('close')} ({fx[key].get('chg')})")
+        except Exception as e:
+            out["errors"].append(f"환율 {key}: {e}")
+            print(f"[fx] {key} 실패: {str(e)[:80]}")
+    if fx.get("USDKRW", {}).get("close") and fx.get("USDJPY", {}).get("close"):
+        fx["JPYKRW_100"] = round(fx["USDKRW"]["close"] / fx["USDJPY"]["close"] * 100, 2)
+    out["fx"] = fx
+
     if out["errors"]:
         print(f"-- 실패 {len(out['errors'])}건")
     kis.save("kr", out)
+
+
+STOCK_PRICE_PATH = "/uapi/domestic-stock/v1/quotations/inquire-price"
+FX_PATH = "/uapi/overseas-price/v1/quotations/inquire-daily-chartprice"
+SECTOR_LEADERS = {
+    "반도체":   [("005930", "삼성전자"), ("000660", "SK하이닉스")],
+    "이차전지": [("373220", "LG에너지솔루션"), ("086520", "에코프로")],
+    "자동차":   [("005380", "현대차"), ("000270", "기아")],
+    "방산":     [("012450", "한화에어로스페이스"), ("064350", "현대로템")],
+    "조선해운": [("329180", "HD현대중공업"), ("011200", "HMM")],
+    "원전":     [("034020", "두산에너빌리티"), ("052690", "한전기술")],
+}
+FX_CODES = {"USDKRW": "FX@KRW", "USDJPY": "FX@JPY"}   # 한투 해외 환율 코드
+
+
+def stock_price(code):
+    """주식현재가 시세. 장 마감 후엔 stck_prpr = 종가."""
+    b = kis.fetch(STOCK_PRICE_PATH, "FHKST01010100",
+                  {"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": code})
+    o = b.get("output") or {}
+    return {"name": o.get("hts_kor_isnm"),
+            "close": _f(o.get("stck_prpr"), None),
+            "chg": _f(o.get("prdy_vrss"), None),
+            "chg_pct": _f(o.get("prdy_ctrt"), None),
+            "open": _f(o.get("stck_oprc"), None),
+            "high": _f(o.get("stck_hgpr"), None),
+            "low": _f(o.get("stck_lwpr"), None),
+            "volume": _f(o.get("acml_vol"), None),
+            "value_eok": round(_f(o.get("acml_tr_pbmn")) / 1e8) if o.get("acml_tr_pbmn") else None,
+            "frgn_ntby_qty": _f(o.get("frgn_ntby_qty"), None)}
+
+
+def fx_daily(iscd, day):
+    """해외 종목/지수/환율 기간별시세(일). output1=현재, output2=일봉."""
+    start = (dt.datetime.strptime(day, "%Y%m%d") - dt.timedelta(days=10)).strftime("%Y%m%d")
+    b = kis.fetch(FX_PATH, "FHKST03030100",
+                  {"FID_COND_MRKT_DIV_CODE": "X", "FID_INPUT_ISCD": iscd,
+                   "FID_INPUT_DATE_1": start, "FID_INPUT_DATE_2": day,
+                   "FID_PERIOD_DIV_CODE": "D"})
+    o1 = b.get("output1") or {}
+    rows = b.get("output2") or []
+    last = rows[0] if rows else {}
+    return {"close": _f(o1.get("ovrs_nmix_prpr") or last.get("ovrs_nmix_prpr"), None),
+            "chg": _f(o1.get("ovrs_nmix_prdy_vrss"), None),
+            "chg_pct": _f(o1.get("prdy_ctrt"), None),
+            "high": _f(last.get("ovrs_mynd_hgpr"), None),
+            "low": _f(last.get("ovrs_mynd_lwpr"), None),
+            "date": last.get("stck_bsop_date"),
+            "raw_output1": o1}
 
 
 def index_intraday(iscd="0001", interval=IDX_INTERVAL):
