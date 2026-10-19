@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-10-19T17:00:38+09:00",
+ "asof_kst": "2026-10-19T18:22:10+09:00",
  "futures_board": {
   "MKI": [
    {
@@ -114,9 +114,9 @@
    "sample": [
     {
      "투자자": "기 타",
-     "전체순매수": "-1681",
+     "전체순매수": "-1218",
      "차익순매수": "0",
-     "비차익순매수": "-1681"
+     "비차익순매수": "-1218"
     },
     {
      "투자자": "연기금등",
@@ -458,27 +458,27 @@
    "n": 30,
    "sample": [
     {
-     "bsop_hour": "170000",
-     "arbt_smtn_seln_tr_pbmn": "351805",
+     "bsop_hour": "182200",
+     "arbt_smtn_seln_tr_pbmn": "380350",
      "arbt_smtn_shnu_tr_pbmn": "290895",
-     "nabt_smtn_seln_tr_pbmn": "5198038",
-     "nabt_smtn_shnu_tr_pbmn": "5781548",
-     "arbt_smtn_ntby_tr_pbmn": "-60910",
-     "nabt_smtn_ntby_tr_pbmn": "583510",
-     "whol_smtn_ntby_tr_pbmn": "522600",
+     "nabt_smtn_seln_tr_pbmn": "5313821",
+     "nabt_smtn_shnu_tr_pbmn": "5976740",
+     "arbt_smtn_ntby_tr_pbmn": "-89455",
+     "nabt_smtn_ntby_tr_pbmn": "662919",
+     "whol_smtn_ntby_tr_pbmn": "573464",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
     },
     {
-     "bsop_hour": "165900",
-     "arbt_smtn_seln_tr_pbmn": "351805",
+     "bsop_hour": "182100",
+     "arbt_smtn_seln_tr_pbmn": "380348",
      "arbt_smtn_shnu_tr_pbmn": "290895",
-     "nabt_smtn_seln_tr_pbmn": "5197003",
-     "nabt_smtn_shnu_tr_pbmn": "5780275",
-     "arbt_smtn_ntby_tr_pbmn": "-60910",
-     "nabt_smtn_ntby_tr_pbmn": "583273",
-     "whol_smtn_ntby_tr_pbmn": "522363",
+     "nabt_smtn_seln_tr_pbmn": "5313811",
+     "nabt_smtn_shnu_tr_pbmn": "5976553",
+     "arbt_smtn_ntby_tr_pbmn": "-89453",
+     "nabt_smtn_ntby_tr_pbmn": "662743",
+     "whol_smtn_ntby_tr_pbmn": "573289",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
@@ -489,27 +489,27 @@
    "n": 30,
    "sample": [
     {
-     "bsop_hour": "170000",
-     "arbt_smtn_seln_tr_pbmn": "19",
+     "bsop_hour": "182200",
+     "arbt_smtn_seln_tr_pbmn": "253",
      "arbt_smtn_shnu_tr_pbmn": "12033",
-     "nabt_smtn_seln_tr_pbmn": "1520008",
-     "nabt_smtn_shnu_tr_pbmn": "1449649",
-     "arbt_smtn_ntby_tr_pbmn": "12014",
-     "nabt_smtn_ntby_tr_pbmn": "-70359",
-     "whol_smtn_ntby_tr_pbmn": "-58345",
+     "nabt_smtn_seln_tr_pbmn": "1532457",
+     "nabt_smtn_shnu_tr_pbmn": "1456821",
+     "arbt_smtn_ntby_tr_pbmn": "11780",
+     "nabt_smtn_ntby_tr_pbmn": "-75636",
+     "whol_smtn_ntby_tr_pbmn": "-63856",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
     },
     {
-     "bsop_hour": "165900",
-     "arbt_smtn_seln_tr_pbmn": "19",
+     "bsop_hour": "182100",
+     "arbt_smtn_seln_tr_pbmn": "253",
      "arbt_smtn_shnu_tr_pbmn": "12033",
-     "nabt_smtn_seln_tr_pbmn": "1519811",
-     "nabt_smtn_shnu_tr_pbmn": "1449541",
-     "arbt_smtn_ntby_tr_pbmn": "12014",
-     "nabt_smtn_ntby_tr_pbmn": "-70270",
-     "whol_smtn_ntby_tr_pbmn": "-58256",
+     "nabt_smtn_seln_tr_pbmn": "1532436",
+     "nabt_smtn_shnu_tr_pbmn": "1456777",
+     "arbt_smtn_ntby_tr_pbmn": "11780",
+     "nabt_smtn_ntby_tr_pbmn": "-75659",
+     "whol_smtn_ntby_tr_pbmn": "-63879",
      "bstp_nmix_prpr": "",
      "bstp_nmix_prdy_vrss": "",
      "prdy_vrss_sign": ""
@@ -525,35 +525,8 @@
    "sample": []
   },
   "(빈값)": {
-   "n": 30,
-   "sample": [
-    {
-     "bsop_hour": "170000",
-     "arbt_smtn_seln_tr_pbmn": "0",
-     "arbt_smtn_shnu_tr_pbmn": "0",
-     "nabt_smtn_seln_tr_pbmn": "0",
-     "nabt_smtn_shnu_tr_pbmn": "0",
-     "arbt_smtn_ntby_tr_pbmn": "0",
-     "nabt_smtn_ntby_tr_pbmn": "0",
-     "whol_smtn_ntby_tr_pbmn": "0",
-     "bstp_nmix_prpr": "",
-     "bstp_nmix_prdy_vrss": "",
-     "prdy_vrss_sign": ""
-    },
-    {
-     "bsop_hour": "165900",
-     "arbt_smtn_seln_tr_pbmn": "0",
-     "arbt_smtn_shnu_tr_pbmn": "0",
-     "nabt_smtn_seln_tr_pbmn": "0",
-     "nabt_smtn_shnu_tr_pbmn": "0",
-     "arbt_smtn_ntby_tr_pbmn": "0",
-     "nabt_smtn_ntby_tr_pbmn": "0",
-     "whol_smtn_ntby_tr_pbmn": "0",
-     "bstp_nmix_prpr": "",
-     "bstp_nmix_prdy_vrss": "",
-     "prdy_vrss_sign": ""
-    }
-   ]
+   "n": 0,
+   "sample": []
   }
  },
  "investor_daily": {
@@ -563,10 +536,10 @@
     {
      "stck_bsop_date": "20261019",
      "bstp_nmix_prpr": "5768.01",
-     "frgn_ntby_qty": "2156",
-     "prsn_ntby_qty": "-11509",
-     "orgn_ntby_qty": "8577",
-     "frgn_ntby_tr_pbmn": "27410"
+     "frgn_ntby_qty": "2307",
+     "prsn_ntby_qty": "-11389",
+     "orgn_ntby_qty": "8313",
+     "frgn_ntby_tr_pbmn": "105302"
     },
     {
      "stck_bsop_date": "20261016",
@@ -584,10 +557,10 @@
     {
      "stck_bsop_date": "20261019",
      "bstp_nmix_prpr": "808.89",
-     "frgn_ntby_qty": "1085",
-     "prsn_ntby_qty": "-3899",
-     "orgn_ntby_qty": "2033",
-     "frgn_ntby_tr_pbmn": "-150432"
+     "frgn_ntby_qty": "1070",
+     "prsn_ntby_qty": "-3926",
+     "orgn_ntby_qty": "2029",
+     "frgn_ntby_tr_pbmn": "-156015"
     },
     {
      "stck_bsop_date": "20261016",
@@ -605,10 +578,10 @@
     {
      "stck_bsop_date": "20261019",
      "bstp_nmix_prpr": "891.30",
-     "frgn_ntby_qty": "406",
-     "prsn_ntby_qty": "-8283",
-     "orgn_ntby_qty": "7611",
-     "frgn_ntby_tr_pbmn": "97237"
+     "frgn_ntby_qty": "640",
+     "prsn_ntby_qty": "-8280",
+     "orgn_ntby_qty": "7369",
+     "frgn_ntby_tr_pbmn": "173948"
     },
     {
      "stck_bsop_date": "20261016",
