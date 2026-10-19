@@ -373,6 +373,7 @@ FX_CODES = {"USDKRW": "FX@KRW", "USDJPY": "FX@JPY"}   # 한투 해외 환율 코
 
 
 STOCK_DAILY_PATH = "/uapi/domestic-stock/v1/quotations/inquire-daily-price"
+STOCK_MINUTE_PATH = "/uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice"
 
 
 def stock_price(code):
@@ -394,6 +395,8 @@ def stock_price(code):
          "value_eok": round(_f(o.get("acml_tr_pbmn")) / 1e8) if o.get("acml_tr_pbmn") else None,
          "frgn_ntby_qty": _f(o.get("frgn_ntby_qty"), None),
          "close": None, "chg": None, "chg_pct": None, "close_src": None}
+    # 전일 종가: 일별시세 두 번째 행(어제)은 시간외 영향이 없다
+    pc = None
     try:
         time.sleep(0.12)
         d = kis.fetch(STOCK_DAILY_PATH, "FHKST01010400",
@@ -401,15 +404,38 @@ def stock_price(code):
                        "FID_PERIOD_DIV_CODE": "D", "FID_ORG_ADJ_PRC": "1"})
         rows = d.get("output") or []
         today = kis.now_kst().strftime("%Y%m%d")
-        if len(rows) >= 2 and rows[0].get("stck_bsop_date") == today:
-            c, pc = _f(rows[0].get("stck_clpr"), None), _f(rows[1].get("stck_clpr"), None)
-            if c and pc:
-                q.update(close=c, chg=c - pc, chg_pct=round((c / pc - 1) * 100, 2),
-                         close_src="daily")
+        if rows and rows[0].get("stck_bsop_date") == today and len(rows) >= 2:
+            pc = _f(rows[1].get("stck_clpr"), None)
+        elif rows and rows[0].get("stck_bsop_date") != today:
+            pc = _f(rows[0].get("stck_clpr"), None)
     except Exception as e:
-        print(f"[stk] {code} 일별시세 실패 → 현재가로 대체: {str(e)[:60]}")
-    if q["close"] is None and kis.now_kst().strftime("%H%M") < "1600":
-        q.update(close=q["last"], chg_pct=q["last_chg_pct"], close_src="current(<16:00)")
+        print(f"[stk] {code} 일별시세 실패: {str(e)[:60]}")
+    # 정규장 종가: 당일 분봉에서 15:30 이하 마지막 봉.
+    # 16:00 이후엔 현재가·일별시세 당일값 모두 시간외 단일가로 움직인다
+    # (10/19 실측: 삼성전자 정규장 218,000 / 16:52 현재가·일별 둘 다 219,500).
+    c = None
+    try:
+        time.sleep(0.12)
+        m = kis.fetch(STOCK_MINUTE_PATH, "FHKST03010200",
+                      {"FID_ETC_CLS_CODE": "", "FID_COND_MRKT_DIV_CODE": "J",
+                       "FID_INPUT_ISCD": code, "FID_INPUT_HOUR_1": "153000",
+                       "FID_PW_DATA_INCU_YN": "N"})
+        today = kis.now_kst().strftime("%Y%m%d")
+        bars = [r for r in (m.get("output2") or [])
+                if r.get("stck_bsop_date") == today
+                and "090000" <= (r.get("stck_cntg_hour") or "") <= "153000"]
+        if bars:
+            last = max(bars, key=lambda r: r["stck_cntg_hour"])
+            c = _f(last.get("stck_prpr"), None)
+            q["close_time"] = last["stck_cntg_hour"]
+    except Exception as e:
+        print(f"[stk] {code} 분봉 실패: {str(e)[:60]}")
+    if c is None and kis.now_kst().strftime("%H%M") < "1600":
+        c, q["close_time"] = q["last"], "current(<16:00)"
+    if c and pc:
+        q.update(close=c, chg=c - pc, chg_pct=round((c / pc - 1) * 100, 2),
+                 prev_close=pc,
+                 close_src="current(<16:00)" if q.get("close_time") == "current(<16:00)" else "minute<=15:30")
     return q
 
 
