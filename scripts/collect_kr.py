@@ -372,21 +372,45 @@ SECTOR_LEADERS = {
 FX_CODES = {"USDKRW": "FX@KRW", "USDJPY": "FX@JPY"}   # 한투 해외 환율 코드
 
 
+STOCK_DAILY_PATH = "/uapi/domestic-stock/v1/quotations/inquire-daily-price"
+
+
 def stock_price(code):
-    """주식현재가 시세. 장 마감 후엔 stck_prpr = 종가."""
+    """정규장 종가 기준 시세.
+    주의: 16:00 이후 주식현재가(FHKST01010100)의 stck_prpr 는 시간외 단일가로 움직인다
+    (10/19 실측: 삼성전자 정규장 종가 218,000 인데 16:19 수집값 219,000).
+    그래서 종가·등락률은 일별시세(FHKST01010400)의 당일 stck_clpr 로 확정하고,
+    현재가 API 값은 last_* 로만 남긴다."""
     b = kis.fetch(STOCK_PRICE_PATH, "FHKST01010100",
                   {"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": code})
     o = b.get("output") or {}
-    return {"name": o.get("hts_kor_isnm"),
-            "close": _f(o.get("stck_prpr"), None),
-            "chg": _f(o.get("prdy_vrss"), None),
-            "chg_pct": _f(o.get("prdy_ctrt"), None),
-            "open": _f(o.get("stck_oprc"), None),
-            "high": _f(o.get("stck_hgpr"), None),
-            "low": _f(o.get("stck_lwpr"), None),
-            "volume": _f(o.get("acml_vol"), None),
-            "value_eok": round(_f(o.get("acml_tr_pbmn")) / 1e8) if o.get("acml_tr_pbmn") else None,
-            "frgn_ntby_qty": _f(o.get("frgn_ntby_qty"), None)}
+    q = {"name": o.get("hts_kor_isnm"),
+         "last": _f(o.get("stck_prpr"), None),
+         "last_chg_pct": _f(o.get("prdy_ctrt"), None),
+         "open": _f(o.get("stck_oprc"), None),
+         "high": _f(o.get("stck_hgpr"), None),
+         "low": _f(o.get("stck_lwpr"), None),
+         "volume": _f(o.get("acml_vol"), None),
+         "value_eok": round(_f(o.get("acml_tr_pbmn")) / 1e8) if o.get("acml_tr_pbmn") else None,
+         "frgn_ntby_qty": _f(o.get("frgn_ntby_qty"), None),
+         "close": None, "chg": None, "chg_pct": None, "close_src": None}
+    try:
+        time.sleep(0.12)
+        d = kis.fetch(STOCK_DAILY_PATH, "FHKST01010400",
+                      {"FID_COND_MRKT_DIV_CODE": "J", "FID_INPUT_ISCD": code,
+                       "FID_PERIOD_DIV_CODE": "D", "FID_ORG_ADJ_PRC": "1"})
+        rows = d.get("output") or []
+        today = kis.now_kst().strftime("%Y%m%d")
+        if len(rows) >= 2 and rows[0].get("stck_bsop_date") == today:
+            c, pc = _f(rows[0].get("stck_clpr"), None), _f(rows[1].get("stck_clpr"), None)
+            if c and pc:
+                q.update(close=c, chg=c - pc, chg_pct=round((c / pc - 1) * 100, 2),
+                         close_src="daily")
+    except Exception as e:
+        print(f"[stk] {code} 일별시세 실패 → 현재가로 대체: {str(e)[:60]}")
+    if q["close"] is None and kis.now_kst().strftime("%H%M") < "1600":
+        q.update(close=q["last"], chg_pct=q["last_chg_pct"], close_src="current(<16:00)")
+    return q
 
 
 def fx_daily(iscd, day):
@@ -402,8 +426,11 @@ def fx_daily(iscd, day):
     return {"close": _f(o1.get("ovrs_nmix_prpr") or last.get("ovrs_nmix_prpr"), None),
             "chg": _f(o1.get("ovrs_nmix_prdy_vrss"), None),
             "chg_pct": _f(o1.get("prdy_ctrt"), None),
-            "high": _f(last.get("ovrs_mynd_hgpr"), None),
-            "low": _f(last.get("ovrs_mynd_lwpr"), None),
+            "open": _f(o1.get("ovrs_prod_oprc"), None),
+            "high": _f(o1.get("ovrs_prod_hgpr"), None),
+            "low": _f(o1.get("ovrs_prod_lwpr"), None),
+            "prev_close": _f(o1.get("ovrs_nmix_prdy_clpr"), None),
+            "series": o1.get("hts_kor_isnm"),
             "date": last.get("stck_bsop_date"),
             "raw_output1": o1}
 
