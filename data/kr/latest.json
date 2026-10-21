@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-10-21T21:28:56+09:00",
+ "asof_kst": "2026-10-21T21:52:38+09:00",
  "session": "kr",
  "interval_sec": "60",
  "errors": [],
@@ -87,7 +87,7 @@
    "kospi200_nmix": "891.04",
    "hts_otst_stpl_qty": "145513",
    "otst_stpl_qty_icdc": "-353",
-   "tday_rltv": "93.90",
+   "tday_rltv": "93.81",
    "hts_thpr": "894.42",
    "dprt": "-0.15"
   },
@@ -1698,7 +1698,7 @@
     "futs_prpr": "898.25",
     "futs_oprc": "898.25",
     "futs_hgpr": "899.15",
-    "futs_lwpr": "898.05",
+    "futs_lwpr": "898.00",
     "cntg_vol": "268",
     "acml_tr_pbmn": "17785508975"
    },
@@ -2338,7 +2338,7 @@
     "futs_prpr": "891.00",
     "futs_oprc": "891.70",
     "futs_hgpr": "891.95",
-    "futs_lwpr": "891.00",
+    "futs_lwpr": "890.95",
     "cntg_vol": "130",
     "acml_tr_pbmn": "20404636200"
    },
@@ -3787,7 +3787,7 @@
     "stck_cntg_hour": "150900",
     "futs_prpr": "891.25",
     "futs_oprc": "890.55",
-    "futs_hgpr": "891.30",
+    "futs_hgpr": "891.25",
     "futs_lwpr": "890.40",
     "cntg_vol": "131",
     "acml_tr_pbmn": "27817725488"
@@ -3798,7 +3798,7 @@
     "futs_prpr": "891.55",
     "futs_oprc": "891.30",
     "futs_hgpr": "891.70",
-    "futs_lwpr": "891.00",
+    "futs_lwpr": "890.95",
     "cntg_vol": "195",
     "acml_tr_pbmn": "27861177613"
    },
@@ -21054,9 +21054,9 @@
  },
  "fx": {
   "USDKRW": {
-   "close": 1326.1,
-   "chg": 0.1,
-   "chg_pct": 0.01,
+   "close": 1326.5,
+   "chg": 0.5,
+   "chg_pct": 0.04,
    "open": 1325.5,
    "high": 1329.3,
    "low": 1322.8,
@@ -21064,13 +21064,13 @@
    "series": "원/달러(KMB)",
    "date": "20261021",
    "raw_output1": {
-    "ovrs_nmix_prdy_vrss": "0.1000",
+    "ovrs_nmix_prdy_vrss": "0.5000",
     "prdy_vrss_sign": "2",
-    "prdy_ctrt": "0.01",
+    "prdy_ctrt": "0.04",
     "ovrs_nmix_prdy_clpr": "1326.0000",
     "acml_vol": "0",
     "hts_kor_isnm": "원/달러(KMB)",
-    "ovrs_nmix_prpr": "1326.1000",
+    "ovrs_nmix_prpr": "1326.5000",
     "stck_shrn_iscd": "FX@KRW",
     "ovrs_prod_oprc": "1325.5000",
     "ovrs_prod_hgpr": "1329.3000",
@@ -21101,6 +21101,6 @@
     "ovrs_prod_lwpr": "157.8200"
    }
   },
-  "JPYKRW_100": 839.52
+  "JPYKRW_100": 839.77
  }
 }
