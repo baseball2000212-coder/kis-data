@@ -1,5 +1,5 @@
 {
- "asof_kst": "2026-10-23T21:12:24+09:00",
+ "asof_kst": "2026-10-23T21:34:22+09:00",
  "session": "kr",
  "interval_sec": "60",
  "errors": [],
@@ -87,7 +87,7 @@
    "kospi200_nmix": "862.77",
    "hts_otst_stpl_qty": "148540",
    "otst_stpl_qty_icdc": "4833",
-   "tday_rltv": "99.21",
+   "tday_rltv": "99.25",
    "hts_thpr": "865.90",
    "dprt": "-0.30"
   },
@@ -21054,9 +21054,9 @@
  },
  "fx": {
   "USDKRW": {
-   "close": 1324.5,
-   "chg": -2.0,
-   "chg_pct": -0.15,
+   "close": 1324.9,
+   "chg": -1.6,
+   "chg_pct": -0.12,
    "open": 1324.5,
    "high": 1326.9,
    "low": 1321.5,
@@ -21064,13 +21064,13 @@
    "series": "원/달러(KMB)",
    "date": "20261023",
    "raw_output1": {
-    "ovrs_nmix_prdy_vrss": "-2.0000",
+    "ovrs_nmix_prdy_vrss": "-1.6000",
     "prdy_vrss_sign": "5",
-    "prdy_ctrt": "-0.15",
+    "prdy_ctrt": "-0.12",
     "ovrs_nmix_prdy_clpr": "1326.5000",
     "acml_vol": "0",
     "hts_kor_isnm": "원/달러(KMB)",
-    "ovrs_nmix_prpr": "1324.5000",
+    "ovrs_nmix_prpr": "1324.9000",
     "stck_shrn_iscd": "FX@KRW",
     "ovrs_prod_oprc": "1324.5000",
     "ovrs_prod_hgpr": "1326.9000",
@@ -21101,6 +21101,6 @@
     "ovrs_prod_lwpr": "156.6800"
    }
   },
-  "JPYKRW_100": 842.5
+  "JPYKRW_100": 842.76
  }
 }
