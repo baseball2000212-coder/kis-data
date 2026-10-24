@@ -65,9 +65,31 @@ def master_codes():
     return _master_map
 
 
+# KRX 파생상품 연도 코드 (구 코드 체계). I·O·U 는 건너뛴다: 2024=V, 2025=W
+YEAR_LETTER = {2019: "P", 2020: "Q", 2021: "R", 2022: "S", 2023: "T", 2024: "V", 2025: "W"}
+MONTH_LETTER = {3: "3", 6: "6", 9: "9", 12: "C"}
+
+
+def code_candidates(y, m):
+    """한 월물의 후보 코드들. 2026년 마스터는 A06612 형식인데, 그 이전에 만기된 월물은
+    구 코드 체계(106W12 / 106WC000)로만 조회될 수 있어서 둘 다 시도한다."""
+    c = []
+    mc = master_codes().get(f"{y}{m:02d}")
+    if mc:
+        c.append(mc)
+    c.append(f"A06{y % 10}{m:02d}")
+    L = YEAR_LETTER.get(y)
+    if L:
+        c += [f"106{L}{m:02d}", f"106{L}{MONTH_LETTER[m]}000"]
+    return list(dict.fromkeys(c))
+
+
+def next_quarter(y, m):
+    return (y + 1, 3) if m == 12 else (y, m + 3)
+
+
 def code_for(y, m):
-    """마스터 우선. 없으면(만기 지난 월물) K200 A01612 패턴을 코스닥150 상품코드 06에 적용한 추정값."""
-    return master_codes().get(f"{y}{m:02d}") or f"A06{y % 10}{m:02d}"
+    return code_candidates(y, m)[0]
 
 
 def bars_for_day(code, day):
@@ -130,24 +152,34 @@ def main():
         if os.path.exists(f"{OUT_DIR}/{ymd}.csv"):
             miss = 0; day -= dt.timedelta(days=1); continue
         y, m = front_quarter(day)
-        code = code_for(y, m)
-        try:
-            rows, calls = bars_for_day(code, day)
-            total_calls += calls
-        except Exception as e:
-            rows, calls = [], 0
-            probe["days"][ymd] = {"code": code, "bars": 0, "err": str(e)[:150]}
-            print(f"[kq] {ymd} {code} 실패: {str(e)[:100]}")
+        rows, code, which, tried = [], code_for(y, m), "front", []
+        # 최근월물 후보 → 안 되면 차근월물 후보 순으로. 어떤 코드가 먹혔는지 probe 에 남긴다.
+        for tag, (yy, mm) in (("front", (y, m)), ("next", next_quarter(y, m))):
+            for cand in code_candidates(yy, mm):
+                try:
+                    r_, calls = bars_for_day(cand, day)
+                    total_calls += calls
+                except Exception as e:
+                    r_ = []
+                    tried.append(f"{cand}:ERR {str(e)[:60]}")
+                    continue
+                tried.append(f"{cand}:{len(r_)}")
+                if r_:
+                    rows, code, which = r_, cand, tag
+                    break
+                time.sleep(0.12)
+            if rows:
+                break
         if rows:
             save(day, code, rows)
             last = rows[-1]
-            probe["days"][ymd] = {"code": code, "bars": len(rows),
+            probe["days"][ymd] = {"code": code, "contract": which, "bars": len(rows),
                                   "first": rows[0][TKEY], "last": last[TKEY]}
-            print(f"[kq] {ymd} {code} {len(rows)}봉 {rows[0][TKEY]}~{last[TKEY]} calls={calls}")
+            print(f"[kq] {ymd} {code}({which}) {len(rows)}봉 {rows[0][TKEY]}~{last[TKEY]}")
             miss, got = 0, got + 1
         else:
-            probe["days"].setdefault(ymd, {"code": code, "bars": 0})
-            print(f"[kq] {ymd} {code} 빈 응답 (공휴일이거나 KIS 보관기간 밖)")
+            probe["days"][ymd] = {"code": None, "bars": 0, "tried": tried}
+            print(f"[kq] {ymd} 빈 응답 — 시도 {', '.join(tried)}")
             miss += 1
         day -= dt.timedelta(days=1)
         time.sleep(0.12)
