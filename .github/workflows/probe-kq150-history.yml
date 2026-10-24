@@ -1,0 +1,35 @@
+name: probe-kq150-history
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -r requirements.txt
+      - name: KST 날짜 (토큰 캐시 키)
+        id: d
+        run: echo "day=$(TZ=Asia/Seoul date +%F)" >> $GITHUB_OUTPUT
+      - name: 접근토큰 캐시
+        uses: actions/cache@v4
+        with:
+          path: .tokencache
+          key: kis-token-${{ steps.d.outputs.day }}
+      - name: probe
+        env:
+          KIS_APP_KEY:    ${{ secrets.KIS_APP_KEY }}
+          KIS_APP_SECRET: ${{ secrets.KIS_APP_SECRET }}
+          KIS_ENV:        prod
+        run: mkdir -p data/kq150 && PYTHONPATH=scripts python scripts/probe_kq150_history.py
+      - name: commit
+        run: |
+          git config user.name  "kis-bot"
+          git config user.email "kis-bot@users.noreply.github.com"
+          git add data/kq150/_history_probe.json
+          git diff --staged --quiet && exit 0
+          git commit -m "kq150 history probe $(TZ=Asia/Seoul date +%F\ %H:%M)"
+          git pull --rebase origin main && git push
