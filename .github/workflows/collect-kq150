@@ -1,0 +1,42 @@
+name: collect-kq150
+on:
+  schedule:
+    - cron: '20 7 * * 1-5'    # 16:20 KST — collect-kr(15:50·16:05)과 커밋 충돌 피하려고 뒤로
+  workflow_dispatch:
+    inputs:
+      start:
+        description: '과거 탐색 하한 YYYYMMDD'
+        default: '20260101'
+permissions:
+  contents: write
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -r requirements.txt
+      - name: KST 날짜 (토큰 캐시 키)
+        id: d
+        run: echo "day=$(TZ=Asia/Seoul date +%F)" >> $GITHUB_OUTPUT
+      - name: 접근토큰 캐시
+        uses: actions/cache@v4
+        with:
+          path: .tokencache
+          key: kis-token-${{ steps.d.outputs.day }}
+      - name: collect
+        env:
+          KIS_APP_KEY:    ${{ secrets.KIS_APP_KEY }}
+          KIS_APP_SECRET: ${{ secrets.KIS_APP_SECRET }}
+          KIS_ENV:        prod
+          KQ_START:       ${{ github.event.inputs.start || '20260101' }}
+        run: PYTHONPATH=scripts python scripts/collect_kq150_bars.py
+      - name: commit
+        run: |
+          git config user.name  "kis-bot"
+          git config user.email "kis-bot@users.noreply.github.com"
+          git add -A data/kq150 || true
+          git diff --staged --quiet && exit 0
+          git commit -m "kq150 $(TZ=Asia/Seoul date +%F\ %H:%M)"
+          git pull --rebase origin main && git push
